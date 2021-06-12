@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Fonts/TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Resources/Fonts/MenuFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://MenuButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Resources/Sound/menu.wav" type="AudioStream" id=6]
+[ext_resource path="res://Resources/Sound/Weapon1.wav" type="AudioStream" id=7]
 
 [node name="MainMenu" type="ColorRect"]
 pause_mode = 2
@@ -12,6 +14,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LayoutV" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -213,6 +218,20 @@ margin_bottom = 566.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"
+
+[node name="TestEffect" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 640, 360 )
+stream = ExtResource( 7 )
+pitch_scale = 1.2
+bus = "Effects"
+
+[connection signal="pressed" from="LayoutV/LayoutH/Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="LayoutV/LayoutH/Buttons/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="LayoutV/LayoutH/Buttons/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="value_changed" from="LayoutV/LayoutH/Audio/Sound/Sound" to="." method="_on_Sound_value_changed"]
 [connection signal="value_changed" from="LayoutV/LayoutH/Audio/Effects/Effects" to="." method="_on_Effects_value_changed"]
 [connection signal="value_changed" from="LayoutV/LayoutH/Audio/Music/Music" to="." method="_on_Music_value_changed"]
