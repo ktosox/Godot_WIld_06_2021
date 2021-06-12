@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/Sprites/SpaceShip.png" type="Texture" id=1]
 [ext_resource path="res://SpaceShip.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Placeholders/5d0tf0.jpg" type="Texture" id=3]
+[ext_resource path="res://Resources/Placeholders/5d0thw.jpg" type="Texture" id=4]
+[ext_resource path="res://Resources/Placeholders/5d0tge.jpg" type="Texture" id=5]
 
 [node name="SpaceShip" type="Node2D"]
 script = ExtResource( 2 )
@@ -12,8 +15,8 @@ polygon = PoolVector2Array( -40, -32, -8, 744, 1328, 752, 1344, -24 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 640, -24 )
-amount = 600
-lifetime = 30.0
+amount = 75
+lifetime = 12.0
 preprocess = 6.0
 emission_shape = 2
 emission_rect_extents = Vector2( 640, 0 )
@@ -22,7 +25,9 @@ spread = 0.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 100.0
 initial_velocity_random = 0.29
-scale_amount = 3.0
+angle = 720.0
+angle_random = 1.0
+scale_amount = 5.0
 scale_amount_random = 0.88
 hue_variation = 0.06
 hue_variation_random = 0.6
@@ -30,15 +35,6 @@ hue_variation_random = 0.6
 [node name="SpaceShip" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
-
-[node name="Button" type="Button" parent="."]
-visible = false
-margin_right = 12.0
-margin_bottom = 20.0
-text = "FREEZE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RoomLayer" type="Node2D" parent="."]
 
@@ -72,4 +68,64 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LevelSelection" type="Sprite" parent="."]
+visible = false
+position = Vector2( 664, 360 )
+texture = ExtResource( 3 )
+
+[node name="Return" type="Button" parent="LevelSelection"]
+margin_left = 152.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 56.0
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrewInspection" type="Sprite" parent="."]
+visible = false
+position = Vector2( 664, 360 )
+texture = ExtResource( 5 )
+
+[node name="Return" type="Button" parent="CrewInspection"]
+margin_left = 152.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 56.0
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionSelection" type="Sprite" parent="."]
+visible = false
+position = Vector2( 664, 360 )
+texture = ExtResource( 4 )
+
+[node name="Return" type="Button" parent="MissionSelection"]
+margin_left = 152.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 56.0
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+text = "FREEZE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="RoomLayer/LevelSelection" to="." method="_on_LevelSelection_pressed"]
+[connection signal="pressed" from="RoomLayer/CrewInspection" to="." method="_on_CrewInspection_pressed"]
+[connection signal="pressed" from="RoomLayer/MissionSelection" to="." method="_on_MissionSelection_pressed"]
+[connection signal="pressed" from="LevelSelection/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="CrewInspection/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="MissionSelection/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

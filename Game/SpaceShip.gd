@@ -22,3 +22,25 @@ func _on_Button_pressed():
 	else:
 		$CPUParticles2D.speed_scale = 0.06
 	pass # Replace with function body.
+
+
+func _on_Return_pressed():
+	$LevelSelection.visible = false
+	$CrewInspection.visible = false
+	$MissionSelection.visible = false
+	pass # Replace with function body.
+
+
+func _on_LevelSelection_pressed():
+	$LevelSelection.visible = true
+	pass # Replace with function body.
+
+
+func _on_CrewInspection_pressed():
+	$CrewInspection.visible = true
+	pass # Replace with function body.
+
+
+func _on_MissionSelection_pressed():
+	$MissionSelection.visible = true
+	pass # Replace with function body.
