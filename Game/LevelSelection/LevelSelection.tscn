@@ -1,11 +1,77 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/LevelSelection.gd" type="Script" id=1]
+[ext_resource path="res://Resources/UI/MainPanel01.png" type="Texture" id=2]
+[ext_resource path="res://LevelSelection/LevelCard.tscn" type="PackedScene" id=3]
 
-[node name="LevelSelection" type="Control"]
+[node name="LevelSelection" type="NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 23, 2, 814, 511 )
+patch_margin_left = 50
+patch_margin_top = 40
+patch_margin_right = 50
+patch_margin_bottom = 40
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = 80.0
+margin_right = -70.0
+margin_bottom = -80.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1140.0
+margin_bottom = 156.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Control"]
+margin_left = 515.0
+margin_top = 62.0
+margin_right = 624.0
+margin_bottom = 93.0
+text = "level selection
+"
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 160.0
+margin_right = 1140.0
+margin_bottom = 560.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelCard" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 60.0
+margin_right = 316.0
+margin_bottom = 400.0
+
+[node name="LevelCard2" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 441.0
+margin_right = 697.0
+margin_bottom = 400.0
+
+[node name="LevelCard3" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 823.0
+margin_right = 1079.0
+margin_bottom = 400.0
