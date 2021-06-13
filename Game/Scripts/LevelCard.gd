@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_LevelCard_mouse_entered():
-	modulate = ColorN("Blue")
+	modulate = ColorN("darkseagreen")
 	pass # Replace with function body.
 
 

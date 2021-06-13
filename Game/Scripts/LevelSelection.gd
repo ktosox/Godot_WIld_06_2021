@@ -11,6 +11,24 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func select_level(nr):
+	print(nr)
+	pass
+
+
+func _on_Card1_gui_input(event:InputEvent):
+	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
+		select_level(1)
+
+
+
+func _on_Card2_gui_input(event):
+	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
+		select_level(2)
+	pass # Replace with function body.
+
+
+func _on_Card3_gui_input(event):
+	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
+		select_level(3)
+	pass # Replace with function body.
