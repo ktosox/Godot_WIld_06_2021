@@ -60,35 +60,21 @@ stretch_mode = 6
 [node name="Control3" type="VBoxContainer" parent="LayoutV"]
 margin_top = 236.0
 margin_right = 240.0
-margin_bottom = 360.0
+margin_bottom = 369.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 alignment = 1
 
-[node name="Label" type="Label" parent="LayoutV/Control3"]
-margin_top = 28.0
-margin_right = 240.0
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.733333, 1, 0.894118, 1 )
-text = "- packs of beasts roam it's surface"
-autowrap = true
-
-[node name="Label2" type="Label" parent="LayoutV/Control3"]
-margin_top = 46.0
-margin_right = 240.0
-margin_bottom = 60.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.733333, 1, 0.894118, 1 )
-text = "- covered in dense jungles"
-
 [node name="Label3" type="Label" parent="LayoutV/Control3"]
-margin_top = 64.0
+margin_top = 8.0
 margin_right = 240.0
-margin_bottom = 95.0
+margin_bottom = 124.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.733333, 1, 0.894118, 1 )
-text = "- a lost colony of an unknown xeno civilisation"
+text = "- packs of beasts roam it's surface
+- covered in dense jungles
+- the only sign of civilisation are ruins from a failed xeno colony
+- recieved an honorable mention in the \"Top 10 Best Surf Planets in the Galaxy\" by the FLURBPON Magazine"
 autowrap = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_LevelCard_mouse_entered"]
