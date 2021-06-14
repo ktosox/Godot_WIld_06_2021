@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/LevelSelection.gd" type="Script" id=1]
 [ext_resource path="res://Resources/UI/MainPanel01.png" type="Texture" id=2]
 [ext_resource path="res://LevelSelection/LevelCard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Fonts/LevelSelectionFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://LevelSelection/SelectionButton.tscn" type="PackedScene" id=5]
 
 [node name="LevelSelection" type="NinePatchRect"]
 anchor_right = 1.0
@@ -33,22 +34,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="CenterContainer" parent="VBoxContainer"]
+[node name="TitleText" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1140.0
 margin_bottom = 196.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/Control"]
-margin_left = 346.0
+[node name="Label" type="Label" parent="VBoxContainer/TitleText"]
 margin_top = 85.0
-margin_right = 793.0
+margin_right = 1140.0
 margin_bottom = 111.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 custom_fonts/font = ExtResource( 4 )
 text = "please select the next destination"
+align = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ConfirmSelection" parent="VBoxContainer/TitleText" instance=ExtResource( 5 )]
+visible = false
+margin_left = 566.0
+margin_top = 82.0
+margin_right = 779.0
+margin_bottom = 114.0
+text = "select this planet"
+
+[node name="CancelSelection" parent="VBoxContainer/TitleText" instance=ExtResource( 5 )]
+visible = false
+margin_left = 820.0
+margin_top = 82.0
+margin_right = 1033.0
+margin_bottom = 114.0
+text = "back to selection"
+
+[node name="LevelDetails" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 200.0
+margin_right = 1140.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 400 )
+size_flags_vertical = 9
+
+[node name="LevelCard" parent="VBoxContainer/LevelDetails" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 39.0
+margin_right = 339.0
+margin_bottom = 400.0
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer/LevelDetails"]
+margin_left = 382.0
+margin_right = 1140.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="VBoxContainer/LevelDetails/Control"]
+margin_right = 758.0
+margin_bottom = 171.0
+custom_fonts/font = ExtResource( 4 )
+text = "A detailed description of the selected world should go here
+
+Or a page from the database that has expanded information on the planet
+
+It should list the potential dangers that exist on the planet."
+autowrap = true
+
+[node name="SelectionCards" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 200.0
 margin_right = 1140.0
 margin_bottom = 600.0
@@ -58,27 +111,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Card1" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="Card1" parent="VBoxContainer/SelectionCards" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 38.0
 margin_right = 338.0
 margin_bottom = 400.0
 
-[node name="Card2" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="Card2" parent="VBoxContainer/SelectionCards" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 419.0
 margin_right = 719.0
 margin_bottom = 400.0
 
-[node name="Card3" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="Card3" parent="VBoxContainer/SelectionCards" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 801.0
 margin_right = 1101.0
 margin_bottom = 400.0
 
-[connection signal="gui_input" from="VBoxContainer/HBoxContainer/Card1" to="." method="_on_Card1_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/HBoxContainer/Card2" to="." method="_on_Card2_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/HBoxContainer/Card3" to="." method="_on_Card3_gui_input"]
+[connection signal="pressed" from="VBoxContainer/TitleText/ConfirmSelection" to="." method="_on_ConfirmSelection_pressed"]
+[connection signal="pressed" from="VBoxContainer/TitleText/CancelSelection" to="." method="_on_CancelSelection_pressed"]
+[connection signal="gui_input" from="VBoxContainer/SelectionCards/Card1" to="." method="_on_Card1_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/SelectionCards/Card2" to="." method="_on_Card2_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/SelectionCards/Card3" to="." method="_on_Card3_gui_input"]
