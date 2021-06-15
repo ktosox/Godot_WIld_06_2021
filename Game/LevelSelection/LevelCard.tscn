@@ -60,15 +60,15 @@ stretch_mode = 6
 [node name="Control3" type="VBoxContainer" parent="LayoutV"]
 margin_top = 236.0
 margin_right = 240.0
-margin_bottom = 369.0
+margin_bottom = 360.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 alignment = 1
 
 [node name="Label3" type="Label" parent="LayoutV/Control3"]
-margin_top = 8.0
+margin_top = 4.0
 margin_right = 240.0
-margin_bottom = 124.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.733333, 1, 0.894118, 1 )
 text = "- packs of beasts roam it's surface
