@@ -13,6 +13,10 @@ config_version=4
 config/name="WildJam34"
 config/icon="res://icon.png"
 
+[autoload]
+
+CrewSingleton="*res://Resources/CrewUI/CrewSingleton.tscn"
+
 [display]
 
 window/size/width=1280
