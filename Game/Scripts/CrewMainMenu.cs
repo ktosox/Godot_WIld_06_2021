@@ -10,7 +10,7 @@ public class CrewMainMenu : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GD.Print(CrewSingleton.crewmates[0].name);
+        //GD.Print(CrewSingleton.crewmates[0].name);
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.

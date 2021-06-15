@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/CrewMainMenu.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/CrewList.cs" type="Script" id=4]
+[ext_resource path="res://Scripts/SelectedCrewmateDesription.cs" type="Script" id=5]
 
 [node name="CrewMainMenu" type="Control"]
 anchor_right = 1.0
@@ -15,6 +17,11 @@ __meta__ = {
 [node name="SelectedCrewmateDesription" type="Panel" parent="."]
 anchor_right = 0.5
 anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+nameLabelPath = NodePath("Name")
 
 [node name="CrewmatePhoto" type="TextureRect" parent="SelectedCrewmateDesription"]
 margin_left = 25.0
@@ -105,10 +112,41 @@ margin_bottom = 158.0
 custom_fonts/font = ExtResource( 1 )
 text = "asasasas"
 
+[node name="ButtonOwned" type="Button" parent="SelectedCrewmateDesription"]
+anchor_top = -0.101
+anchor_right = 0.5
+margin_left = 640.0
+margin_top = 72.0908
+margin_right = 640.0
+margin_bottom = 72.0368
+text = "Owned"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonToBuy" type="Button" parent="SelectedCrewmateDesription"]
+anchor_left = 0.5
+anchor_top = -0.101
+anchor_right = 1.0
+margin_left = 640.0
+margin_top = 72.72
+margin_right = 640.0
+margin_bottom = 72.666
+text = "To buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CrewList" type="ItemList" parent="."]
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 66.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="SelectedCrewmateDesription/ButtonOwned" to="CrewList" method="_on_ButtonOwned_pressed"]
+[connection signal="pressed" from="SelectedCrewmateDesription/ButtonToBuy" to="CrewList" method="_on_ButtonToBuy_pressed"]
+[connection signal="item_selected" from="CrewList" to="CrewList" method="_on_CrewList_item_selected"]
