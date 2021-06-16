@@ -19,6 +19,7 @@ func select_level(nr):
 	pass
 
 func confirm_selection():
+	print("player selected planet "+String(selectedPlanet))
 	#whatever call to the global singleton needs to be made to mave the machine forward should go here
 	pass
 
@@ -37,21 +38,24 @@ func change_to_confirmation(nr):
 	currentState.visible = true
 	$VBoxContainer/TitleText/ConfirmSelection.visible = true
 	$VBoxContainer/TitleText/CancelSelection.visible = true
-	$VBoxContainer/TitleText/Label.text = "You have selected planet "+String(nr)+",\n should we start the engines?"
+	$VBoxContainer/TitleText/Label.text = "Should we set a course to Planet "+String(nr)+", Captain?"
 	#loading level details for the given level goes here
 	pass
 
 func _on_Card1_gui_input(event:InputEvent):
 	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
+		$VBoxContainer/SelectionCards/Card1.emit_signal("mouse_exited")
 		select_level(1)
 
 func _on_Card2_gui_input(event):
 	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
+		$VBoxContainer/SelectionCards/Card2.emit_signal("mouse_exited")
 		select_level(2)
 	pass # Replace with function body.
 
 func _on_Card3_gui_input(event):
 	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
+		$VBoxContainer/SelectionCards/Card3.emit_signal("mouse_exited")
 		select_level(3)
 	pass # Replace with function body.
 

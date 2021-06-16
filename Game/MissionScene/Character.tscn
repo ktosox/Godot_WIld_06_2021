@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Character.gd" type="Script" id=1]
+
+[node name="Character" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1152.0
+margin_bottom = -592.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color( 0.113725, 0.854902, 0.176471, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="ProgressBar" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 142.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="ProgressBar" parent="."]
+modulate = Color( 0, 1, 0.552941, 1 )
+margin_top = 144.0
+margin_right = 128.0
+margin_bottom = 158.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

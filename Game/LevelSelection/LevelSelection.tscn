@@ -69,6 +69,7 @@ margin_bottom = 114.0
 text = "back to selection"
 
 [node name="LevelDetails" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 200.0
 margin_right = 1140.0
 margin_bottom = 600.0
@@ -101,7 +102,6 @@ It should list the potential dangers that exist on the planet."
 autowrap = true
 
 [node name="SelectionCards" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
 margin_top = 200.0
 margin_right = 1140.0
 margin_bottom = 600.0

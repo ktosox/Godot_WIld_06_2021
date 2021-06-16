@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/MissionController.gd" type="Script" id=1]
+[ext_resource path="res://Resources/UI/MainPanel02.png" type="Texture" id=2]
+[ext_resource path="res://MissionScene/Character.tscn" type="PackedScene" id=3]
+
+[node name="MissionController" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionScreen" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="ProgressBar" parent="MissionScreen"]
+margin_right = 1280.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+value = 50.0
+percent_visible = false
+
+[node name="LayoutH" type="HBoxContainer" parent="MissionScreen"]
+margin_top = 54.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_vertical = 3
+
+[node name="DetailMenu" type="NinePatchRect" parent="MissionScreen/LayoutH"]
+margin_right = 510.0
+margin_bottom = 666.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 302, 403 )
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Background" type="ColorRect" parent="MissionScreen/LayoutH"]
+margin_left = 514.0
+margin_right = 1280.0
+margin_bottom = 666.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Layout" type="HBoxContainer" parent="MissionScreen/LayoutH/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crew" type="VBoxContainer" parent="MissionScreen/LayoutH/Background/Layout"]
+margin_right = 322.0
+margin_bottom = 666.0
+size_flags_horizontal = 3
+
+[node name="Character" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 97.0
+margin_top = 45.0
+margin_right = 225.0
+margin_bottom = 173.0
+
+[node name="Character2" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 97.0
+margin_top = 268.0
+margin_right = 225.0
+margin_bottom = 396.0
+
+[node name="Character3" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 97.0
+margin_top = 492.0
+margin_right = 225.0
+margin_bottom = 620.0
+
+[node name="It\'sFreeRealEstate" type="Control" parent="MissionScreen/LayoutH/Background/Layout"]
+margin_left = 326.0
+margin_right = 439.0
+margin_bottom = 666.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="Badies" type="VBoxContainer" parent="MissionScreen/LayoutH/Background/Layout"]
+margin_left = 443.0
+margin_right = 766.0
+margin_bottom = 666.0
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="MissionScreen/LayoutH/Background/Layout/Badies"]
+margin_left = 97.0
+margin_top = 45.0
+margin_right = 225.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 6
+color = Color( 0.901961, 0.121569, 0.121569, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="MissionScreen/LayoutH/Background/Layout/Badies"]
+margin_left = 97.0
+margin_top = 268.0
+margin_right = 225.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 6
+color = Color( 0.901961, 0.121569, 0.121569, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="MissionScreen/LayoutH/Background/Layout/Badies"]
+margin_left = 97.0
+margin_top = 492.0
+margin_right = 225.0
+margin_bottom = 620.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 6
+color = Color( 0.901961, 0.121569, 0.121569, 1 )

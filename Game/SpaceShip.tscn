@@ -63,7 +63,7 @@ margin_left = 504.0
 margin_top = 528.0
 margin_right = 630.0
 margin_bottom = 584.0
-text = "mission selection"
+text = "mission screen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
