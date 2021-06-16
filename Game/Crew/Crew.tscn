@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Crewmate.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Perk.cs" type="Script" id=2]
 
 [node name="Crew" type="Node"]
 script = ExtResource( 1 )
@@ -11,3 +12,11 @@ combatProwess = 3
 alienKnowledge = 2
 technologyKnowledge = 2
 peopleSkills = 2
+perkOnePath = NodePath("PerkOne")
+perkTwoPath = NodePath("PerkTwo")
+
+[node name="PerkOne" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="PerkTwo" type="Node" parent="."]
+script = ExtResource( 2 )

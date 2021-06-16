@@ -13,5 +13,13 @@ public class Crewmate : Node
     [Export] public int technologyKnowledge=1;
     [Export] public int peopleSkills=1;
     [Export] public float speed=1f;
+    [Export] public NodePath perkOnePath;
+    [Export] public NodePath perkTwoPath;
     [Export] public bool isOwned=true;
+
+    public Perk[] GetPerks(){
+        var perkOne = (Perk) GetNode(perkOnePath);
+        var perkTwo = (Perk) GetNode(perkTwoPath);
+        return new Perk[] {perkOne,perkTwo};
+    }
 }

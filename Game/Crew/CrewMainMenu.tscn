@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/CrewMainMenu.cs" type="Script" id=3]
 [ext_resource path="res://Scripts/CrewList.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/SelectedCrewmateDesription.cs" type="Script" id=5]
+[ext_resource path="res://Crew/Stat.tscn" type="PackedScene" id=6]
 
 [node name="CrewMainMenu" type="Control"]
 anchor_right = 1.0
@@ -22,14 +23,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 nameLabelPath = NodePath("Name")
+classLabelPath = NodePath("ClassAndLevel")
+portraitImagePath = NodePath("CrewPortrait")
+HPLabelPath = NodePath("GridContainer/HPLabel")
+combatLabelPath = NodePath("GridContainer/CombatStat")
+alienKnowledgeLabelPath = NodePath("GridContainer/AlienStat")
+techKnowledgeLabelPath = NodePath("GridContainer/TechStat")
+peopleSkillsLabelPath = NodePath("GridContainer/PeopleStat")
+speedLabelPath = NodePath("GridContainer/SpeedStat")
 
-[node name="CrewmatePhoto" type="TextureRect" parent="SelectedCrewmateDesription"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 162.0
-margin_bottom = 162.0
+[node name="CrewPortrait" type="NinePatchRect" parent="SelectedCrewmateDesription"]
+margin_right = 177.0
+margin_bottom = 177.0
 texture = ExtResource( 2 )
-stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,48 +75,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
+[node name="HPLabel" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
 margin_right = 218.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 1 )
 text = "HP: 20/20"
 
-[node name="Label2" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
-margin_left = 222.0
-margin_right = 657.0
-margin_bottom = 50.0
-custom_fonts/font = ExtResource( 1 )
-text = "Combat Prowess:10"
+[node name="CombatStat" parent="SelectedCrewmateDesription/GridContainer" instance=ExtResource( 6 )]
+margin_right = 358.0
+statName = "Combat:"
 
-[node name="Label3" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
+[node name="SpeedStat" parent="SelectedCrewmateDesription/GridContainer" instance=ExtResource( 6 )]
+margin_left = 0.0
 margin_top = 54.0
 margin_right = 218.0
 margin_bottom = 104.0
-custom_fonts/font = ExtResource( 1 )
-text = "asasasas"
+statName = "Speed:"
 
-[node name="Label4" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
-margin_left = 222.0
+[node name="AlienStat" parent="SelectedCrewmateDesription/GridContainer" instance=ExtResource( 6 )]
 margin_top = 54.0
-margin_right = 657.0
+margin_right = 358.0
 margin_bottom = 104.0
-custom_fonts/font = ExtResource( 1 )
-text = "asasasas"
+statName = "Xeno:"
 
-[node name="Label5" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
+[node name="TechStat" parent="SelectedCrewmateDesription/GridContainer" instance=ExtResource( 6 )]
+margin_left = 0.0
 margin_top = 108.0
 margin_right = 218.0
 margin_bottom = 158.0
-custom_fonts/font = ExtResource( 1 )
-text = "asasasas"
+statName = "Cyber:"
 
-[node name="Label6" type="Label" parent="SelectedCrewmateDesription/GridContainer"]
-margin_left = 222.0
+[node name="PeopleStat" parent="SelectedCrewmateDesription/GridContainer" instance=ExtResource( 6 )]
 margin_top = 108.0
-margin_right = 657.0
+margin_right = 358.0
 margin_bottom = 158.0
-custom_fonts/font = ExtResource( 1 )
-text = "asasasas"
+statName = "People:"
 
 [node name="ButtonOwned" type="Button" parent="SelectedCrewmateDesription"]
 anchor_top = -0.101
