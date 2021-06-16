@@ -1,37 +1,17 @@
 using Godot;
 using System;
-
-public class Crewmate
+public class Crewmate : Node
 {
-    public string name;
-    public string characterClass;
-    public string pathToImage; //not sure about this one
-    public int rank; //might not be used
-    public int currentHealth;
-    public int maxHealth;
-    public int combatProwess;
-    public int alienKnowledge;
-    public int technologyKnowledge;
-    public int peopleSkills;
-    public float speed;
-    public int perkOne;
-    public int perkTwo;
-    public bool isOwned;
-
-    public Crewmate(string name,string characterClass,string pathToImage,int maxHealth,int combatProwess,int alienKnowledge,int technologyKnowledge,int peopleSkills,float speed,int perkOne, int perkTwo,bool isOwned=false,int rank=1){
-        this.name=name;
-        this.characterClass = characterClass;
-        this.pathToImage=pathToImage;
-        this.maxHealth=maxHealth;
-        this.currentHealth=maxHealth;
-        this.combatProwess=combatProwess;
-        this.alienKnowledge=alienKnowledge;
-        this.technologyKnowledge=technologyKnowledge;
-        this.peopleSkills=peopleSkills;
-        this.speed=speed;
-        this.perkOne=perkOne;
-        this.perkTwo=perkTwo;
-        this.rank=rank;
-        this.isOwned=isOwned;
-    }
+    [Export] public string name;
+    [Export] public string characterClass;
+    [Export] public string pathToImage; //not sure about this one
+    [Export] public int rank=1; //might not be used
+    [Export] public int currentHealth=20;
+    [Export] public int maxHealth=20;
+    [Export] public int combatProwess=1;
+    [Export] public int alienKnowledge=1;
+    [Export] public int technologyKnowledge=1;
+    [Export] public int peopleSkills=1;
+    [Export] public float speed=1f;
+    [Export] public bool isOwned=true;
 }

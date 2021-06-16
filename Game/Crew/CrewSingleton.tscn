@@ -4,3 +4,4 @@
 
 [node name="CrewSingleton" type="Node"]
 script = ExtResource( 1 )
+charactersDirPath = "res://Crew/CrewCharacters/"
