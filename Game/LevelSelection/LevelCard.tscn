@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/UI/MainPanel02.png" type="Texture" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Planets/814722312.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/LevelCard.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Fonts/LevelCardFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Resources/Fonts/LevelCardTtileFont.tres" type="DynamicFont" id=5]
@@ -65,7 +65,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 alignment = 1
 
-[node name="Label3" type="Label" parent="LayoutV/Control3"]
+[node name="Minutes" type="Label" parent="LayoutV/Control3"]
 margin_top = 4.0
 margin_right = 240.0
 margin_bottom = 120.0

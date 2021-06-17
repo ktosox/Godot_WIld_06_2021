@@ -70,3 +70,8 @@ func _on_ConfirmSelection_pressed():
 func _on_CancelSelection_pressed():
 	change_to_selection()
 	pass # Replace with function body.
+
+
+func _on_Return_pressed():
+	visible = false
+	pass # Replace with function body.

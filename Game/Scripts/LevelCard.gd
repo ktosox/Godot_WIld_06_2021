@@ -10,10 +10,11 @@ extends NinePatchRect
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func load_card(ID):
+	#$LayoutV/Name.text = #get name
+	#$LayoutV/Planet.texture = #get the planet texture
+	#$LayoutV/Control3/Minutes.text = # get minutes
+	pass
 
 
 func _on_LevelCard_mouse_entered():

@@ -9,6 +9,7 @@
 [node name="LevelSelection" type="NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 1280, 720 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 23, 2, 814, 511 )
 patch_margin_left = 50
@@ -132,8 +133,17 @@ margin_left = 801.0
 margin_right = 1101.0
 margin_bottom = 400.0
 
+[node name="Return" type="Button" parent="."]
+margin_left = 72.0
+margin_top = 56.0
+margin_right = 123.0
+margin_bottom = 76.0
+rect_scale = Vector2( 2, 2 )
+text = "return"
+
 [connection signal="pressed" from="VBoxContainer/TitleText/ConfirmSelection" to="." method="_on_ConfirmSelection_pressed"]
 [connection signal="pressed" from="VBoxContainer/TitleText/CancelSelection" to="." method="_on_CancelSelection_pressed"]
 [connection signal="gui_input" from="VBoxContainer/SelectionCards/Card1" to="." method="_on_Card1_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/SelectionCards/Card2" to="." method="_on_Card2_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/SelectionCards/Card3" to="." method="_on_Card3_gui_input"]
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
