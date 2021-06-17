@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public enum StepType{
     Fight,
@@ -19,5 +20,5 @@ public class Step : Node
     [Export] public int maxEnemyAttack;
     [Export] public int minEnemyHealth;
     [Export] public int maxEnemyHealth;
-    [Export] public string enemyPortaitPath;
+    [Export] public Godot.Collections.Array<Godot.Collections.Array> enemies;
 }

@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 public enum PerkTag{
+    Passive,
     Action,
     Attack,
     Defense
