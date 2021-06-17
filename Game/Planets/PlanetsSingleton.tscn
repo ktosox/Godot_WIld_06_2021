@@ -4,4 +4,4 @@
 
 [node name="PlanetsSingleton" type="Node"]
 script = ExtResource( 1 )
-PlanetsDirPath = "res://Planets/PlaneMissions/"
+PlanetsDirPath = "res://Planets/PlanetMissions/"
