@@ -12,12 +12,8 @@ public class SelectedCrewmateDesription : Panel
     [Export] private NodePath techKnowledgeLabelPath;
     [Export] private NodePath peopleSkillsLabelPath;
     [Export] private NodePath speedLabelPath;
-    [Export] private NodePath perkOneImagePath;
-    [Export] private NodePath perkOneTitleLabelPath;
-    [Export] private NodePath perkOneDescriptionLabelPath;
-    [Export] private NodePath perkTwoImagePath;
-    [Export] private NodePath perkTwoTitleLabelPath;
-    [Export] private NodePath perkTwoDescriptionLabelPath;
+    [Export] private NodePath perkOneUIPath;
+    [Export] private NodePath perkTwoUIPath;
 
     public void AssignData(Crewmate crewmate){
         var nameLabel =(Label) GetNode(nameLabelPath);
@@ -38,5 +34,12 @@ public class SelectedCrewmateDesription : Panel
         peopleStat.SetDynamicLabel(crewmate.peopleSkills.ToString());
         var speedStat =(Stat) GetNode(speedLabelPath);
         speedStat.SetDynamicLabel(crewmate.speed.ToString());
+
+        //Perks
+
+        var perkOneUI = (PerkUI) GetNode(perkOneUIPath);
+        perkOneUI.AssignData(crewmate.GetPerks()[0]);
+        var perkTwoUI = (PerkUI) GetNode(perkTwoUIPath);
+        perkTwoUI.AssignData(crewmate.GetPerks()[1]);
     }
 }
