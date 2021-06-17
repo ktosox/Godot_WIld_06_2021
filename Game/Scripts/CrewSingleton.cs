@@ -25,4 +25,10 @@ public class CrewSingleton : Node
         }
         base._Ready();
     }
+    public static Crewmate GetCrewmate(int id){
+        if(id>=crewmates.Count){
+            throw new Exception("You went out of bounds of the crew list!");
+        }
+        return crewmates[id];
+    }
 }
