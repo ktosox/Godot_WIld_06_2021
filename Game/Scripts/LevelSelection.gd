@@ -7,6 +7,7 @@ var selectedPlanet = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(CrewSingleton.GetCrewmate(0).name);
 	pass # Replace with function body.
 
 func load_card_data():
