@@ -11,11 +11,12 @@ config_version=4
 [application]
 
 config/name="WildJam34"
+run/main_scene="res://Crew/CrewMainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-CrewSingleton="*res://Resources/CrewUI/CrewSingleton.tscn"
+CrewSingleton="*res://Crew/CrewSingleton.tscn"
 
 [display]
 

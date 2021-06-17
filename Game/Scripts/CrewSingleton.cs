@@ -4,8 +4,25 @@ using System.Collections.Generic;
 
 public class CrewSingleton : Node
 {
-    public static List<Crewmate> crewmates =new List<Crewmate>{
-        new Crewmate("Samantha Davis","Medic","",20,3,2,2,2,1,0,1,true),
-        new Crewmate("Eliot Arkins","Professor","",15,2,3,2,3,1,2,3,true)
-    };
+    [Export] public string charactersDirPath;
+    public static List<Crewmate> crewmates = new List<Crewmate>();
+
+    public override void _Ready()
+    {
+        var dir = new Directory();
+        if(dir.Open(charactersDirPath)==Error.Ok){
+            dir.ListDirBegin();
+            var filename = dir.GetNext();
+
+            while(filename!=""){
+                if(!dir.CurrentIsDir()){
+                    var path = charactersDirPath + "/" + filename;
+                    var crewmate = (PackedScene)GD.Load(path);
+                    crewmates.Add((Crewmate)crewmate.Instance());
+                }
+                filename=dir.GetNext();
+            }
+        }
+        base._Ready();
+    }
 }
