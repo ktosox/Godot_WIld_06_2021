@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 CrewSingleton="*res://Crew/CrewSingleton.tscn"
+PlanetsSingleton="*res://Planets/PlanetsSingleton.tscn"
 
 [display]
 
