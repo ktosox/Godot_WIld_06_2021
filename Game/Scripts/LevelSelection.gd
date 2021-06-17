@@ -7,15 +7,18 @@ var selectedPlanet = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(CrewSingleton.GetCrewmate(0).name);
+
 	pass # Replace with function body.
 
 func load_card_data():
-	#get all of the relevant data to cards from 1 to 3 
-	pass
+	var cardID = get_parent().missionsBeaten*3
+	for z in $VBoxContainer/SelectionCards.get_children() :
+		z.load_card(cardID)
+		cardID+=1
+
 
 func select_level(nr):
-	selectedPlanet = nr # + 3 for each planet already beaten by the player
+	selectedPlanet = nr
 	change_to_confirmation(nr)
 	pass
 
@@ -34,30 +37,31 @@ func change_to_selection():
 	pass
 
 func change_to_confirmation(nr):
+	$VBoxContainer/LevelDetails/LevelCard.load_card(nr)
 	currentState.visible = false
 	currentState = $VBoxContainer/LevelDetails
 	currentState.visible = true
 	$VBoxContainer/TitleText/ConfirmSelection.visible = true
 	$VBoxContainer/TitleText/CancelSelection.visible = true
 	$VBoxContainer/TitleText/Label.text = "Should we set a course to Planet "+String(nr)+", Captain?"
-	#loading level details for the given level goes here
+	$VBoxContainer/LevelDetails/Control/Label.text = PlanetsSingleton.GetPlanet(nr).description
 	pass
 
 func _on_Card1_gui_input(event:InputEvent):
 	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
 		$VBoxContainer/SelectionCards/Card1.emit_signal("mouse_exited")
-		select_level(1)
+		select_level($VBoxContainer/SelectionCards/Card1.planetID)
 
 func _on_Card2_gui_input(event):
 	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
 		$VBoxContainer/SelectionCards/Card2.emit_signal("mouse_exited")
-		select_level(2)
+		select_level($VBoxContainer/SelectionCards/Card2.planetID)
 	pass # Replace with function body.
 
 func _on_Card3_gui_input(event):
 	if(event.is_class("InputEventMouseButton") and event.is_pressed()):
 		$VBoxContainer/SelectionCards/Card3.emit_signal("mouse_exited")
-		select_level(3)
+		select_level($VBoxContainer/SelectionCards/Card3.planetID)
 	pass # Replace with function body.
 
 
@@ -74,4 +78,10 @@ func _on_CancelSelection_pressed():
 
 func _on_Return_pressed():
 	visible = false
+	pass # Replace with function body.
+
+
+func _on_LevelSelection_visibility_changed():
+	if visible == true :
+		load_card_data()
 	pass # Replace with function body.

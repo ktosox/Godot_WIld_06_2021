@@ -1,9 +1,7 @@
 extends NinePatchRect
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var planetID
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +9,10 @@ func _ready():
 	pass # Replace with function body.
 
 func load_card(ID):
-	#$LayoutV/Name.text = #get name
-	#$LayoutV/Planet.texture = #get the planet texture
-	#$LayoutV/Control3/Minutes.text = # get minutes
+	planetID = ID
+	$LayoutV/Name.text = PlanetsSingleton.GetPlanet(ID).name
+	$LayoutV/Planet.texture = load(PlanetsSingleton.GetPlanet(ID).pathToImage)
+	$LayoutV/Control3/Minutes.text = PlanetsSingleton.GetPlanet(ID).importantPoints
 	pass
 
 

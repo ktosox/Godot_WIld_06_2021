@@ -141,6 +141,7 @@ margin_bottom = 76.0
 rect_scale = Vector2( 2, 2 )
 text = "return"
 
+[connection signal="visibility_changed" from="." to="." method="_on_LevelSelection_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/TitleText/ConfirmSelection" to="." method="_on_ConfirmSelection_pressed"]
 [connection signal="pressed" from="VBoxContainer/TitleText/CancelSelection" to="." method="_on_CancelSelection_pressed"]
 [connection signal="gui_input" from="VBoxContainer/SelectionCards/Card1" to="." method="_on_Card1_gui_input"]

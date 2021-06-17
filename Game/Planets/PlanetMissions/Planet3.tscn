@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Step.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Planet.cs" type="Script" id=2]
+
+[node name="Planet" type="Node"]
+script = ExtResource( 2 )
+name = "Planet3"
+pathToImage = "res://Resources/Sprites/Planets/Craters.png"
+importantPoints = "- has much rocks
+- very dry
+- better take water"
+description = "An arid world covered in badlands and ruins of sprawling mega cities.
+
+A nuclear exchange over 60 years ago reduced this planet’s population to a state of techno-barbarism.
+
+The livable parts of the planet are split between roaming bands of raiders."
+
+[node name="Step1" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
