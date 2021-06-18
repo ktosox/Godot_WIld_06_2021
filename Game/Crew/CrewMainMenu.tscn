@@ -19,6 +19,10 @@ __meta__ = {
 [node name="SelectedCrewmateDesription" type="Panel" parent="."]
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = 0.529144
+margin_top = -0.264526
+margin_right = 0.529175
+margin_bottom = -0.264526
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,15 +118,15 @@ margin_right = 358.0
 margin_bottom = 158.0
 statName = "People:"
 
-[node name="BuyButton" type="Button" parent="SelectedCrewmateDesription"]
+[node name="HireButton" type="Button" parent="SelectedCrewmateDesription"]
 anchor_left = 0.5
 anchor_top = -0.101
 anchor_right = 1.0
-margin_left = -198.633
-margin_top = 685.658
-margin_right = -198.633
-margin_bottom = 685.604
-text = "Buy"
+margin_left = -49.0
+margin_top = 682.294
+margin_right = -49.0
+margin_bottom = 682.24
+text = "Hire"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -131,9 +135,10 @@ __meta__ = {
 anchor_top = -0.101
 anchor_right = 0.5
 margin_left = 640.0
-margin_top = 72.0908
-margin_right = 640.0
-margin_bottom = 72.0368
+margin_top = 71.72
+margin_right = 600.0
+margin_bottom = 66.0
+rect_scale = Vector2( 0.999187, 1 )
 text = "Owned"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -143,10 +148,10 @@ __meta__ = {
 anchor_left = 0.5
 anchor_top = -0.101
 anchor_right = 1.0
-margin_left = 640.0
+margin_left = 600.0
 margin_top = 72.72
-margin_right = 640.0
-margin_bottom = 72.666
+margin_right = 560.0
+margin_bottom = 66.0
 text = "To buy"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,6 +163,20 @@ __meta__ = {
 margin_left = 320.0
 margin_right = 591.0
 
+[node name="Currency Static" type="Label" parent="SelectedCrewmateDesription"]
+margin_left = 37.0
+margin_top = 633.0
+margin_right = 140.0
+margin_bottom = 667.0
+text = "Currency:"
+
+[node name="Currency Dynamic" type="Label" parent="SelectedCrewmateDesription"]
+margin_left = 120.0
+margin_top = 633.0
+margin_right = 223.0
+margin_bottom = 667.0
+text = "100$"
+
 [node name="CrewList" type="ItemList" parent="."]
 anchor_left = 0.5
 anchor_right = 1.0
@@ -167,8 +186,19 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+hireButtonPath = NodePath("../SelectedCrewmateDesription/HireButton")
+currencyLabelPath = NodePath("../SelectedCrewmateDesription/Currency Dynamic")
 
-[connection signal="pressed" from="SelectedCrewmateDesription/BuyButton" to="CrewList" method="_on_ButtonToBuy_pressed"]
+[node name="HideButton" type="Button" parent="."]
+margin_left = 1200.0
+margin_top = -1.0
+margin_right = 1280.0
+margin_bottom = 66.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="SelectedCrewmateDesription/HireButton" to="CrewList" method="_on_HireButton_pressed"]
 [connection signal="pressed" from="SelectedCrewmateDesription/ButtonOwned" to="CrewList" method="_on_ButtonOwned_pressed"]
 [connection signal="pressed" from="SelectedCrewmateDesription/ButtonToBuy" to="CrewList" method="_on_ButtonToBuy_pressed"]
 [connection signal="item_selected" from="CrewList" to="CrewList" method="_on_CrewList_item_selected"]

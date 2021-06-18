@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Crewmate.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Perk.cs" type="Script" id=2]
+
+[node name="Crew" type="Node"]
+script = ExtResource( 1 )
+name = "David Bain"
+characterClass = "Ex Spec Ops"
+pathToImage = "res://Resources/Portraits/Crew/m_30.png"
+rank = 2
+currentHealth = 30
+maxHealth = 30
+combatProwess = 5
+technologyKnowledge = 2
+peopleSkills = 3
+speed = 1.8
+perkOnePath = NodePath("PerkOne")
+perkTwoPath = NodePath("PerkTwo")
+cost = 100
+isOwned = false
+
+[node name="PerkOne" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 7
+name = "Commando"
+imagePath = "res://Resources/Portraits/Skills/r_07.png"
+description = "Gets +1 to combat prowess in a jungle"
+perkWeight = 1
+perkTag = 2
+
+[node name="PerkTwo" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 8
+name = "Peoples person"
+imagePath = "res://Resources/Portraits/Skills/p_29.PNG"
+description = "Adds +1 to people skills"

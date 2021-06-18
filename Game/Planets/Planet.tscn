@@ -8,3 +8,4 @@ script = ExtResource( 1 )
 
 [node name="Step" type="Node" parent="."]
 script = ExtResource( 2 )
+enemies = [ [ null, null, null ], [ null, null, null ], [ 0, "", null ] ]

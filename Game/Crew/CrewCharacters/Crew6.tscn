@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Crewmate.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Perk.cs" type="Script" id=2]
+
+[node name="Crew" type="Node"]
+script = ExtResource( 1 )
+name = "Glacin the Third"
+characterClass = "Knight"
+pathToImage = "res://Resources/Portraits/Crew/jin.png"
+rank = 2
+currentHealth = 35
+maxHealth = 35
+combatProwess = 5
+alienKnowledge = 4
+speed = 1.5
+perkOnePath = NodePath("PerkOne")
+perkTwoPath = NodePath("PerkTwo")
+cost = 100
+isOwned = false
+
+[node name="PerkOne" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 3
+name = "Alien"
+imagePath = "res://Resources/Portraits/Skills/g_26.png"
+description = "Adds +1 to xeno knowledge"
+
+[node name="PerkTwo" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 11
+name = "Resilient"
+imagePath = "res://Resources/Portraits/Skills/g_17.png"
+description = " Has a chance to resist damage that would cause them to faint"
+perkWeight = 1
+perkTag = 3
