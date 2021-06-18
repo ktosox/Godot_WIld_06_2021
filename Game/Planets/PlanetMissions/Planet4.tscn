@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Step.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Planet.cs" type="Script" id=2]
+
+[node name="Planet" type="Node"]
+script = ExtResource( 2 )
+name = "Rusty Haven"
+pathToImage = "res://Resources/Sprites/Planets/Dry.png"
+importantPoints = "- haven of scummery
+- mostly city
+- a lot of smoke in the air"
+
+[node name="Step1" type="Node" parent="."]
+script = ExtResource( 1 )
+amount = 8
+description = "A bunch of half drunken thugs decided to attack you and try to rob you. Show them it was a mistake!"
+stepFinishedBlurb = "Thugs flee away"
+
+[node name="Step2" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
+description = "You enter the bar where your contact is supposed to be hiding"
+stepFinishedBlurb = "You are inside the bar"
+
+[node name="Step3" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 4
+amount = 8
+description = "The contact is there but he decided to change your deal and wants higher price for the information where Pirate King resides. Talk him out of this ridicolus price hike"
+stepFinishedBlurb = "You managed to talk him down and the contact shares you the information"
+
+[node name="Step4" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
+description = "You see the abandoned storage just as your contact described"
+stepFinishedBlurb = "You try to enter the storage through backdoor"
+
+[node name="Step5" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 2
+amount = 8
+description = "As you try to enter you realise the door is locked. It's time to do some lockpicking"
+stepFinishedBlurb = "You unlock the door and enter"
+
+[node name="Step6" type="Node" parent="."]
+script = ExtResource( 1 )
+amount = 8
+description = "As you enter you are ambushed by the pirate king men. It seems someone informed them about your arrival. You might need to share some words with your contact if you manage to survive"
+stepFinishedBlurb = "You defeated the pirate king men"
+
+[node name="Step7" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 2
+amount = 8
+description = "After you managed to beat the thugs of the Pirate King, the defense system turns on!
+Disable it before the droids decide to smash your face!"
+stepFinishedBlurb = "You managed to turn off the defense system"
+
+[node name="Step8" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
+description = "You finally walk down to the room Pirate King is hiding in"
+stepFinishedBlurb = "You enter the room"
+
+[node name="Step9" type="Node" parent="."]
+script = ExtResource( 1 )
+amount = 8
+description = "Pirate king and his two lieutenants are ready. They won't give up without the fight"
+stepFinishedBlurb = "The Pirate King growles \"Don't kill us! Take anything you want!\" You quickly grab the map and run back to your spaceship"
