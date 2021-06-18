@@ -3,5 +3,5 @@ using System;
 
 public class CurrencySingleton : Node
 {
-    public static int currentCurrency;
+    public static int currentCurrency=200;
 }

@@ -10,10 +10,13 @@ public class CrewList : ItemList
 
     // Called when the node enters the scene tree for the first time.
     [Export] private NodePath hireButtonPath;
+    [Export] private NodePath currencyLabelPath;
     Crewmate selectedCrewmate;
     bool showOwned=true;
     public override void _Ready()
     {
+        var currencyLabel = (Label) GetNode(currencyLabelPath);
+        currencyLabel.Text=CurrencySingleton.currentCurrency.ToString();
         PopulateCrewList(showOwned);
         Select(0);
         _on_CrewList_item_selected(0);
@@ -42,6 +45,11 @@ public class CrewList : ItemList
             if(selectedCrewmate.cost<=CurrencySingleton.currentCurrency && selectedCrewmate.isOwned==false){
                 CurrencySingleton.currentCurrency=CurrencySingleton.currentCurrency-selectedCrewmate.cost;
                 selectedCrewmate.isOwned=true;
+                var currencyLabel = (Label) GetNode(currencyLabelPath);
+                currencyLabel.Text=CurrencySingleton.currentCurrency.ToString();
+                var hireButton = (Button) GetNode(hireButtonPath);
+                hireButton.Disabled=true;
+                PopulateCrewList(showOwned);
             }
     }
     public void _on_CrewList_item_selected(int index){

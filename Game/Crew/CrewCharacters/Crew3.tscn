@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Crewmate.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Perk.cs" type="Script" id=2]
+
+[node name="Crew" type="Node"]
+script = ExtResource( 1 )
+name = "John Bilkins"
+characterClass = "Engineer"
+pathToImage = "res://Resources/Portraits/Crew/m_33.PNG"
+currentHealth = 22
+maxHealth = 22
+combatProwess = 2
+alienKnowledge = 2
+technologyKnowledge = 4
+speed = 2.0
+perkOnePath = NodePath("PerkOne")
+perkTwoPath = NodePath("PerkTwo")
+
+[node name="PerkOne" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 5
+name = "Tech Nerd"
+imagePath = "res://Resources/Portraits/Skills/r_27.png"
+description = "Adds +1 to cyber knowledge, but also -1 to combat prowess"
+
+[node name="PerkTwo" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 6
+name = "Grenade"
+imagePath = "res://Resources/Portraits/Skills/r_32.png"
+description = "Has a chance to attack all three enemies at once"
+perkWeight = 1
+perkTag = 2

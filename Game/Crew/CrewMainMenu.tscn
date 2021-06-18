@@ -163,14 +163,14 @@ __meta__ = {
 margin_left = 320.0
 margin_right = 591.0
 
-[node name="Label" type="Label" parent="SelectedCrewmateDesription"]
+[node name="Currency Static" type="Label" parent="SelectedCrewmateDesription"]
 margin_left = 37.0
 margin_top = 633.0
 margin_right = 140.0
 margin_bottom = 667.0
 text = "Currency:"
 
-[node name="Label2" type="Label" parent="SelectedCrewmateDesription"]
+[node name="Currency Dynamic" type="Label" parent="SelectedCrewmateDesription"]
 margin_left = 120.0
 margin_top = 633.0
 margin_right = 223.0
@@ -187,6 +187,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 hireButtonPath = NodePath("../SelectedCrewmateDesription/HireButton")
+currencyLabelPath = NodePath("../SelectedCrewmateDesription/Currency Dynamic")
 
 [node name="HideButton" type="Button" parent="."]
 margin_left = 1200.0

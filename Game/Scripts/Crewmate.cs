@@ -15,7 +15,7 @@ public class Crewmate : Node
     [Export] public float speed=1f;
     [Export] public NodePath perkOnePath;
     [Export] public NodePath perkTwoPath;
-    [Export] public int cost;
+    [Export] public int cost=100;
     [Export] public bool isOwned=true;
 
     public Perk[] GetPerks(){

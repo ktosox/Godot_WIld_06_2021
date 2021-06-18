@@ -12,6 +12,7 @@ combatProwess = 3
 alienKnowledge = 2
 technologyKnowledge = 2
 peopleSkills = 2
+speed = 2.0
 perkOnePath = NodePath("PerkOne")
 perkTwoPath = NodePath("PerkTwo")
 
@@ -20,7 +21,7 @@ script = ExtResource( 2 )
 id = 1
 name = "Medic"
 imagePath = "res://Resources/Portraits/Skills/SciFi_Skill_g_29.PNG"
-description = "Has a chance to heall all characters by x HP"
+description = "Has a chance to heal allies instead of doing an attack"
 perkWeight = 1
 perkTag = 1
 
@@ -29,4 +30,4 @@ script = ExtResource( 2 )
 id = 2
 name = "Sawbones"
 imagePath = "res://Resources/Portraits/Skills/SciFi_Skill_gr_04.PNG"
-description = "+1 to Combat Prowess"
+description = "Adds +1 to combat prowess"
