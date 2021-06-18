@@ -6,5 +6,6 @@ public class Planet : Node
     [Export] public string name;
     [Export] public string pathToImage;
     [Export(PropertyHint.MultilineText)] public string importantPoints;
-    [Export(PropertyHint.MultilineText)] public string description;
+    [Export(PropertyHint.MultilineText)] public string planetDescription;
+    [Export(PropertyHint.MultilineText)] public string missionDescription;
 }
