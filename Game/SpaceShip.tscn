@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Sprites/SpaceShip.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/SpaceShip.gd" type="Script" id=2]
-[ext_resource path="res://Resources/Placeholders/5d0tf0.jpg" type="Texture" id=3]
+[ext_resource path="res://LevelSelection/LevelSelection.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Placeholders/5d0thw.jpg" type="Texture" id=4]
 [ext_resource path="res://Resources/Placeholders/5d0tge.jpg" type="Texture" id=5]
+[ext_resource path="res://MainMenu/MainMenu.tscn" type="PackedScene" id=6]
 
 [node name="SpaceShip" type="Node2D"]
 script = ExtResource( 2 )
@@ -63,22 +64,17 @@ margin_left = 504.0
 margin_top = 528.0
 margin_right = 630.0
 margin_bottom = 584.0
-text = "mission selection"
+text = "mission screen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LevelSelection" type="Sprite" parent="."]
-visible = false
-position = Vector2( 664, 360 )
-texture = ExtResource( 3 )
-
-[node name="Return" type="Button" parent="LevelSelection"]
-margin_left = 152.0
-margin_top = 8.0
-margin_right = 232.0
-margin_bottom = 56.0
-text = "Return"
+[node name="BackToMenu" type="Button" parent="RoomLayer"]
+margin_left = 912.0
+margin_top = 344.0
+margin_right = 1024.0
+margin_bottom = 376.0
+text = "main menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -98,6 +94,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LevelSelection" parent="." instance=ExtResource( 3 )]
+visible = false
+
 [node name="MissionSelection" type="Sprite" parent="."]
 visible = false
 position = Vector2( 664, 360 )
@@ -113,19 +112,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-visible = false
-margin_right = 12.0
-margin_bottom = 20.0
-text = "FREEZE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MainMenu" parent="." instance=ExtResource( 6 )]
+margin_right = 1280.0
+margin_bottom = 720.0
 
 [connection signal="pressed" from="RoomLayer/LevelSelection" to="." method="_on_LevelSelection_pressed"]
 [connection signal="pressed" from="RoomLayer/CrewInspection" to="." method="_on_CrewInspection_pressed"]
 [connection signal="pressed" from="RoomLayer/MissionSelection" to="." method="_on_MissionSelection_pressed"]
-[connection signal="pressed" from="LevelSelection/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="RoomLayer/BackToMenu" to="." method="_on_BackToMenu_pressed"]
 [connection signal="pressed" from="CrewInspection/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="MissionSelection/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
