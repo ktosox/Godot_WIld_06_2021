@@ -9,6 +9,8 @@ public class CrewList : ItemList
     // private string b = "text";
 
     // Called when the node enters the scene tree for the first time.
+    [Export] private NodePath hireButtonPath;
+    Crewmate selectedCrewmate;
     bool showOwned=true;
     public override void _Ready()
     {
@@ -36,10 +38,24 @@ public class CrewList : ItemList
         showOwned=false;
         PopulateCrewList(showOwned);
     }
+    public void _on_HireButton_pressed(){
+            if(selectedCrewmate.cost<=CurrencySingleton.currentCurrency && selectedCrewmate.isOwned==false){
+                CurrencySingleton.currentCurrency=CurrencySingleton.currentCurrency-selectedCrewmate.cost;
+                selectedCrewmate.isOwned=true;
+            }
+    }
     public void _on_CrewList_item_selected(int index){
         var description = (SelectedCrewmateDesription)GetNode("/root/CrewMainMenu/SelectedCrewmateDesription");
         var correctCrewmateList = CrewSingleton.crewmates.Where(c => c.isOwned==showOwned).ToList();
         description.AssignData(correctCrewmateList[index]);
+        selectedCrewmate=correctCrewmateList[index];
+        var hireButton = (Button) GetNode(hireButtonPath);
+        if(selectedCrewmate.isOwned){
+            hireButton.Disabled=true;
+        }
+        else{
+            hireButton.Disabled=false;
+        }
         GD.Print(index);
     }
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
