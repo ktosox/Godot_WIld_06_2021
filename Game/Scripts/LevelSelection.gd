@@ -24,6 +24,7 @@ func select_level(nr):
 
 func confirm_selection():
 	print("player selected planet "+String(selectedPlanet))
+	get_parent().selectedPlanet = selectedPlanet
 	#whatever call to the global singleton needs to be made to mave the machine forward should go here
 	pass
 

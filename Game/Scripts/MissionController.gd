@@ -2,11 +2,17 @@ extends Control
 
 var characterScene = preload("res://MissionScene/Character.tscn")
 
+var crewPanel = preload("res://MissionScene/CrewPanel.tscn")
+
 var steps = [1,2]
 
 var currentStep = 0
 
 var isInCombat = false
+
+var missionStarted = false
+
+var selectedCrewCount = 0
 
 func _ready():
 	load_next_step()
@@ -86,10 +92,42 @@ func start_encounter():
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
 		c.start_action()
 	#add badies
+#	for b in 
 	# get the encounter description from the step scene
 	# create characterScene scenes for each enemy, set them as described in step
 	# don't forget to attach the signals from enemies so that the enemy combat function is called
 	# plan B - set the controller on each character scene and replace the signals with a call to this scene
+	pass
+
+func load_crew_selection():
+
+	for p in CrewSingleton.crewmates.size() :
+
+		var newPanel = crewPanel.instance()
+		newPanel.load_crew(p)
+		newPanel.manager = self
+		$CrewSelection/CrewBox/VBoxContainer.add_child(newPanel)
+		$CrewSelection/CrewBox/VBoxContainer.move_child($CrewSelection/CrewBox/VBoxContainer.get_node("EmptySpace"),$CrewSelection/CrewBox/VBoxContainer.get_child_count())
+	pass
+
+func toggleCrew(who):
+	if who.selected == false and selectedCrewCount<3:
+		who.select()
+		selectedCrewCount +=1
+	elif who.selected == true :
+		who.deselect()
+		selectedCrewCount -= 1
+		$CrewSelection/ConfirmationScreen/StartMission.visible = false
+	if selectedCrewCount == 3 :
+		$CrewSelection/ConfirmationScreen/StartMission.visible = true
+	pass
+
+func start_mission():
+	var planetID = get_parent().selectedPlanet
+	if planetID == -1 :
+		return
+	steps = PlanetsSingleton.GetPlanet(planetID).get_children
+	print(steps)
 	pass
 
 func end_encounter():
@@ -112,3 +150,14 @@ func _on_Character3_action(chara):
 	select_action(chara)
 	pass # Replace with function body.
 
+
+
+func _on_StartMission_pressed():
+	start_mission()
+	pass # Replace with function body.
+
+
+func _on_MissionController_visibility_changed():
+	if !missionStarted :
+		load_crew_selection()
+	pass # Replace with function body.
