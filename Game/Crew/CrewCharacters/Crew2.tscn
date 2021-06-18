@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Crewmate.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Perk.cs" type="Script" id=2]
+
+[node name="Crew" type="Node"]
+script = ExtResource( 1 )
+name = "Eliot Arkins"
+characterClass = "Professor"
+pathToImage = "res://Resources/Portraits/Crew/f_11.png"
+currentHealth = 15
+maxHealth = 15
+combatProwess = 2
+alienKnowledge = 4
+technologyKnowledge = 2
+peopleSkills = 3
+speed = 1.75
+perkOnePath = NodePath("PerkOne")
+perkTwoPath = NodePath("PerkTwo")
+
+[node name="PerkOne" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 3
+name = "Scholar"
+imagePath = "res://Resources/Portraits/Skills/SciFi_Skill_p_05.png"
+description = "Adds +1 to Xeno Knowledge"
+
+[node name="PerkTwo" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 4
+name = "Drones"
+imagePath = "res://Resources/Portraits/Skills/r_17.PNG"
+description = "Has a chance to attack two enemies instead of one"
+perkWeight = 1
+perkTag = 2

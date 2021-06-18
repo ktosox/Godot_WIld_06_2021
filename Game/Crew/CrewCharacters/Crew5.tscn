@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Crewmate.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Perk.cs" type="Script" id=2]
+
+[node name="Crew" type="Node"]
+script = ExtResource( 1 )
+name = "R0-B1-T"
+characterClass = "Android"
+pathToImage = "res://Resources/Portraits/Crew/robot_01.png"
+rank = 2
+currentHealth = 40
+maxHealth = 40
+combatProwess = 4
+alienKnowledge = 3
+technologyKnowledge = 5
+peopleSkills = 0
+speed = 2.0
+perkOnePath = NodePath("PerkOne")
+perkTwoPath = NodePath("PerkTwo")
+cost = 100
+isOwned = false
+
+[node name="PerkOne" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 9
+name = "Robot"
+imagePath = "res://Resources/Portraits/Skills/b_06.png"
+description = "Adds + 2 to cyber knowledge but also -1 to people skills"
+
+[node name="PerkTwo" type="Node" parent="."]
+script = ExtResource( 2 )
+id = 10
+name = "Auto Repair"
+imagePath = "res://Resources/Portraits/Skills/b_07.png"
+description = "Has a chance to heal himself instead of attacking"
+perkWeight = 1
+perkTag = 1
