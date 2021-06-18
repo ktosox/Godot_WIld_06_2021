@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Step.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Planet.cs" type="Script" id=2]
+
+[node name="Planet" type="Node"]
+script = ExtResource( 2 )
+name = "Madriu"
+pathToImage = "res://Resources/Sprites/Planets/Jungle.png"
+importantPoints = "- thick, lively jungles
+- used to have reaserch facility, that is now completly empty
+- both plant and animal life will want a piece of you"
+
+[node name="Step1" type="Node" parent="."]
+script = ExtResource( 1 )
+amount = 8
+
+[node name="Step2" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
+
+[node name="Step3" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 2
+amount = 8
+
+[node name="Step4" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
+
+[node name="Step5" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 3
+amount = 8
+
+[node name="Step6" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 8
+
+[node name="Step7" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 2
+amount = 8
+
+[node name="Step8" type="Node" parent="."]
+script = ExtResource( 1 )
+amount = 8
