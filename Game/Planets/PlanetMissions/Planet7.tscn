@@ -15,46 +15,69 @@ importantPoints = "- endless desert
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "You arrive at Aumatex. The whole planet is dry, hot and there's a ton of sand in the air. Better to get to it and get out of there quickly before you melt."
+stepFinishedBlurb = "You make your away trying to find some clues where the hidden city of Dahakkar is"
 
 [node name="Step2" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 3
 amount = 8
+description = "You see some kind of ancient obelisk. This is your best bet at figuring where to go"
+stepFinishedBlurb = "You managed to decipher it, it is a sign pointing exactly how to get into the city"
 
 [node name="Step3" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "You walk through deserts and dunes according to the obelisk. Just as you start loosing hope, there it is. The Hidden City."
+stepFinishedBlurb = "You arrive at the Hidden City"
 
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 3
 amount = 8
+description = "As you step into the city, now you need to find where the princess resides. You see another obelisk, it may prove useful to read this one as well."
+stepFinishedBlurb = "You decipher it, but sadly it gives no useful info. You walk deeper into the city."
 
 [node name="Step5" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 4
 amount = 8
+description = "You see some Dahakkar civilians. They will probably know where the Princess is, best to ask them for the direction."
+stepFinishedBlurb = "They tell you that Princess resides over the fights in the arena and point you in the direction"
 
 [node name="Step6" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "You walk through incredible Hidden City and find the big coloseum, that must be the arena"
+stepFinishedBlurb = "You make your way towards arena"
 
 [node name="Step7" type="Node" parent="."]
 script = ExtResource( 1 )
 amount = 8
+description = "As you try to enter you realise the guards are not happy to see outsiders entering the arena"
+stepFinishedBlurb = "You defeat the guards and enter"
 
 [node name="Step8" type="Node" parent="."]
 script = ExtResource( 1 )
 amount = 8
+description = "As you enter you see the Princess sitting on top of the throne residing over the fights. She does not seem happy that someone interrupts her. The gladiators that were just fighting with each other, are slowly approaching you."
+stepFinishedBlurb = "You defetead the gladiators and the Princess looks even more displeased"
 
 [node name="Step9" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "\"What are you doing here?!\" screams the Princess towards you.
+\"We are here for the key, we know you have it.\" you answer.
+\"Ha! And I should just give to you, just like that?\" she looks baffled.
+This will require some diplomacy"
+stepFinishedBlurb = "You prepare to talk down the Princess into giving you the key"
 
 [node name="Step10" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 4
 amount = 8
+description = "You need to get on the Princess better side and talk her into giving you the key. And do it quickly as you can hear more gladiators approaching"
+stepFinishedBlurb = "Princess finally agrees and throws you the key. \"Here, take this junk and leave me be or I will send after you all my guards and you shall end up in dungeon for the rest of your lifes!\" You quickly scurry away back to your ship"
