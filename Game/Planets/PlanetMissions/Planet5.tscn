@@ -28,30 +28,39 @@ stepFinishedBlurb = "You slash through the tree branches and..."
 script = ExtResource( 1 )
 stepType = 2
 amount = 8
-description = "You see it, the research facility. Abandoned, empty. yet closed. Time to hack it open, before more fauna decides you look like a snack"
+description = "You see it, the research facility. Abandoned, empty. yet closed. Time to hack it open, before more fauna decides you look like a great snack"
 stepFinishedBlurb = "You open the door to the main building and enter"
 
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
-description = "You walk through empty corridors. It "
+description = "You walk through empty corridors. They are earily quiet."
+stepFinishedBlurb = "You walk toward the door, behind which you believe the servers with data reside."
 
 [node name="Step5" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 3
 amount = 8
+description = "As you get closer to the door, you can hear alarms. The defense system of this place seems to still be intact. The door requires a password in an alien language, you better hurry and up crack it."
+stepFinishedBlurb = "You managed to open the door and run inside the server room"
 
 [node name="Step6" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "As you run inside you see the big servers in all their glory. All the forgotten knowledge inside them is probably worth hefty price, but you need to hurry up and get the decipher key for the map."
+stepFinishedBlurb = "You walk up to the servers"
 
 [node name="Step7" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 2
 amount = 8
+description = "The servers are encrypted. Time to start hacking. You can hear the androids on your footsteps."
+stepFinishedBlurb = "You cracked the server defenses."
 
 [node name="Step8" type="Node" parent="."]
 script = ExtResource( 1 )
 amount = 8
+description = "As you download the data, from the shadows emerges, what used to be reserarches. Corpses overgrown by some kind of parasites. Guess you know why it was abandoned know. Dispose of them or they will dispose of you."
+stepFinishedBlurb = "You managed to defeat the corpses of the researches. Time to quickly escape and get back to the ship with decipher key"
