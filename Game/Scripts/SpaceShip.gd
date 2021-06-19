@@ -23,9 +23,9 @@ func _on_Button_pressed():
 
 
 func _on_Return_pressed():
-	$LevelSelection.visible = false
+
 	$CrewInspection.visible = false
-	$MissionSelection.visible = false
+
 	pass # Replace with function body.
 
 
@@ -40,7 +40,7 @@ func _on_CrewInspection_pressed():
 
 
 func _on_MissionSelection_pressed():
-	$MissionSelection.visible = true
+	$MissionController.visible = true
 	pass # Replace with function body.
 
 

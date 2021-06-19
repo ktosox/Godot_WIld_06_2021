@@ -1,5 +1,6 @@
 extends ColorRect
 
+var ID
 
 var manager
 
@@ -20,9 +21,10 @@ func deselect():
 	pass
 
 func load_crew(ID):
+	self.ID = ID
 	var crew = CrewSingleton.crewmates[ID]
-	print(crew.pathToImage)
 	$HBoxContainer/Picture.texture = load(crew.pathToImage)
+	$HBoxContainer/Label.text = crew.name
 	pass
 
 func _on_Panel_gui_input(event):

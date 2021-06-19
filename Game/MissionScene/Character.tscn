@@ -32,7 +32,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="Character" type="ColorRect"]
+[node name="Character" type="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1152.0
@@ -40,7 +40,7 @@ margin_bottom = -592.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 6
 size_flags_vertical = 6
-color = Color( 0.113725, 0.854902, 0.176471, 1 )
+expand = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

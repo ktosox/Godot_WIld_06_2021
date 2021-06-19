@@ -1,4 +1,4 @@
-extends ColorRect
+extends TextureRect
 
 signal action(ID)
 
@@ -14,9 +14,11 @@ func _ready():
 
 func load_character(ID):
 	ID = ID
-	#set character sprite
-	#set HP
-	#$AnimateAction.playback_speed = 1.0/crew.speed #adjust the speed of the attack timer
+	var crew = CrewSingleton.crewmates[ID]
+	texture = load(crew.pathToImage)
+	$Health.max_value = crew.maxHealth
+	$Health.value = crew.currentHealth
+	$AnimateAction.playback_speed = 1.0/crew.speed #adjust the speed of the attack timer
 	pass
 
 
