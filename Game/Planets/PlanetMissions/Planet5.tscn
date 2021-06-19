@@ -8,27 +8,34 @@ script = ExtResource( 2 )
 name = "Madriu"
 pathToImage = "res://Resources/Sprites/Planets/Jungle.png"
 importantPoints = "- thick, lively jungles
-- used to have reaserch facility, that is now completly empty
+- used to have reaserch facility, that is now completly abandoned
 - both plant and animal life will want a piece of you"
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
 amount = 8
+description = "As you beam down to the planet, the oversized worms and animals attack you!"
+stepFinishedBlurb = "You managed to cull the fauna that attack you"
 
 [node name="Step2" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "You slowly stagger through the thick jungle, following your sensor. It seems you are close."
+stepFinishedBlurb = "You slash through the tree branches and..."
 
 [node name="Step3" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 2
 amount = 8
+description = "You see it, the research facility. Abandoned, empty. yet closed. Time to hack it open, before more fauna decides you look like a snack"
+stepFinishedBlurb = "You open the door to the main building and enter"
 
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
 amount = 8
+description = "You walk through empty corridors. It "
 
 [node name="Step5" type="Node" parent="."]
 script = ExtResource( 1 )
