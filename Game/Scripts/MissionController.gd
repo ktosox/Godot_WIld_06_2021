@@ -7,6 +7,12 @@ extends Control
 	#Xeno - 3
 	#People - 4
 
+
+	#Passive,0
+	#Action,1
+	#Attack,2
+	#Defense3
+
 var characterScene = preload("res://MissionScene/Character.tscn")
 
 var crewPanel = preload("res://MissionScene/CrewPanel.tscn")
@@ -36,6 +42,7 @@ func _process(delta):
 
 
 func load_next_step():
+	currentStep+=1 
 	$MissionScreen/ProgressBar.value = 0
 	if(currentStep+1 > steps.size()):
 		mission_complete()
@@ -53,15 +60,19 @@ func load_next_step():
 	#$MissionScreen/LayoutH/Background.texture = load(steps[currentStep].backgroundType)
 	$MissionScreen/LayoutH/DetailMenu/Layout/Label.text = steps[currentStep].description
 	$MissionScreen/ProgressBar.max_value = steps[currentStep].amount
-	
-	currentStep+=1 #add one once step is loaded
+	if steps[currentStep].stepType == 0 :
+		start_encounter()
+	#add one once step is loaded
 
 		
 	pass
 
 func mission_complete():
+	get_parent().missionsBeaten += 1
+	get_parent().selectedPlanet = -1
+	$MissionScreen/EncounterTimer.stop()
 	missionStarted = false
-	#show end button
+	$WinScreen.visible = true
 	pass
 
 func select_action(chara): 
@@ -104,23 +115,22 @@ func crew_combat(chara):
 	#print(damage)
 #	$BubbleTextGenerator.addBubble(String(damage),who.rect_global_position+(who.rect_size)/2.0)
 	# add modifiers from the attack stack (should be listed on character)
-	for i in CrewSingleton.GetCrewmate(chara.ID).GetPerks:
-		if i.PerkTag == "Attack" :
+	for i in CrewSingleton.GetCrewmate(chara.ID).GetPerks():
+		if i.perkTag == 2 :
 			print("this effect should be added to dmg ",i)
 	# select defender (code below)
 	var defender = $MissionScreen/LayoutH/Background/Layout/Badies.get_children()
 	if defender.size() == 0 :
-		print ("error, no defenedrs present, quiting combat")
+		check_for_combat_end()
 		return
 	else:
 		defender = defender[randi()%defender.size()] #select one defender
 	defender.get_node("Health").value-=damage
 	if defender.get_node("Health").value <= 0 :
 		defender.queue_free()
-		if  $MissionScreen/LayoutH/Background/Layout/Badies.children_count()<1:
-			end_encounter()
+		call_deferred("check_for_combat_end")
 
-	pass
+
 func enemy_combat(who):
 	var damage = who.enemyDmg
 	var c = $MissionScreen/LayoutH/Background/Layout/Crew.get_children()
@@ -128,6 +138,12 @@ func enemy_combat(who):
 	#acceess the crew hp by the singleton
 	# updated hp on crew panel
 	# check for crew death
+	pass
+
+func check_for_combat_end():
+
+	if  $MissionScreen/LayoutH/Background/Layout/Badies.get_child_count()<2:
+		end_encounter()
 	pass
 
 
@@ -140,14 +156,13 @@ func load_crew_selection():
 	else:
 		$CrewSelection/ConfirmationScreen/Label.text = "please select 3 crewmates \n to send on this mission"
 		
-
-	for p in CrewSingleton.crewmates.size() :
-
-		var newPanel = crewPanel.instance()
-		newPanel.load_crew(p)
-		newPanel.manager = self
-		$CrewSelection/CrewBox/VBoxContainer.add_child(newPanel)
-		$CrewSelection/CrewBox/VBoxContainer.move_child($CrewSelection/CrewBox/VBoxContainer.get_node("EmptySpace"),$CrewSelection/CrewBox/VBoxContainer.get_child_count())
+	if($CrewSelection/CrewBox/VBoxContainer.get_child_count()<2):
+		for p in CrewSingleton.crewmates.size() :
+			var newPanel = crewPanel.instance()
+			newPanel.load_crew(p)
+			newPanel.manager = self
+			$CrewSelection/CrewBox/VBoxContainer.add_child(newPanel)
+			$CrewSelection/CrewBox/VBoxContainer.move_child($CrewSelection/CrewBox/VBoxContainer.get_node("EmptySpace"),$CrewSelection/CrewBox/VBoxContainer.get_child_count())
 	pass
 
 func toggleCrew(who):
@@ -191,18 +206,25 @@ func start_encounter():
 	for b in enemyStats:
 		var enemyChar = characterScene.instance()
 		enemyChar.get_node("Action").visible = false
-		enemyChar.get_node("Health").max_value = b[0]
+		enemyChar.get_node("Health").max_value = b[1]
+		enemyChar.enemyDmg = b[0]
+		enemyChar.texture = load(b[2])
+		enemyChar.manager = self
 		$MissionScreen/LayoutH/Background/Layout/Badies.add_child(enemyChar)
-	# get the encounter description from the step scene
-	# create characterScene scenes for each enemy, set them as described in step
+
 	# don't forget to attach the signals from enemies so that the enemy combat function is called
 	# plan B - set the controller on each character scene and replace the signals with a call to this scene
 	pass
 
 func end_encounter():
-	for b in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
-		b.queue_free()
+#	for b in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
+#		b.queue_free()
 	isInCombat = false
+
+	if steps[currentStep].stepType == 1 :
+			for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+				c.end_action()
+		
 	$MissionScreen/EncounterTimer.start()
 	pass
 
@@ -244,4 +266,22 @@ func _on_Return_pressed():
 func _on_EncounterTimer_timeout():
 	if !isInCombat:
 		start_encounter()
+	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	$CrewSelection/ConfirmationScreen/StartMission.visible = false
+	for z in $CrewSelection/CrewBox/VBoxContainer.get_children():
+		if z.name != "EmptySpace":
+			print(z)
+			z.queue_free()
+	visible = false
+	$WinScreen.visible = false
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+		c.end_action()
+	isInCombat = false
+	currentStep = -1
+	selectedCrew = []
+	$CrewSelection.visible = true
+	$MissionScreen.visible = false
 	pass # Replace with function body.
