@@ -5,6 +5,7 @@
 
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
+id = 4
 name = "Rusty Haven"
 pathToImage = "res://Resources/Sprites/Planets/Dry.png"
 importantPoints = "- haven of scummery

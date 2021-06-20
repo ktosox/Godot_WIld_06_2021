@@ -5,6 +5,7 @@
 
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
+id = 7
 name = "Aumatex"
 pathToImage = "res://Resources/Sprites/Planets/Deseart.png"
 importantPoints = "- endless desert
