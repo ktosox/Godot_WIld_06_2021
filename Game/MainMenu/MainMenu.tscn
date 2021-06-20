@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Resources/Sound/menu.wav" type="AudioStream" id=6]
 [ext_resource path="res://Resources/Sound/Weapon1.wav" type="AudioStream" id=7]
+[ext_resource path="res://Resources/Sound/ui_menu_button_beep_01.wav" type="AudioStream" id=8]
 
 [node name="MainMenu" type="ColorRect"]
 pause_mode = 2
@@ -228,6 +229,10 @@ bus = "Music"
 position = Vector2( 640, 360 )
 stream = ExtResource( 7 )
 pitch_scale = 1.2
+bus = "Effects"
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 bus = "Effects"
 
 [connection signal="pressed" from="LayoutV/LayoutH/Buttons/Start" to="." method="_on_Start_pressed"]
