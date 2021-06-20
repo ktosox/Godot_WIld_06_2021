@@ -104,6 +104,8 @@ margin_right = 1280.0
 margin_bottom = 666.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
+expand = true
+stretch_mode = 1
 
 [node name="Layout" type="HBoxContainer" parent="MissionScreen/LayoutH/Background"]
 anchor_right = 1.0

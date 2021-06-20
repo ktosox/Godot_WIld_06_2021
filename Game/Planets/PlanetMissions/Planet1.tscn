@@ -6,11 +6,10 @@
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
 id = 1
-name = "Planet1"
+name = "Belwyn"
 pathToImage = "res://Resources/Sprites/Planets/Arid.png"
-importantPoints = "- has much rocks
-- very dry
-- better take water"
+importantPoints = "- rocky and arid
+- population is very aggresive"
 planetDescription = "An arid world covered in badlands and ruins of sprawling mega cities. A nuclear exchange over 60 years ago reduced this planet’s population to a state of techno-barbarism. The livable parts of the planets are split between roaming bands of raiders."
 missionDescription = "yes"
 
@@ -18,6 +17,7 @@ missionDescription = "yes"
 script = ExtResource( 1 )
 stepType = 1
 amount = 15
+backgroundType = "res://Resources/Backgrounds/planet-5966336_1280.jpg"
 description = "You have landed several miles from the city border. You are currenlty traveling through the badlands."
 enemies = [ [ 2, 5, "res://Resources/Portraits/Enemies/f_14.png" ], [ 2, 7, "res://Resources/Portraits/Enemies/m_09.png" ] ]
 
@@ -25,6 +25,7 @@ enemies = [ [ 2, 5, "res://Resources/Portraits/Enemies/f_14.png" ], [ 2, 7, "res
 script = ExtResource( 1 )
 stepType = 4
 amount = 30
+backgroundType = "res://Resources/Backgrounds/alleyway.jpeg"
 description = "You have reached the city. You decided to ask locals for directions."
 enemies = [ [ 2, 12, "res://Resources/Portraits/Enemies/cultist_02.png" ] ]
 
@@ -32,12 +33,14 @@ enemies = [ [ 2, 12, "res://Resources/Portraits/Enemies/cultist_02.png" ] ]
 script = ExtResource( 1 )
 stepType = 2
 amount = 40
+backgroundType = "res://Resources/Backgrounds/alleyway.jpeg"
 description = "You have located the vault, but in order to get inside  you need to turn on the emenrgency power systems."
 enemies = [ [ 2, 16, "res://Resources/Portraits/Enemies/cultist_02.png" ], [ 2, 18, "res://Resources/Portraits/Enemies/cultist_04.png" ], [ 3, 16, "res://Resources/Portraits/Enemies/cultist_04.png" ] ]
 
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
 amount = 1
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
 description = "The door is now open, but the automted defese systems have been activated. You need to fight them."
 enemies = [ [ 1, 20, "res://Resources/Portraits/Enemies/living_armor_01.png" ], [ 1, 20, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
 
@@ -45,5 +48,6 @@ enemies = [ [ 1, 20, "res://Resources/Portraits/Enemies/living_armor_01.png" ], 
 script = ExtResource( 1 )
 stepType = 1
 amount = 4
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
 description = "With the defense systems neutralized and the arifact in hand you are getting ready for extraction."
 enemies = [ [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ], [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
