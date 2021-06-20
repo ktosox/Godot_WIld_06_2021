@@ -59,6 +59,14 @@ description = "You see some Dahakkar civilians. They will probably know where th
 enemies = [ [ 7, 21, "res://Resources/Portraits/Enemies/snail_01.png" ], [ 7, 21, "res://Resources/Portraits/Enemies/snail_01.png" ] ]
 stepFinishedBlurb = "They tell you that Princess resides over the fights in the arena and point you in the direction"
 
+[node name="Step11" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 5
+backgroundType = "res://Resources/Backgrounds/deserthouse.jpeg"
+description = "They tell you that Princess resides over the fights in the arena and point you in the direction"
+stepFinishedBlurb = "They tell you that Princess resides over the fights in the arena and point you in the direction"
+
 [node name="Step6" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
@@ -99,4 +107,12 @@ amount = 40
 backgroundType = "res://Resources/Backgrounds/arena.jpeg"
 description = "You need to get on the Princess better side and talk her into giving you the key. And do it quickly as you can hear more gladiators approaching"
 enemies = [ [ 10, 30, "res://Resources/Portraits/Enemies/orc_02.png" ], [ 10, 30, "res://Resources/Portraits/Enemies/mask_01.png" ], [ 10, 30, "res://Resources/Portraits/Enemies/orc_02.png" ] ]
+stepFinishedBlurb = ""
+
+[node name="Step12" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 10
+backgroundType = "res://Resources/Backgrounds/arena.jpeg"
+description = "Princess finally agrees and throws you the key. \"Here, take this junk and leave me be or I will send after you all my guards and you shall end up in dungeon for the rest of your lifes!\" You quickly scurry away back to your ship"
 stepFinishedBlurb = "Princess finally agrees and throws you the key. \"Here, take this junk and leave me be or I will send after you all my guards and you shall end up in dungeon for the rest of your lifes!\" You quickly scurry away back to your ship"
