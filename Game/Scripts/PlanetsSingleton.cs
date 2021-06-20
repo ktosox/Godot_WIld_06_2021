@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PlanetsSingleton : Node
 {
@@ -28,6 +29,6 @@ public class PlanetsSingleton : Node
         if(id>=planets.Count){
             throw new Exception("You went out of bounds of the planet list!");
         }
-        return planets[id];
+        return planets.Where(p => p.id==id).FirstOrDefault();
     }
 }
