@@ -10,6 +10,14 @@ pathToImage = "res://Resources/Sprites/Planets/Dry.png"
 importantPoints = "- haven of scummery
 - mostly city
 - a lot of smoke in the air"
+planetDescription = "Rusty Haven used to be just a mining colony. But due to constant strikes and rebellions corporations cut the funding and the world became abandoned.
+
+And as the rule of the space, any abandoned planets slowly become havens for pirates and smugglers. While this is true Rusty Haven become more than that. It is now the most infamous meeting spot for thieves and scumbags alike, paying off any nearby rule of law to keep the planet in a gray zone.
+
+This is where Pirate King resides right now and we believe if our contact is correct he posses the map we need."
+missionDescription = "The ideas is simple. Land on the planet, find out our contact get the info where Pirate King resides, get the map from him through diplomacy or a less peacful way and get out.
+
+But it probably won't be as smooth. Our contact is a criminal so he might to try and double cross us. There will be a lot of hot heads on this planet and getting to pirate king might mean getting through his cyrbernetic defenses of some kind."
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )

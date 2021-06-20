@@ -10,6 +10,10 @@ pathToImage = "res://Resources/Sprites/Planets/Deseart.png"
 importantPoints = "- endless desert
 - homeworld for alien race, Dahakkar
 - infested with sand worms"
+planetDescription = "Aumatex, the planet of endless deserts. Very hot and dry, it's suprising anything would survive there. But Dahakkarans, the home race of this planet are known for their resilience. Living in a Hidden City between sands and dunes, they poses a great array of old artifacts. Also according to the map they should poses the Key. From the info we managed to scrap, their leader is the Princess  Agora. If anyone posses any old and powerful artifacts it would be her."
+missionDescription = "The plan is simple. First we need to find the Hidden City, there should be some kind of ancient texts on the planet that should help us out with that. Than when we find, we need to find where the Princess resides and talk her into givng us the key(fighting her with her royal guard probably won't be an option).
+
+We also need to prepare ourselves for a lot of not happy Dahakkarans."
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )

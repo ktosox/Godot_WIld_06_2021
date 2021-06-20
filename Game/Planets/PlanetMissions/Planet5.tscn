@@ -10,6 +10,12 @@ pathToImage = "res://Resources/Sprites/Planets/Jungle.png"
 importantPoints = "- thick, lively jungles
 - used to have reaserch facility, that is now completly abandoned
 - both plant and animal life will want a piece of you"
+planetDescription = "Madriu was a planet is a planet with great, lively jungles all around the globe. If not for murderours fauna and possibly flora it would be a top touristic spot. But instead it became a planet with a well funded and well hidden research facility, doing experimnets on local plants and animals.
+
+That is until the place became abandoned. According to the rumors no researchers made it out alive. But also the same rumors speculate there might a hefty cache of data placed withtin the facility. This might be our best bet at getting the decipher key to the map."
+missionDescription = "The plan is simple, as our sensors managed to find this \"well hidden\" facility, we will land near it. Get inside through probably locked and armed with a defense system building holding servers and data banks hefty with information. We download what looks like decypher key and get out.
+
+And of course we try not to be eaten by plants and crazed bugs along the way."
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )

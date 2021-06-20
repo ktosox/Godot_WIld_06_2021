@@ -10,6 +10,14 @@ pathToImage = "res://Resources/Sprites/Planets/Craters.png"
 importantPoints = "- a lifeless moon
 - taken over by the synth cult
 - producers of kooil aid"
+planetDescription = "Bulan is a well known lifeless moon to the cyber enhanced inviduals. In here the cult of Synth resides. Withtin their neon temple, they preach of flesh to be weakness. Slowly they replace all parts of their bodies with mechanical counterparts, becoming more machine than whatever they were before. 
+
+This cult is not well known for hospitalities and will engage anyone who they don't recognize with brute force.
+
+Normally going there would be a suicide mission, but according to the map Bulan is one of the places that has the key to the artifact that would blow the worm to bits. And if any powerful or old artifacts were there, the cult must has them. This is our only chance at getting it."
+missionDescription = "The plan is simple, we land near the temple and get inside. We defeat any fools standing in our way and hack any doors or defenses the cult has. To get the key we might need to break some old ancient lock or puzzle. We get it and we get out.
+
+Any questions?"
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
