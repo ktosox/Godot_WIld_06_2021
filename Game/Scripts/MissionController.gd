@@ -34,8 +34,12 @@ func load_next_step():
 		mission_complete()
 		return
 	# call #start_action() on Crew if is needed
+		
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		c.start_action()
+		if steps[currentStep].stepType == "Time" :
+			c.end_action()
+		else:
+			c.start_action()
 	print("starting step "+String(currentStep))
 	#logic for loading mission data goes here
 	#$MissionScreen/LayoutH/Background.texture = load(steps[currentStep].backgroundType)
@@ -49,6 +53,7 @@ func load_next_step():
 
 func mission_complete():
 	missionStarted = false
+	#show end button
 	pass
 
 func select_action(chara): 
@@ -88,7 +93,7 @@ func mission_progress(chara):
 func crew_combat(chara):
 	# calculate attack dmg - take character base dmg, calculate rand number, end up with a number
 	var damage = round( lerp(0,5,randf())) + CrewSingleton.GetCrewmate(chara.ID).combatProwess
-	print(damage)
+	#print(damage)
 #	$BubbleTextGenerator.addBubble(String(damage),who.rect_global_position+(who.rect_size)/2.0)
 	# add modifiers from the attack stack (should be listed on character)
 	for i in CrewSingleton.GetCrewmate(chara.ID).GetPerks:
@@ -104,17 +109,23 @@ func crew_combat(chara):
 	defender.get_node("Health").value-=damage
 	if defender.get_node("Health").value <= 0 :
 		defender.queue_free()
-	# deal damage (apply_damage(dmg,defender))
-	# clean up
+		if  $MissionScreen/LayoutH/Background/Layout/Badies.children_count()<1:
+			end_encounter()
+
 	pass
 func enemy_combat(who):
-	
+	var damage = who.enemyDmg
+	var c = $MissionScreen/LayoutH/Background/Layout/Crew.get_children()
+	c = c[randi()%c.size()]
+	#acceess the crew hp by the singleton
+	# updated hp on crew panel
+	# check for crew death
 	pass
 
 
 func start_encounter():
 	isInCombat = true
-	$MissionProgressTimer.stop()
+	#$MissionProgressTimer.stop()
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
 		c.start_action()
 	#add badies
@@ -162,14 +173,14 @@ func toggleCrew(who):
 	pass
 
 func start_mission():
-	print(selectedCrew)
+	
 	var planetID = get_parent().selectedPlanet
 	if planetID == -1 :
 		return
 		print("can't start since no planet selected")
 	missionStarted = true
 	steps = PlanetsSingleton.GetPlanet(planetID).get_children()
-	print(steps)
+	
 	$CrewSelection.visible = false
 	$MissionScreen.visible = true
 	var order = 0
