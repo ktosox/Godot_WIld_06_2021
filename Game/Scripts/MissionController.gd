@@ -1,5 +1,12 @@
 extends Control
 
+
+	#Fight - 0
+	#Time - 1
+	#Tech - 2
+	#Xeno - 3
+	#People - 4
+
 var characterScene = preload("res://MissionScene/Character.tscn")
 
 var crewPanel = preload("res://MissionScene/CrewPanel.tscn")
@@ -36,7 +43,7 @@ func load_next_step():
 	# call #start_action() on Crew if is needed
 		
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		if steps[currentStep].stepType == "Time" :
+		if steps[currentStep].stepType == 1 :
 			c.end_action()
 		else:
 			c.start_action()
@@ -71,16 +78,16 @@ func mission_progress(chara):
 	var progress = 1 + randi()%2
 	var keyStat
 	match steps[currentStep].stepType:
-		"Time":
+		1:
 			progress = 0
 			pass
-		"Tech":
+		2:
 			progress += CrewSingleton.GetCrewmate(chara).technologyKnowledge
 			pass
-		"Xeno":
+		3:
 			progress +=  CrewSingleton.GetCrewmate(chara).alienKnowledge
 			pass
-		"People":
+		4:
 			progress +=  CrewSingleton.GetCrewmate(chara).peopleSkills
 			pass
 	 
