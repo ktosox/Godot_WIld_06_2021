@@ -61,7 +61,7 @@ func load_next_step():
 	print("starting step "+String(currentStep))
 	
 	#logic for loading mission data goes here
-	#$MissionScreen/LayoutH/Background.texture = load(steps[currentStep].backgroundType)
+	$MissionScreen/LayoutH/Background.texture = load(steps[currentStep].backgroundType)
 	$MissionScreen/LayoutH/DetailMenu/Layout/Label.text = steps[currentStep].description
 	$MissionScreen/ProgressBar.max_value = steps[currentStep].amount
 	if steps[currentStep].stepType == 0 :
@@ -240,6 +240,10 @@ func end_encounter():
 	pass
 
 func mission_complete():
+	for p in CrewSingleton.crewmates :
+		if p.currentHealth < p.maxHealth :
+			p.currentHealth = min(p.maxHealth,p.currentHealth + p.maxHealth*0.4 )
+	CurrencySingleton.currentCurrency+=100
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
 		c.end_action()
 	get_parent().abortReady = true

@@ -33,15 +33,21 @@ func _on_Sound_value_changed(value):
 
 func _on_Quit_pressed():
 	get_tree().free()
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.
 
 
 func _on_Credits_pressed():
 	print("game made by Ktosox and Ikuti")
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.
 
 
 func _on_Start_pressed():
 	$LayoutV/LayoutH/Buttons/Start.text = "CONTINUE"
 	visible = false
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.

@@ -6,13 +6,54 @@
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
 id = 2
-name = "Planet2"
+name = "Findar II"
 pathToImage = "res://Resources/Sprites/Planets/Desolate.png"
-importantPoints = "- has much rocks
-- very dry
-- better take water"
+importantPoints = "- aggresive fauna
+- no civilised population"
+planetDescription = "An ocean world with multiple island chains. Most of the land surface is covered in dense jungles filled with aggressive wildlife. Scans suggest a handful of underground structures but no visible signs of civilization. "
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 6
+backgroundType = "res://Resources/Backgrounds/jungle.jpeg"
+description = "You explore the jungle."
+
+[node name="Step2" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 3
+amount = 60
+backgroundType = "res://Resources/Backgrounds/jungle.jpeg"
+description = "You locate what seems to be the ruins of an alien base. You need to explore it."
+enemies = [ [ 1, 10, "res://Resources/Portraits/Enemies/l_02.png" ], [ 1, 7, "res://Resources/Portraits/Enemies/l_02.png" ] ]
+
+[node name="Step3" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
 amount = 8
+backgroundType = "res://Resources/Backgrounds/pexels-ricardo-esquivel-1683490.jpg"
+description = "You have reavealed an entrance to a system of undeground tunnels. Time to go won and explore."
+enemies = [ [ 1, 6, "res://Resources/Portraits/Enemies/l_02.png" ], [ 1, 9, "res://Resources/Portraits/Enemies/l_02.png" ] ]
+
+[node name="Step4" type="Node" parent="."]
+script = ExtResource( 1 )
+amount = 1
+backgroundType = "res://Resources/Backgrounds/pexels-ricardo-esquivel-1683490.jpg"
+description = "A beast made it's lair in these tunnels."
+enemies = [ [ 2, 17, "res://Resources/Portraits/Enemies/Plant_Monster_01.png" ] ]
+
+[node name="Step5" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 2
+amount = 75
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
+description = "You have located an alien data ceneter deep underground. You need to hack it to gain access."
+enemies = [ [ 1, 9, "res://Resources/Portraits/Enemies/l_02.png" ], [ 1, 14, "res://Resources/Portraits/Enemies/l_01.png" ] ]
+
+[node name="Step6" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 4
+backgroundType = "res://Resources/Backgrounds/jungle.jpeg"
+description = "You have gained access. The download will be complete any moment now. Time to return."
+enemies = [ [ 1, 3, "res://Resources/Portraits/Enemies/l_01.png" ] ]
