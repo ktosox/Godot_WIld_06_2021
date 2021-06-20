@@ -13,8 +13,9 @@ func _ready():
 func load_card_data():
 	var cardID = get_parent().missionsBeaten*3
 	for z in $VBoxContainer/SelectionCards.get_children() :
-		z.load_card(cardID)
 		cardID+=1
+		z.load_card(cardID)
+		
 
 
 func select_level(nr):
@@ -25,6 +26,9 @@ func select_level(nr):
 func confirm_selection():
 	print("player selected planet "+String(selectedPlanet))
 	get_parent().selectedPlanet = selectedPlanet
+	$VBoxContainer/TitleText/ConfirmSelection.visible = false
+	$VBoxContainer/TitleText/CancelSelection.visible = false
+	$VBoxContainer/TitleText/Label.text = "Course set! Please go to the "
 	#whatever call to the global singleton needs to be made to mave the machine forward should go here
 	pass
 
@@ -44,8 +48,8 @@ func change_to_confirmation(nr):
 	currentState.visible = true
 	$VBoxContainer/TitleText/ConfirmSelection.visible = true
 	$VBoxContainer/TitleText/CancelSelection.visible = true
-	$VBoxContainer/TitleText/Label.text = "Should we set a course to Planet "+String(nr)+", Captain?"
-	$VBoxContainer/LevelDetails/Control/Label.text = PlanetsSingleton.GetPlanet(nr).description
+	$VBoxContainer/TitleText/Label.text = "Should we set a course to "+PlanetsSingleton.GetPlanet(nr).name+", Captain?"
+	$VBoxContainer/LevelDetails/Control/Label.text = PlanetsSingleton.GetPlanet(nr).planetDescription
 	pass
 
 func _on_Card1_gui_input(event:InputEvent):

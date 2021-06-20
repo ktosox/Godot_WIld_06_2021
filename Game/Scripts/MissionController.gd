@@ -130,24 +130,6 @@ func enemy_combat(who):
 	pass
 
 
-func start_encounter():
-	isInCombat = true
-	#$MissionProgressTimer.stop()
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
-		c.start_action()
-	#add badies
-	enemyStats = steps[currentStep].enemies
-	for b in enemyStats:
-		var enemyChar = characterScene.instance()
-		enemyChar.get_node("Action").visible = false
-		enemyChar.get_node("Health").max_value = b[0]
-		$MissionScreen/LayoutH/Background/Layout/Badies.add_child(enemyChar)
-	# get the encounter description from the step scene
-	# create characterScene scenes for each enemy, set them as described in step
-	# don't forget to attach the signals from enemies so that the enemy combat function is called
-	# plan B - set the controller on each character scene and replace the signals with a call to this scene
-	pass
-
 func load_crew_selection():
 	$MissionScreen.visible = false
 	$CrewSelection.visible = true
@@ -180,7 +162,7 @@ func toggleCrew(who):
 	pass
 
 func start_mission():
-	
+	$MissionScreen/EncounterTimer.start()
 	var planetID = get_parent().selectedPlanet
 	if planetID == -1 :
 		return
@@ -198,10 +180,29 @@ func start_mission():
 	
 	pass
 
+func start_encounter():
+	isInCombat = true
+	#$MissionProgressTimer.stop()
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
+		c.start_action()
+	#add badies
+	enemyStats = steps[currentStep].enemies
+	for b in enemyStats:
+		var enemyChar = characterScene.instance()
+		enemyChar.get_node("Action").visible = false
+		enemyChar.get_node("Health").max_value = b[0]
+		$MissionScreen/LayoutH/Background/Layout/Badies.add_child(enemyChar)
+	# get the encounter description from the step scene
+	# create characterScene scenes for each enemy, set them as described in step
+	# don't forget to attach the signals from enemies so that the enemy combat function is called
+	# plan B - set the controller on each character scene and replace the signals with a call to this scene
+	pass
+
 func end_encounter():
 	for b in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
 		b.queue_free()
 	isInCombat = false
+	$MissionScreen/EncounterTimer.start()
 	pass
 
 func _on_Character1_action(chara):
@@ -236,4 +237,10 @@ func _on_MissionController_visibility_changed():
 
 func _on_Return_pressed():
 	visible = false
+	pass # Replace with function body.
+
+
+func _on_EncounterTimer_timeout():
+	if !isInCombat:
+		start_encounter()
 	pass # Replace with function body.

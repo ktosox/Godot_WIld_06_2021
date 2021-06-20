@@ -136,6 +136,9 @@ margin_right = 891.0
 margin_bottom = 666.0
 size_flags_horizontal = 3
 
+[node name="EncounterTimer" type="Timer" parent="MissionScreen"]
+wait_time = 12.0
+
 [node name="CrewSelection" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -213,5 +216,6 @@ rect_min_size = Vector2( 15, 0 )
 [connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character1" to="." method="_on_Character1_action"]
 [connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character2" to="." method="_on_Character2_action"]
 [connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character3" to="." method="_on_Character3_action"]
+[connection signal="timeout" from="MissionScreen/EncounterTimer" to="." method="_on_EncounterTimer_timeout"]
 [connection signal="pressed" from="CrewSelection/ConfirmationScreen/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="CrewSelection/ConfirmationScreen/StartMission" to="." method="_on_StartMission_pressed"]
