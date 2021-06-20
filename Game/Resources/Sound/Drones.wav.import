@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Drones.wav-103eaf597c71724c58c14caaf22837ef.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/Drones.wav"
+dest_files=[ "res://.import/Drones.wav-103eaf597c71724c58c14caaf22837ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

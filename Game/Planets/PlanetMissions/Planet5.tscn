@@ -8,43 +8,65 @@ script = ExtResource( 2 )
 name = "Madriu"
 pathToImage = "res://Resources/Sprites/Planets/Jungle.png"
 importantPoints = "- thick, lively jungles
-- used to have reaserch facility, that is now completly empty
+- used to have reaserch facility, that is now completly abandoned
 - both plant and animal life will want a piece of you"
+planetDescription = "Madriu was a planet is a planet with great, lively jungles all around the globe. If not for murderours fauna and possibly flora it would be a top touristic spot. But instead it became a planet with a well funded and well hidden research facility, doing experimnets on local plants and animals.
+
+That is until the place became abandoned. According to the rumors no researchers made it out alive. But also the same rumors speculate there might a hefty cache of data placed withtin the facility. This might be our best bet at getting the decipher key to the map."
+missionDescription = "The plan is simple, as our sensors managed to find this \"well hidden\" facility, we will land near it. Get inside through probably locked and armed with a defense system building holding servers and data banks hefty with information. We download what looks like decypher key and get out.
+
+And of course we try not to be eaten by plants and crazed bugs along the way."
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
-amount = 8
+description = "As you beam down to the planet, the oversized worms and animals attack you!"
+enemies = [ [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ], [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ] ]
+stepFinishedBlurb = "You managed to cull the fauna that attack you"
 
 [node name="Step2" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
-amount = 8
+description = "You slowly stagger through the thick jungle, following your sensor. It seems you are close."
+stepFinishedBlurb = "You slash through the tree branches and..."
 
 [node name="Step3" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 2
-amount = 8
+amount = 16
+description = "You see it, the research facility. Abandoned, empty. yet closed. Time to hack it open, before more fauna decides you look like a great snack"
+enemies = [ [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ], [ 5, 12, "res://Resources/Portraits/Enemies/beest_03.png" ], [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ] ]
+stepFinishedBlurb = "You open the door to the main building and enter"
 
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
-amount = 8
+description = "You walk through empty corridors. They are earily quiet."
+stepFinishedBlurb = "You walk toward the door, behind which you believe the servers with data reside."
 
 [node name="Step5" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 3
-amount = 8
+amount = 18
+description = "As you get closer to the door, you can hear alarms. The defense system of this place seems to still be intact. The door requires a password in an alien language, you better hurry and up crack it."
+enemies = [ [ 5, 10, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 5, 10, "res://Resources/Portraits/Enemies/robot_04.png" ] ]
+stepFinishedBlurb = "You managed to open the door and run inside the server room"
 
 [node name="Step6" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
-amount = 8
+description = "As you run inside you see the big servers in all their glory. All the forgotten knowledge inside them is probably worth hefty price, but you need to hurry up and get the decipher key for the map."
+stepFinishedBlurb = "You walk up to the servers"
 
 [node name="Step7" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 2
-amount = 8
+amount = 24
+description = "The servers are encrypted. Time to start hacking. You can hear the androids on your footsteps."
+enemies = [ [ 5, 12, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 5, 12, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 5, 12, "res://Resources/Portraits/Enemies/robot_04.png" ] ]
+stepFinishedBlurb = "You cracked the server defenses."
 
 [node name="Step8" type="Node" parent="."]
 script = ExtResource( 1 )
-amount = 8
+description = "As you download the data, from the shadows emerges, what used to be reserarches. Corpses overgrown by some kind of parasites. Guess you know why it was abandoned know. Dispose of them or they will dispose of you."
+enemies = [ [ 7, 21, "res://Resources/Portraits/Enemies/red_ghoul_01.png" ], [ 8, 21, "res://Resources/Portraits/Enemies/Plant_Monster_01.png" ], [ 7, 21, "res://Resources/Portraits/Enemies/red_ghoul_01.png" ] ]
+stepFinishedBlurb = "You managed to defeat the corpses of the researches. Time to quickly escape and get back to the ship with decipher key"

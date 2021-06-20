@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ui_menu_button_beep_11.wav-39e592b0fe5fe64808c9457222dfd3ef.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/ui_menu_button_beep_11.wav"
+dest_files=[ "res://.import/ui_menu_button_beep_11.wav-39e592b0fe5fe64808c9457222dfd3ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
