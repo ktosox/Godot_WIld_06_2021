@@ -22,6 +22,7 @@ But it probably won't be as smooth. Our contact is a criminal so he might to try
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/city-6281029_1280.jpg"
 description = "A bunch of half drunken thugs decided to attack you and try to rob you. Show them it was a mistake!"
 enemies = [ [ 2, 5, "res://Resources/Portraits/Enemies/m_38.png" ], [ 2, 6, "res://Resources/Portraits/Enemies/m_20.png" ], [ 2, 5, "res://Resources/Portraits/Enemies/m_38.png" ] ]
 stepFinishedBlurb = "Thugs flee away"
@@ -29,6 +30,8 @@ stepFinishedBlurb = "Thugs flee away"
 [node name="Step2" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 5
+backgroundType = "res://Resources/Backgrounds/city-6281029_1280.jpg"
 description = "You enter the bar where your contact is supposed to be hiding"
 stepFinishedBlurb = "You are inside the bar"
 
@@ -36,6 +39,7 @@ stepFinishedBlurb = "You are inside the bar"
 script = ExtResource( 1 )
 stepType = 4
 amount = 12
+backgroundType = "res://Resources/Backgrounds/bar.jpeg"
 description = "The contact is there but he decided to change your deal and wants higher price for the information where Pirate King resides. Talk him out of this ridicolus price hike"
 enemies = [ [ 2, 6, "res://Resources/Portraits/Enemies/m_20.png" ], [ 2, 6, "res://Resources/Portraits/Enemies/m_20.png" ] ]
 stepFinishedBlurb = "You managed to talk him down and the contact shares you the information"
@@ -43,6 +47,8 @@ stepFinishedBlurb = "You managed to talk him down and the contact shares you the
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 5
+backgroundType = "res://Resources/Backgrounds/alleyway.jpeg"
 description = "You see the abandoned storage just as your contact described"
 stepFinishedBlurb = "You try to enter the storage through backdoor"
 
@@ -50,12 +56,14 @@ stepFinishedBlurb = "You try to enter the storage through backdoor"
 script = ExtResource( 1 )
 stepType = 2
 amount = 12
+backgroundType = "res://Resources/Backgrounds/alleyway.jpeg"
 description = "As you try to enter you realise the door is locked. It's time to do some lockpicking"
 enemies = [ [ 1, 3, "res://Resources/Portraits/Enemies/rat_01.png" ], [ 1, 3, "res://Resources/Portraits/Enemies/rat_01.png" ], [ 1, 3, "res://Resources/Portraits/Enemies/rat_01.png" ] ]
 stepFinishedBlurb = "You unlock the door and enter"
 
 [node name="Step6" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/storage.jpeg"
 description = "As you enter you are ambushed by the pirate king men. It seems someone informed them about your arrival. You might need to share some words with your contact if you manage to survive"
 enemies = [ [ 3, 7, "res://Resources/Portraits/Enemies/f_08.png" ], [ 2, 10, "res://Resources/Portraits/Enemies/m_21.png" ], [ 3, 5, "res://Resources/Portraits/Enemies/f_14.png" ] ]
 stepFinishedBlurb = "You defeated the pirate king men"
@@ -64,6 +72,7 @@ stepFinishedBlurb = "You defeated the pirate king men"
 script = ExtResource( 1 )
 stepType = 2
 amount = 16
+backgroundType = "res://Resources/Backgrounds/storage.jpeg"
 description = "After you managed to beat the thugs of the Pirate King, the defense system turns on!
 Disable it before the droids decide to smash your face!"
 enemies = [ [ 3, 10, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 3, 10, "res://Resources/Portraits/Enemies/robot_04.png" ] ]
@@ -72,11 +81,14 @@ stepFinishedBlurb = "You managed to turn off the defense system"
 [node name="Step8" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 5
+backgroundType = "res://Resources/Backgrounds/storage.jpeg"
 description = "You finally walk down to the room Pirate King is hiding in"
 stepFinishedBlurb = "You enter the room"
 
 [node name="Step9" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/CaptainRoom.jpeg"
 description = "Pirate king and his two lieutenants are ready. They won't give up without the fight"
 enemies = [ [ 5, 10, "res://Resources/Portraits/Enemies/troll_01.png" ], [ 5, 15, "res://Resources/Portraits/Enemies/m_09.png" ], [ 5, 10, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
 stepFinishedBlurb = "The Pirate King growles \"Don't kill us! Take anything you want!\" You quickly grab the map and run back to your spaceship"
