@@ -42,6 +42,10 @@ func _process(delta):
 
 
 func load_next_step():
+	if get_parent().abortReady :
+		$MissionScreen/LayoutH/DetailMenu/Recall.visible = true
+	else:
+		$MissionScreen/LayoutH/DetailMenu/Recall.visible = false
 	currentStep+=1 
 	$MissionScreen/ProgressBar.value = 0
 	if(currentStep+1 > steps.size()):
@@ -67,13 +71,7 @@ func load_next_step():
 		
 	pass
 
-func mission_complete():
-	get_parent().missionsBeaten += 1
-	get_parent().selectedPlanet = -1
-	$MissionScreen/EncounterTimer.stop()
-	missionStarted = false
-	$WinScreen.visible = true
-	pass
+
 
 func select_action(chara): 
 	# check isInCombat to determine if this should be a mission or a combat action
@@ -135,6 +133,16 @@ func enemy_combat(who):
 	var damage = who.enemyDmg
 	var c = $MissionScreen/LayoutH/Background/Layout/Crew.get_children()
 	c = c[randi()%c.size()]
+	CrewSingleton.GetCrewmate(c.ID).currentHealth-=damage
+	c.get_node("Health").value-=damage
+	if c.get_node("Health").value <1 :
+		c.faint()
+	var crewAlive = 0
+	for b in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
+		if b.isAlive :
+			crewAlive+=1
+	if crewAlive <1:
+		mission_lost()
 	#acceess the crew hp by the singleton
 	# updated hp on crew panel
 	# check for crew death
@@ -158,11 +166,12 @@ func load_crew_selection():
 		
 	if($CrewSelection/CrewBox/VBoxContainer.get_child_count()<2):
 		for p in CrewSingleton.crewmates.size() :
-			var newPanel = crewPanel.instance()
-			newPanel.load_crew(p)
-			newPanel.manager = self
-			$CrewSelection/CrewBox/VBoxContainer.add_child(newPanel)
-			$CrewSelection/CrewBox/VBoxContainer.move_child($CrewSelection/CrewBox/VBoxContainer.get_node("EmptySpace"),$CrewSelection/CrewBox/VBoxContainer.get_child_count())
+			if CrewSingleton.crewmates[p].isOwned:
+				var newPanel = crewPanel.instance()
+				newPanel.load_crew(p)
+				newPanel.manager = self
+				$CrewSelection/CrewBox/VBoxContainer.add_child(newPanel)
+				$CrewSelection/CrewBox/VBoxContainer.move_child($CrewSelection/CrewBox/VBoxContainer.get_node("EmptySpace"),$CrewSelection/CrewBox/VBoxContainer.get_child_count())
 	pass
 
 func toggleCrew(who):
@@ -205,7 +214,9 @@ func start_encounter():
 	enemyStats = steps[currentStep].enemies
 	for b in enemyStats:
 		var enemyChar = characterScene.instance()
-		enemyChar.get_node("Action").visible = false
+#		enemyChar.get_node("Action").visible = false
+		enemyChar.start_action()
+		enemyChar.get_node("AnimateAction").playback_speed = 0.35 + randf() * 0.25
 		enemyChar.get_node("Health").max_value = b[1]
 		enemyChar.enemyDmg = b[0]
 		enemyChar.texture = load(b[2])
@@ -226,6 +237,48 @@ func end_encounter():
 				c.end_action()
 		
 	$MissionScreen/EncounterTimer.start()
+	pass
+
+func mission_complete():
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+		c.end_action()
+	get_parent().abortReady = true
+	get_parent().missionsBeaten += 1
+	get_parent().selectedPlanet = -1
+	$MissionScreen/EncounterTimer.stop()
+	missionStarted = false
+	$WinScreen.visible = true
+	pass
+
+func mission_lost():
+	$LoseScreen.visible = true
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+		c.end_action()
+	pass
+
+func abort_mission():
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+		c.end_action()
+	missionStarted = false
+	$AbortScreen.visible = true
+	$MissionScreen/EncounterTimer.stop()
+	get_parent().abortReady = false
+	missionStarted = false
+	pass
+
+func reset_mission_scene():
+	$CrewSelection/ConfirmationScreen/StartMission.visible = false
+	for z in $CrewSelection/CrewBox/VBoxContainer.get_children():
+		if z.name != "EmptySpace":
+			z.queue_free()
+	
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+		c.end_action()
+	isInCombat = false
+	currentStep = -1
+	selectedCrew = []
+	$CrewSelection.visible = true
+	$MissionScreen.visible = false
 	pass
 
 func _on_Character1_action(chara):
@@ -270,18 +323,24 @@ func _on_EncounterTimer_timeout():
 
 
 func _on_Button_pressed():
-	$CrewSelection/ConfirmationScreen/StartMission.visible = false
-	for z in $CrewSelection/CrewBox/VBoxContainer.get_children():
-		if z.name != "EmptySpace":
-			print(z)
-			z.queue_free()
-	visible = false
 	$WinScreen.visible = false
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		c.end_action()
-	isInCombat = false
-	currentStep = -1
-	selectedCrew = []
-	$CrewSelection.visible = true
-	$MissionScreen.visible = false
+	reset_mission_scene()
+	visible = false
+	pass # Replace with function body.
+
+
+func _on_Abort_pressed():
+	$AbortScreen.visible = false
+	reset_mission_scene()
+	visible = false
+	pass # Replace with function body.
+
+
+func _on_Recall_pressed():
+	abort_mission()
+	pass # Replace with function body.
+
+
+func _on_GameOver_pressed():
+	get_tree().change_scene("res://SpaceShip.tscn")
 	pass # Replace with function body.
