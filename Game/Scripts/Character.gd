@@ -6,6 +6,8 @@ var isAlive = true
 
 var ID
 
+var manager
+
 var enemyDmg = 0
 
 
@@ -39,6 +41,8 @@ func faint():
 	pass
 
 func action():
-	emit_signal("action",self)
-	print("pow")
+	if manager!= null :
+		manager.enemy_combat(self)
+	else:
+		emit_signal("action",self)
 	pass

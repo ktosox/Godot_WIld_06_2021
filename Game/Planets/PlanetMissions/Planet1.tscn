@@ -19,24 +19,25 @@ script = ExtResource( 1 )
 stepType = 1
 amount = 15
 description = "You have landed several miles from the city border. You are currenlty traveling through the badlands."
-enemies = [ [ 1, 1, "res://Resources/Portraits/Enemies/f_14.png" ], [ 1, 1, "res://Resources/Portraits/Enemies/m_09.png" ] ]
+enemies = [ [ 20, 20, "res://Resources/Portraits/Enemies/f_14.png" ], [ 20, 20, "res://Resources/Portraits/Enemies/m_09.png" ] ]
 
 [node name="Step2" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 4
-amount = 4
+amount = 30
 description = "You have reached the city. You decided to ask locals for directions."
 enemies = [ [  ], [  ], [  ] ]
 
 [node name="Step3" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 2
-amount = 8
+amount = 40
 description = "You have located the vault, but in order to get inside  you need to turn on the emenrgency power systems."
 enemies = [ [ 2, 2, "res://Resources/Portraits/Enemies/cultist_02.png" ], [ 2, 2, "res://Resources/Portraits/Enemies/cultist_04.png" ], [ 2, 2, "res://Resources/Portraits/Enemies/cultist_04.png" ] ]
 
 [node name="Step4" type="Node" parent="."]
 script = ExtResource( 1 )
+amount = 1
 description = "The door is now open, but the automted defese systems have been activated. You need to fight them."
 enemies = [ [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ], [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
 

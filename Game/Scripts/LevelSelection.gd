@@ -3,7 +3,7 @@ extends Control
 
 onready var currentState = $VBoxContainer/SelectionCards
 
-var selectedPlanet = 0
+var selectedPlanet = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -87,6 +87,9 @@ func _on_Return_pressed():
 
 
 func _on_LevelSelection_visibility_changed():
+
 	if visible == true :
 		load_card_data()
+		if get_parent().selectedPlanet != selectedPlanet:
+			change_to_selection()
 	pass # Replace with function body.
