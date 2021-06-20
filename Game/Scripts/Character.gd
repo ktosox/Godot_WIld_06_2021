@@ -17,6 +17,7 @@ func _ready():
 	pass # Replace with function body.
 
 func load_character(ID):
+	$ColorRect.visible = false
 	ID = ID
 	var crew = CrewSingleton.crewmates[ID]
 	texture = load(crew.pathToImage)
@@ -38,6 +39,8 @@ func end_action():
 func faint():
 	#I guess modualte the portrati?
 	isAlive = false
+	$AnimateAction.stop()
+	$ColorRect.visible = true
 	pass
 
 func action():

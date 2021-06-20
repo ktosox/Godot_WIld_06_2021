@@ -1,0 +1,235 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/CrewMainMenu.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/CrewMainMenuGood.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/CrewList.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/SelectedCrewmateDesription.cs" type="Script" id=4]
+[ext_resource path="res://Crew/Stat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Crew/Perk.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+
+[node name="CrewMenu" type="ColorRect"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.2, 0.215686, 0.278431, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrewMainMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectedCrewmateDesription" type="Panel" parent="CrewMainMenu"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 0.529144
+margin_top = -0.264526
+margin_right = 0.529175
+margin_bottom = -0.264526
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+nameLabelPath = NodePath("Name")
+classLabelPath = NodePath("ClassAndLevel")
+portraitImagePath = NodePath("CrewPortrait")
+HPLabelPath = NodePath("GridContainer/HPLabel")
+combatLabelPath = NodePath("GridContainer/CombatStat")
+alienKnowledgeLabelPath = NodePath("GridContainer/AlienStat")
+techKnowledgeLabelPath = NodePath("GridContainer/TechStat")
+peopleSkillsLabelPath = NodePath("GridContainer/PeopleStat")
+speedLabelPath = NodePath("GridContainer/SpeedStat")
+perkOneUIPath = NodePath("Perk")
+perkTwoUIPath = NodePath("Perk2")
+
+[node name="CrewPortrait" type="NinePatchRect" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_right = 177.0
+margin_bottom = 177.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 188.0
+margin_top = 41.0
+margin_right = 614.0
+margin_bottom = 91.0
+custom_fonts/font = ExtResource( 7 )
+text = "Jacob Bilkins"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassAndLevel" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 188.0
+margin_top = 91.0
+margin_right = 609.0
+margin_bottom = 141.0
+custom_fonts/font = ExtResource( 7 )
+text = "Engineer lvl 1"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 49.0
+margin_top = 184.0
+margin_right = 601.0
+margin_bottom = 446.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer"]
+margin_right = 218.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 7 )
+text = "HP: 20/20"
+
+[node name="CombatStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
+margin_right = 358.0
+statName = "Combat:"
+
+[node name="SpeedStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 54.0
+margin_right = 218.0
+margin_bottom = 104.0
+statName = "Speed:"
+
+[node name="AlienStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
+margin_top = 54.0
+margin_right = 358.0
+margin_bottom = 104.0
+statName = "Xeno:"
+
+[node name="TechStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 108.0
+margin_right = 218.0
+margin_bottom = 158.0
+statName = "Cyber:"
+
+[node name="PeopleStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
+margin_top = 108.0
+margin_right = 358.0
+margin_bottom = 158.0
+statName = "People:"
+
+[node name="HireButton" type="Button" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 271.0
+margin_top = 610.0
+margin_right = 577.0
+margin_bottom = 697.0
+text = "Hire"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Perk" parent="CrewMainMenu/SelectedCrewmateDesription" instance=ExtResource( 6 )]
+
+[node name="Perk2" parent="CrewMainMenu/SelectedCrewmateDesription" instance=ExtResource( 6 )]
+margin_left = 320.0
+margin_right = 591.0
+
+[node name="Currency Static" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 37.0
+margin_top = 633.0
+margin_right = 140.0
+margin_bottom = 667.0
+text = "Currency:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost Static" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 37.0
+margin_top = 662.667
+margin_right = 140.0
+margin_bottom = 696.667
+text = "Crew cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Currency Dynamic" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 120.0
+margin_top = 633.0
+margin_right = 223.0
+margin_bottom = 667.0
+text = "100$"
+
+[node name="Cost Dynamic" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription"]
+margin_left = 120.0
+margin_top = 662.667
+margin_right = 223.0
+margin_bottom = 696.667
+text = "100$"
+
+[node name="CrewList" type="ItemList" parent="CrewMainMenu"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 66.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+hireButtonPath = NodePath("../SelectedCrewmateDesription/HireButton")
+currencyLabelPath = NodePath("../SelectedCrewmateDesription/Currency Dynamic")
+costLabelPath = NodePath("../SelectedCrewmateDesription/Cost Dynamic")
+
+[node name="ButtonOwned" type="Button" parent="CrewMainMenu"]
+anchor_left = 0.501
+anchor_top = -0.002
+anchor_right = 0.719
+anchor_bottom = 0.091
+margin_left = -1.28003
+margin_top = 1.44
+margin_right = -0.320068
+margin_bottom = 0.479996
+rect_scale = Vector2( 0.999187, 1 )
+text = "Owned"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonToBuy" type="Button" parent="CrewMainMenu"]
+anchor_left = 0.5
+anchor_top = -0.101
+anchor_right = 1.0
+margin_left = 280.0
+margin_top = 72.72
+margin_right = -81.0
+margin_bottom = 66.0
+text = "To buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HideButton" type="Button" parent="CrewMainMenu"]
+margin_left = 1199.0
+margin_right = 1279.0
+margin_bottom = 65.0
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="CrewMainMenu/CrewList" to="CrewMainMenu/CrewList" method="_on_CrewList_item_selected"]
+[connection signal="pressed" from="CrewMainMenu/ButtonOwned" to="CrewMainMenu/CrewList" method="_on_ButtonOwned_pressed"]
+[connection signal="pressed" from="CrewMainMenu/ButtonToBuy" to="CrewMainMenu/CrewList" method="_on_ButtonToBuy_pressed"]
+[connection signal="pressed" from="CrewMainMenu/HideButton" to="." method="_on_HideButton_pressed"]
+[connection signal="pressed" from="CrewMainMenu/HideButton" to="CrewMainMenu" method="_on_HideButton_pressed"]

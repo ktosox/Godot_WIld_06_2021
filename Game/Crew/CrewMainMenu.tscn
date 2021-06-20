@@ -119,40 +119,11 @@ margin_bottom = 158.0
 statName = "People:"
 
 [node name="HireButton" type="Button" parent="SelectedCrewmateDesription"]
-anchor_left = 0.5
-anchor_top = -0.101
-anchor_right = 1.0
-margin_left = -49.0
-margin_top = 682.294
-margin_right = -49.0
-margin_bottom = 682.24
+margin_left = 271.0
+margin_top = 610.0
+margin_right = 577.0
+margin_bottom = 697.0
 text = "Hire"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ButtonOwned" type="Button" parent="SelectedCrewmateDesription"]
-anchor_top = -0.101
-anchor_right = 0.5
-margin_left = 640.0
-margin_top = 71.72
-margin_right = 600.0
-margin_bottom = 66.0
-rect_scale = Vector2( 0.999187, 1 )
-text = "Owned"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ButtonToBuy" type="Button" parent="SelectedCrewmateDesription"]
-anchor_left = 0.5
-anchor_top = -0.101
-anchor_right = 1.0
-margin_left = 600.0
-margin_top = 72.72
-margin_right = 560.0
-margin_bottom = 66.0
-text = "To buy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -210,16 +181,44 @@ hireButtonPath = NodePath("../SelectedCrewmateDesription/HireButton")
 currencyLabelPath = NodePath("../SelectedCrewmateDesription/Currency Dynamic")
 costLabelPath = NodePath("../SelectedCrewmateDesription/Cost Dynamic")
 
-[node name="HideButton" type="Button" parent="."]
-margin_left = 1199.21
-margin_top = -1.79279
-margin_right = 1279.21
-margin_bottom = 65.2072
+[node name="ButtonOwned" type="Button" parent="."]
+anchor_left = 0.501
+anchor_top = -0.002
+anchor_right = 0.719
+anchor_bottom = 0.091
+margin_left = -1.28003
+margin_top = 1.44
+margin_right = -0.320068
+margin_bottom = 0.479996
+rect_scale = Vector2( 0.999187, 1 )
+text = "Owned"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="SelectedCrewmateDesription/HireButton" to="CrewList" method="_on_HireButton_pressed"]
-[connection signal="pressed" from="SelectedCrewmateDesription/ButtonOwned" to="CrewList" method="_on_ButtonOwned_pressed"]
-[connection signal="pressed" from="SelectedCrewmateDesription/ButtonToBuy" to="CrewList" method="_on_ButtonToBuy_pressed"]
+[node name="ButtonToBuy" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = -0.101
+anchor_right = 1.0
+margin_left = 280.0
+margin_top = 72.72
+margin_right = -81.0
+margin_bottom = 66.0
+text = "To buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HideButton" type="Button" parent="."]
+margin_left = 1199.0
+margin_right = 1279.0
+margin_bottom = 65.0
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="item_selected" from="CrewList" to="CrewList" method="_on_CrewList_item_selected"]
+[connection signal="pressed" from="ButtonOwned" to="CrewList" method="_on_ButtonOwned_pressed"]
+[connection signal="pressed" from="ButtonToBuy" to="CrewList" method="_on_ButtonToBuy_pressed"]
+[connection signal="pressed" from="HideButton" to="." method="_on_HideButton_pressed"]

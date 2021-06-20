@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/SpaceShip.gd" type="Script" id=2]
 [ext_resource path="res://LevelSelection/LevelSelection.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MissionScene/MissionController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Resources/Placeholders/5d0tge.jpg" type="Texture" id=5]
+[ext_resource path="res://Crew/CrewMainMenuGood.tscn" type="PackedScene" id=5]
 [ext_resource path="res://MainMenu/MainMenu.tscn" type="PackedScene" id=6]
 
 [node name="SpaceShip" type="Node2D"]
@@ -79,33 +79,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CrewInspection" type="Sprite" parent="."]
-visible = false
-position = Vector2( 664, 360 )
-texture = ExtResource( 5 )
-
-[node name="Return" type="Button" parent="CrewInspection"]
-margin_left = 152.0
-margin_top = 8.0
-margin_right = 232.0
-margin_bottom = 56.0
-text = "Return"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="LevelSelection" parent="." instance=ExtResource( 3 )]
 visible = false
 
 [node name="MissionController" parent="." instance=ExtResource( 4 )]
 visible = false
+color = Color( 0.2, 0.215686, 0.278431, 1 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 6 )]
 margin_right = 1280.0
 margin_bottom = 720.0
 
+[node name="CrewInspection" parent="." instance=ExtResource( 5 )]
+visible = false
+
 [connection signal="pressed" from="RoomLayer/LevelSelection" to="." method="_on_LevelSelection_pressed"]
 [connection signal="pressed" from="RoomLayer/CrewInspection" to="." method="_on_CrewInspection_pressed"]
 [connection signal="pressed" from="RoomLayer/MissionSelection" to="." method="_on_MissionSelection_pressed"]
 [connection signal="pressed" from="RoomLayer/BackToMenu" to="." method="_on_BackToMenu_pressed"]
-[connection signal="pressed" from="CrewInspection/Return" to="." method="_on_Return_pressed"]

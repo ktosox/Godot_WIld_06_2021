@@ -28,7 +28,6 @@ __meta__ = {
 z_index = 5
 
 [node name="MissionScreen" type="VBoxContainer" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -87,6 +86,17 @@ fsdfsfljkjsfldlkfjlskdjflsdfjoeofw
 flsdfds;lfjlfdfm.anfal'dff'an'l
 fdaldf;aldfnalkdf'a fladjfladjlkf/s"
 autowrap = true
+
+[node name="Recall" type="Button" parent="MissionScreen/LayoutH/DetailMenu"]
+margin_left = 48.0
+margin_top = 546.0
+margin_right = 186.0
+margin_bottom = 566.0
+rect_scale = Vector2( 2, 2 )
+text = "EMERGENCY RECALL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="TextureRect" parent="MissionScreen/LayoutH"]
 margin_left = 389.0
@@ -148,6 +158,7 @@ size_flags_horizontal = 3
 wait_time = 12.0
 
 [node name="CrewSelection" type="HBoxContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -201,7 +212,7 @@ size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CrewSelection/CrewBox"]
-margin_right = 617.0
+margin_right = 629.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 0, 1000 )
 size_flags_horizontal = 3
@@ -244,7 +255,62 @@ margin_bottom = 360.0
 custom_fonts/font = ExtResource( 7 )
 text = "RETURN TO SHIP"
 
+[node name="AbortScreen" type="ColorRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1280, 720 )
+color = Color( 0.203922, 0.701961, 0.607843, 1 )
+
+[node name="Label2" type="Label" parent="AbortScreen"]
+anchor_right = 1.0
+margin_right = -853.0
+margin_bottom = 109.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = SubResource( 1 )
+text = "you have evacuated the team"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abort" type="Button" parent="AbortScreen"]
+margin_left = 472.0
+margin_top = 304.0
+margin_right = 842.0
+margin_bottom = 360.0
+custom_fonts/font = ExtResource( 7 )
+text = "RETURN TO SHIP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoseScreen" type="ColorRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1280, 720 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="RichTextLabel" type="Label" parent="LoseScreen"]
+margin_left = 280.0
+margin_top = 200.0
+margin_right = 449.0
+margin_bottom = 240.0
+rect_scale = Vector2( 4, 4 )
+text = "EVERYONE DIED - THE END"
+
+[node name="GameOver" type="Button" parent="LoseScreen"]
+margin_left = 456.0
+margin_top = 408.0
+margin_right = 582.0
+margin_bottom = 428.0
+rect_scale = Vector2( 3, 3 )
+text = "START NEW GAME"
+
 [connection signal="visibility_changed" from="." to="." method="_on_MissionController_visibility_changed"]
+[connection signal="pressed" from="MissionScreen/LayoutH/DetailMenu/Recall" to="." method="_on_Recall_pressed"]
 [connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character1" to="." method="_on_Character1_action"]
 [connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character2" to="." method="_on_Character2_action"]
 [connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character3" to="." method="_on_Character3_action"]
@@ -252,3 +318,5 @@ text = "RETURN TO SHIP"
 [connection signal="pressed" from="CrewSelection/ConfirmationScreen/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="CrewSelection/ConfirmationScreen/StartMission" to="." method="_on_StartMission_pressed"]
 [connection signal="pressed" from="WinScreen/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="AbortScreen/Abort" to="." method="_on_Abort_pressed"]
+[connection signal="pressed" from="LoseScreen/GameOver" to="." method="_on_GameOver_pressed"]
