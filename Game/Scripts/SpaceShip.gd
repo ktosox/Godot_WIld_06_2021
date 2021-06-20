@@ -28,25 +28,35 @@ func _on_Button_pressed():
 func _on_Return_pressed():
 
 	$CrewInspection.visible = false
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 
 	pass # Replace with function body.
 
 
 func _on_LevelSelection_pressed():
 	$LevelSelection.visible = true
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.
 
 
 func _on_CrewInspection_pressed():
 	$CrewInspection.visible = true
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.
 
 
 func _on_MissionSelection_pressed():
 	$MissionController.visible = true
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.
 
 
 func _on_BackToMenu_pressed():
 	$MainMenu.visible = true
+	if $ButtonSFX.playing == false :
+		$ButtonSFX.play()
 	pass # Replace with function body.
