@@ -228,8 +228,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="CrewMainMenu/SelectedCrewmateDesription/HireButton" to="CrewMainMenu/CrewList" method="_on_HireButton_pressed"]
 [connection signal="item_selected" from="CrewMainMenu/CrewList" to="CrewMainMenu/CrewList" method="_on_CrewList_item_selected"]
 [connection signal="pressed" from="CrewMainMenu/ButtonOwned" to="CrewMainMenu/CrewList" method="_on_ButtonOwned_pressed"]
 [connection signal="pressed" from="CrewMainMenu/ButtonToBuy" to="CrewMainMenu/CrewList" method="_on_ButtonToBuy_pressed"]
-[connection signal="pressed" from="CrewMainMenu/HideButton" to="." method="_on_HideButton_pressed"]
 [connection signal="pressed" from="CrewMainMenu/HideButton" to="CrewMainMenu" method="_on_HideButton_pressed"]
+[connection signal="pressed" from="CrewMainMenu/HideButton" to="." method="_on_HideButton_pressed"]

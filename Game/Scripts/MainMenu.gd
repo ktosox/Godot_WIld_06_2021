@@ -39,7 +39,7 @@ func _on_Quit_pressed():
 
 
 func _on_Credits_pressed():
-	print("game made by Ktosox and Ikuti")
+	$CreditsText.visible=!$CreditsText.visible
 	if $ButtonSFX.playing == false :
 		$ButtonSFX.play()
 	pass # Replace with function body.
