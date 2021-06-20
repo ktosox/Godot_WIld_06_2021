@@ -28,7 +28,7 @@ func confirm_selection():
 	get_parent().selectedPlanet = selectedPlanet
 	$VBoxContainer/TitleText/ConfirmSelection.visible = false
 	$VBoxContainer/TitleText/CancelSelection.visible = false
-	$VBoxContainer/TitleText/Label.text = "Course set! Please go to the "
+	$VBoxContainer/TitleText/Label.text = "Course set! Please go to the mission screen"
 	#whatever call to the global singleton needs to be made to mave the machine forward should go here
 	pass
 

@@ -48,10 +48,11 @@ func load_next_step():
 		else:
 			c.start_action()
 	print("starting step "+String(currentStep))
+	
 	#logic for loading mission data goes here
 	#$MissionScreen/LayoutH/Background.texture = load(steps[currentStep].backgroundType)
-	#$MissionScreen/LayoutH/DetailMenu/Layout/Label.text = steps[currentStep].description
-	#$MissionScreen/ProgressBar.max_value = steps[currentStep].amount
+	$MissionScreen/LayoutH/DetailMenu/Layout/Label.text = steps[currentStep].description
+	$MissionScreen/ProgressBar.max_value = steps[currentStep].amount
 	
 	currentStep+=1 #add one once step is loaded
 
