@@ -169,12 +169,32 @@ margin_top = 633.0
 margin_right = 140.0
 margin_bottom = 667.0
 text = "Currency:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost Static" type="Label" parent="SelectedCrewmateDesription"]
+margin_left = 37.0
+margin_top = 662.667
+margin_right = 140.0
+margin_bottom = 696.667
+text = "Crew cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Currency Dynamic" type="Label" parent="SelectedCrewmateDesription"]
 margin_left = 120.0
 margin_top = 633.0
 margin_right = 223.0
 margin_bottom = 667.0
+text = "100$"
+
+[node name="Cost Dynamic" type="Label" parent="SelectedCrewmateDesription"]
+margin_left = 120.0
+margin_top = 662.667
+margin_right = 223.0
+margin_bottom = 696.667
 text = "100$"
 
 [node name="CrewList" type="ItemList" parent="."]
@@ -188,6 +208,7 @@ __meta__ = {
 }
 hireButtonPath = NodePath("../SelectedCrewmateDesription/HireButton")
 currencyLabelPath = NodePath("../SelectedCrewmateDesription/Currency Dynamic")
+costLabelPath = NodePath("../SelectedCrewmateDesription/Cost Dynamic")
 
 [node name="HideButton" type="Button" parent="."]
 margin_left = 1199.21

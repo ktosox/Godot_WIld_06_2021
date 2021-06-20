@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/attack_meele_3.wav-a3ff57553337491ee8235c95f80325e1.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/attack_meele_3.wav"
+dest_files=[ "res://.import/attack_meele_3.wav-a3ff57553337491ee8235c95f80325e1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

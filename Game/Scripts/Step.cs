@@ -17,4 +17,6 @@ public class Step : Node
     [Export] public string backgroundType;
     [Export(PropertyHint.MultilineText)] public string description;
     [Export] public Godot.Collections.Array<Godot.Collections.Array> enemies;
+
+    [Export] public string stepFinishedBlurb;
 }

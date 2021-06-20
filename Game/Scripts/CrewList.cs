@@ -11,6 +11,7 @@ public class CrewList : ItemList
     // Called when the node enters the scene tree for the first time.
     [Export] private NodePath hireButtonPath;
     [Export] private NodePath currencyLabelPath;
+    [Export] private NodePath costLabelPath;
     Crewmate selectedCrewmate;
     bool showOwned=true;
     public override void _Ready()
@@ -58,11 +59,14 @@ public class CrewList : ItemList
         description.AssignData(correctCrewmateList[index]);
         selectedCrewmate=correctCrewmateList[index];
         var hireButton = (Button) GetNode(hireButtonPath);
+        var costLabel = (Label) GetNode(costLabelPath);
         if(selectedCrewmate.isOwned){
             hireButton.Disabled=true;
+            costLabel.Text=0.ToString();
         }
         else{
             hireButton.Disabled=false;
+            costLabel.Text=selectedCrewmate.cost.ToString();
         }
         GD.Print(index);
     }
