@@ -54,7 +54,7 @@ public class CrewList : ItemList
             }
     }
     public void _on_CrewList_item_selected(int index){
-        var description = (SelectedCrewmateDesription)GetNode("/root/CrewMainMenu/SelectedCrewmateDesription");
+        var description = (SelectedCrewmateDesription)GetNode("/root/SpaceShip/CrewInspection/CrewMainMenu/SelectedCrewmateDesription");
         var correctCrewmateList = CrewSingleton.crewmates.Where(c => c.isOwned==showOwned).ToList();
         description.AssignData(correctCrewmateList[index]);
         selectedCrewmate=correctCrewmateList[index];

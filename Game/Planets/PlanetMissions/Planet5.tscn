@@ -20,6 +20,7 @@ And of course we try not to be eaten by plants and crazed bugs along the way."
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
+amount = 1
 backgroundType = "res://Resources/Backgrounds/jungle.jpeg"
 description = "As you beam down to the planet, the oversized worms and animals attack you!"
 enemies = [ [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ], [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ] ]
@@ -47,7 +48,8 @@ script = ExtResource( 1 )
 stepType = 1
 amount = 10
 backgroundType = "res://Resources/Backgrounds/corridor.jpeg"
-description = "You walk through empty corridors. They are earily quiet."
+description = "
+You walk through empty corridors. They are earily quiet. In the distance, doors to the server room."
 stepFinishedBlurb = "You walk toward the door, behind which you believe the servers with data reside."
 
 [node name="Step5" type="Node" parent="."]
@@ -81,4 +83,4 @@ script = ExtResource( 1 )
 backgroundType = "res://Resources/Backgrounds/pexels-manuel-geissinger-325229.jpg"
 description = "As you download the data, from the shadows emerges, what used to be reserarches. Corpses overgrown by some kind of parasites. Guess you know why it was abandoned know. Dispose of them or they will dispose of you."
 enemies = [ [ 7, 21, "res://Resources/Portraits/Enemies/red_ghoul_01.png" ], [ 8, 21, "res://Resources/Portraits/Enemies/Plant_Monster_01.png" ], [ 7, 21, "res://Resources/Portraits/Enemies/red_ghoul_01.png" ] ]
-stepFinishedBlurb = "You managed to defeat the corpses of the researches. Time to quickly escape and get back to the ship with decipher key"
+stepFinishedBlurb = ""

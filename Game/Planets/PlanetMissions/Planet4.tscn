@@ -22,6 +22,7 @@ But it probably won't be as smooth. Our contact is a criminal so he might to try
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
+amount = 1
 backgroundType = "res://Resources/Backgrounds/city-6281029_1280.jpg"
 description = "A bunch of half drunken thugs decided to attack you and try to rob you. Show them it was a mistake!"
 enemies = [ [ 2, 5, "res://Resources/Portraits/Enemies/m_38.png" ], [ 2, 6, "res://Resources/Portraits/Enemies/m_20.png" ], [ 2, 5, "res://Resources/Portraits/Enemies/m_38.png" ] ]
@@ -49,8 +50,8 @@ script = ExtResource( 1 )
 stepType = 1
 amount = 5
 backgroundType = "res://Resources/Backgrounds/alleyway.jpeg"
-description = "You see the abandoned storage just as your contact described"
-stepFinishedBlurb = "You try to enter the storage through backdoor"
+description = "You see the abandoned storage just as your contact described. You try to enter the storage through backdoor"
+stepFinishedBlurb = ""
 
 [node name="Step5" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -92,3 +93,12 @@ backgroundType = "res://Resources/Backgrounds/CaptainRoom.jpeg"
 description = "Pirate king and his two lieutenants are ready. They won't give up without the fight"
 enemies = [ [ 5, 10, "res://Resources/Portraits/Enemies/troll_01.png" ], [ 5, 15, "res://Resources/Portraits/Enemies/m_09.png" ], [ 5, 10, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
 stepFinishedBlurb = "The Pirate King growles \"Don't kill us! Take anything you want!\" You quickly grab the map and run back to your spaceship"
+
+[node name="Step10" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 5
+backgroundType = "res://Resources/Backgrounds/CaptainRoom.jpeg"
+description = "The Pirate King growles \"Don't kill us! Take anything you want!\" You quickly grab the map and run back to your spaceship"
+enemies = [ [ 5, 10, "res://Resources/Portraits/Enemies/troll_01.png" ], [ 5, 15, "res://Resources/Portraits/Enemies/m_09.png" ], [ 5, 10, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
+stepFinishedBlurb = ""
