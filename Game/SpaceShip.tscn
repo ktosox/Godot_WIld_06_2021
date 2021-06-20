@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/Sprites/SpaceShip.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/SpaceShip.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://MissionScene/MissionController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Crew/CrewMainMenuGood.tscn" type="PackedScene" id=5]
 [ext_resource path="res://MainMenu/MainMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Sound/ui_menu_button_beep_03.wav" type="AudioStream" id=7]
 
 [node name="SpaceShip" type="Node2D"]
 script = ExtResource( 2 )
@@ -84,7 +85,6 @@ visible = false
 
 [node name="MissionController" parent="." instance=ExtResource( 4 )]
 visible = false
-color = Color( 0.2, 0.215686, 0.278431, 1 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 6 )]
 margin_right = 1280.0
@@ -92,6 +92,10 @@ margin_bottom = 720.0
 
 [node name="CrewInspection" parent="." instance=ExtResource( 5 )]
 visible = false
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Effects"
 
 [connection signal="pressed" from="RoomLayer/LevelSelection" to="." method="_on_LevelSelection_pressed"]
 [connection signal="pressed" from="RoomLayer/CrewInspection" to="." method="_on_CrewInspection_pressed"]
