@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Portraits/Crew/f_11.png" type="Texture" id=1]
+[ext_resource path="res://MissionScene/CrewPanel.gd" type="Script" id=2]
+
+[node name="Panel" type="ColorRect"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 824.0
+margin_bottom = 182.0
+rect_min_size = Vector2( 0, 112 )
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Picture" type="TextureRect" parent="HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 100.0
+margin_top = 58.0
+margin_right = 257.0
+margin_bottom = 72.0
+text = "aafafsdfsdfsdfsdfsfdsfsfsf"
+
+[connection signal="gui_input" from="." to="." method="_on_Panel_gui_input"]

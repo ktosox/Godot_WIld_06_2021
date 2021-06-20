@@ -11,8 +11,38 @@ pathToImage = "res://Resources/Sprites/Planets/Arid.png"
 importantPoints = "- has much rocks
 - very dry
 - better take water"
+planetDescription = "An arid world covered in badlands and ruins of sprawling mega cities. A nuclear exchange over 60 years ago reduced this planet’s population to a state of techno-barbarism. The livable parts of the planets are split between roaming bands of raiders."
+missionDescription = "yes"
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 15
+description = "You have landed several miles from the city border. You are currenlty traveling through the badlands."
+enemies = [ [ 1, 1, "res://Resources/Portraits/Enemies/f_14.png" ], [ 1, 1, "res://Resources/Portraits/Enemies/m_09.png" ] ]
+
+[node name="Step2" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 4
+amount = 4
+description = "You have reached the city. You decided to ask locals for directions."
+enemies = [ [  ], [  ], [  ] ]
+
+[node name="Step3" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 2
 amount = 8
+description = "You have located the vault, but in order to get inside  you need to turn on the emenrgency power systems."
+enemies = [ [ 2, 2, "res://Resources/Portraits/Enemies/cultist_02.png" ], [ 2, 2, "res://Resources/Portraits/Enemies/cultist_04.png" ], [ 2, 2, "res://Resources/Portraits/Enemies/cultist_04.png" ] ]
+
+[node name="Step4" type="Node" parent="."]
+script = ExtResource( 1 )
+description = "The door is now open, but the automted defese systems have been activated. You need to fight them."
+enemies = [ [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ], [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]
+
+[node name="Step5" type="Node" parent="."]
+script = ExtResource( 1 )
+stepType = 1
+amount = 4
+description = "With the defense systems neutralized and the arifact in hand you are getting ready for extraction."
+enemies = [ [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ], [ 3, 3, "res://Resources/Portraits/Enemies/living_armor_01.png" ] ]

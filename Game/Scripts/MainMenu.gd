@@ -3,6 +3,9 @@ extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$LayoutV/LayoutH/Audio/Music/Music.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	$LayoutV/LayoutH/Audio/Sound/Sound.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+	$LayoutV/LayoutH/Audio/Effects/Effects.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects"))
 	pass # Replace with function body.
 
 
