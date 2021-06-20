@@ -39,6 +39,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="RoomLayer" type="Node2D" parent="."]
+visible = false
 
 [node name="LevelSelection" type="Button" parent="RoomLayer"]
 margin_left = 536.0
