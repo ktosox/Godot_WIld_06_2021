@@ -22,6 +22,7 @@ But it probably won't be as smooth. Our contact is a criminal so he might to try
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
+amount = 1
 backgroundType = "res://Resources/Backgrounds/city-6281029_1280.jpg"
 description = "A bunch of half drunken thugs decided to attack you and try to rob you. Show them it was a mistake!"
 enemies = [ [ 2, 5, "res://Resources/Portraits/Enemies/m_38.png" ], [ 2, 6, "res://Resources/Portraits/Enemies/m_20.png" ], [ 2, 5, "res://Resources/Portraits/Enemies/m_38.png" ] ]

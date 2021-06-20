@@ -20,6 +20,7 @@ And of course we try not to be eaten by plants and crazed bugs along the way."
 
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
+amount = 1
 backgroundType = "res://Resources/Backgrounds/jungle.jpeg"
 description = "As you beam down to the planet, the oversized worms and animals attack you!"
 enemies = [ [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ], [ 4, 9, "res://Resources/Portraits/Enemies/insect_01.png" ] ]
