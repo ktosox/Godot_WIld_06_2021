@@ -23,17 +23,21 @@ Any questions?"
 [node name="Step1" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 7
+backgroundType = "res://Resources/Backgrounds/moon.png"
 description = "You beam down from your ship and see the temple before you. The beatiful neons and the cold aura interest creating a beatiful image as you walk towards it."
 stepFinishedBlurb = "You arrive before the temple"
 
 [node name="Step2" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/moon.png"
 description = "As expected the guarding cultists are not friendly. Prepare to engage!"
 enemies = [ [ 5, 15, "res://Resources/Portraits/Enemies/cultist_01.png" ], [ 5, 15, "res://Resources/Portraits/Enemies/cultist_01.png" ] ]
 stepFinishedBlurb = "You managed to beat down the cultist cyborgs"
 
 [node name="Step3" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/sci-fi-4576494_1280.jpg"
 description = "As you enter the temple more cultists attack! "
 enemies = [ [ 5, 15, "res://Resources/Portraits/Enemies/cultist_01.png" ], [ 7, 21, "res://Resources/Portraits/Enemies/cultist_04.png" ], [ 5, 15, "res://Resources/Portraits/Enemies/cultist_01.png" ] ]
 stepFinishedBlurb = "More cultists fall before you"
@@ -42,6 +46,7 @@ stepFinishedBlurb = "More cultists fall before you"
 script = ExtResource( 1 )
 stepType = 2
 amount = 24
+backgroundType = "res://Resources/Backgrounds/sci-fi-4576494_1280.jpg"
 description = "You walk deeper into the temple, which resembles a maze. It won't be easy to navigate into the vault. Time to hack nearby map panel and plan out your route. And best to do it quickly, as you hear more cultists are approaching."
 enemies = [ [ 5, 15, "res://Resources/Portraits/Enemies/cultist_01.png" ], [ 7, 21, "res://Resources/Portraits/Enemies/cultist_04.png" ], [ 5, 15, "res://Resources/Portraits/Enemies/cultist_01.png" ] ]
 stepFinishedBlurb = "You hacked the panel and downloaded the map."
@@ -49,11 +54,14 @@ stepFinishedBlurb = "You hacked the panel and downloaded the map."
 [node name="Step5" type="Node" parent="."]
 script = ExtResource( 1 )
 stepType = 1
+amount = 10
+backgroundType = "res://Resources/Backgrounds/sci-fi-4576494_1280.jpg"
 description = "You make your way through the tunnels according to your map"
 stepFinishedBlurb = "You arrive at the doors to the vault"
 
 [node name="Step6" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
 description = "Before the doors you a squadron of the cultists. But those look nothing like humans, they fully replaced all their organic matter with cybernetic parts."
 enemies = [ [ 8, 28, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 8, 30, "res://Resources/Portraits/Enemies/robot_05.png" ] ]
 stepFinishedBlurb = "You defeated the used to be human cultists."
@@ -62,6 +70,7 @@ stepFinishedBlurb = "You defeated the used to be human cultists."
 script = ExtResource( 1 )
 stepType = 2
 amount = 30
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
 description = "More of the fully cybernetic cultists are running towards you. Hack the doors and get inside the vault stat!"
 enemies = [ [ 8, 25, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 8, 30, "res://Resources/Portraits/Enemies/robot_05.png" ], [ 8, 25, "res://Resources/Portraits/Enemies/robot_04.png" ] ]
 stepFinishedBlurb = "You unlocked the doors."
@@ -70,12 +79,14 @@ stepFinishedBlurb = "You unlocked the doors."
 script = ExtResource( 1 )
 stepType = 3
 amount = 32
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
 description = "As you enter the vault you see what you were after. The key, but it is inside some kind of alien vessel. You will need to solve some kind of puzzle to unlock it."
 enemies = [ [ 8, 30, "res://Resources/Portraits/Enemies/robot_05.png" ], [ 8, 30, "res://Resources/Portraits/Enemies/robot_05.png" ] ]
 stepFinishedBlurb = "You got the key"
 
 [node name="Step9" type="Node" parent="."]
 script = ExtResource( 1 )
+backgroundType = "res://Resources/Backgrounds/futuristic-temple-4608394_1280.jpg"
 description = "With the key in hand, you are ready to leg it. But suddenly in vault a group of high priests arrive. This fight won't be a piece of cake."
 enemies = [ [ 10, 20, "res://Resources/Portraits/Enemies/robot_04.png" ], [ 8, 40, "res://Resources/Portraits/Enemies/robot_02.png" ], [ 10, 20, "res://Resources/Portraits/Enemies/robot_04.png" ] ]
 stepFinishedBlurb = "You managed to scrape the victory over the priests and quickly leg it out of there, as the hordes of angry cultits run after you. In the end you manage to get into spaceship mostly unharmed."
