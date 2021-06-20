@@ -8,7 +8,7 @@ var abortReady = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Engine.time_scale = 10.0
+	Engine.time_scale = 1.0
 	pass # Replace with function body.
 
 
