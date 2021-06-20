@@ -5,6 +5,7 @@
 
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
+id = 6
 name = "Bulan"
 pathToImage = "res://Resources/Sprites/Planets/Craters.png"
 importantPoints = "- a lifeless moon

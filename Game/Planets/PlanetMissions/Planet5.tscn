@@ -5,6 +5,7 @@
 
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
+id = 5
 name = "Madriu"
 pathToImage = "res://Resources/Sprites/Planets/Jungle.png"
 importantPoints = "- thick, lively jungles

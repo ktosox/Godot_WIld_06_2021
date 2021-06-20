@@ -5,6 +5,7 @@
 
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
+id = 1
 name = "Planet1"
 pathToImage = "res://Resources/Sprites/Planets/Arid.png"
 importantPoints = "- has much rocks
