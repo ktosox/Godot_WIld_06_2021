@@ -23,6 +23,7 @@ __meta__ = {
 [node name="LayoutV" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 7.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,20 +43,20 @@ valign = 1
 [node name="LayoutH" type="HBoxContainer" parent="LayoutV"]
 margin_top = 241.0
 margin_right = 1280.0
-margin_bottom = 720.0
+margin_bottom = 713.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Control" type="Control" parent="LayoutV/LayoutH"]
 margin_right = 197.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="Buttons" type="VBoxContainer" parent="LayoutV/LayoutH"]
 margin_left = 201.0
 margin_right = 596.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 
 [node name="Control2" type="Control" parent="LayoutV/LayoutH/Buttons"]
@@ -68,63 +69,63 @@ size_flags_stretch_ratio = 0.2
 margin_left = 0.0
 margin_top = 27.0
 margin_right = 395.0
-margin_bottom = 147.0
+margin_bottom = 145.0
 custom_fonts/font = ExtResource( 5 )
 text = "START GAME"
 
 [node name="Control3" type="Control" parent="LayoutV/LayoutH/Buttons"]
-margin_top = 151.0
+margin_top = 149.0
 margin_right = 395.0
-margin_bottom = 175.0
+margin_bottom = 173.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Credits" parent="LayoutV/LayoutH/Buttons" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 179.0
+margin_top = 177.0
 margin_right = 395.0
-margin_bottom = 299.0
+margin_bottom = 294.0
 custom_fonts/font = ExtResource( 5 )
 text = "CREDITS"
 
 [node name="Control4" type="Control" parent="LayoutV/LayoutH/Buttons"]
-margin_top = 303.0
+margin_top = 298.0
 margin_right = 395.0
-margin_bottom = 327.0
+margin_bottom = 322.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Quit" parent="LayoutV/LayoutH/Buttons" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 331.0
+margin_top = 326.0
 margin_right = 395.0
-margin_bottom = 451.0
+margin_bottom = 444.0
 custom_fonts/font = ExtResource( 5 )
 text = "QUIT"
 
 [node name="Control" type="Control" parent="LayoutV/LayoutH/Buttons"]
-margin_top = 455.0
+margin_top = 448.0
 margin_right = 395.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Control2" type="Control" parent="LayoutV/LayoutH"]
 margin_left = 600.0
 margin_right = 679.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Audio" type="VBoxContainer" parent="LayoutV/LayoutH"]
 margin_left = 683.0
 margin_right = 1078.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 
 [node name="Sound" type="VBoxContainer" parent="LayoutV/LayoutH/Audio"]
 margin_right = 395.0
-margin_bottom = 157.0
+margin_bottom = 154.0
 size_flags_vertical = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -153,9 +154,9 @@ __meta__ = {
 }
 
 [node name="Effects" type="VBoxContainer" parent="LayoutV/LayoutH/Audio"]
-margin_top = 161.0
+margin_top = 158.0
 margin_right = 395.0
-margin_bottom = 318.0
+margin_bottom = 313.0
 size_flags_vertical = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -184,9 +185,9 @@ __meta__ = {
 }
 
 [node name="Music" type="VBoxContainer" parent="LayoutV/LayoutH/Audio"]
-margin_top = 322.0
+margin_top = 317.0
 margin_right = 395.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_vertical = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,7 +218,7 @@ __meta__ = {
 [node name="Control3" type="Control" parent="LayoutV/LayoutH"]
 margin_left = 1082.0
 margin_right = 1280.0
-margin_bottom = 479.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
