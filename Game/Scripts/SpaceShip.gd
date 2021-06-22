@@ -1,10 +1,5 @@
 extends Node2D
 
-var missionsBeaten = 0
-
-var selectedPlanet = -1
-
-var abortReady = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

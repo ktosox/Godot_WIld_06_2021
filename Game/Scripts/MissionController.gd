@@ -1,21 +1,9 @@
 extends Control
 
 
-	#Fight - 0
-	#Time - 1
-	#Tech - 2
-	#Xeno - 3
-	#People - 4
-
-
-	#Passive,0
-	#Action,1
-	#Attack,2
-	#Defense3
-
 var characterScene = preload("res://MissionScene/Character.tscn")
 
-var crewPanel = preload("res://MissionScene/CrewPanel.tscn")
+
 
 var steps = [1,2]
 
@@ -25,7 +13,7 @@ var isInCombat = false
 
 var missionStarted = false
 
-var selectedCrew = []
+
 
 var enemyStats = []
 
@@ -42,7 +30,7 @@ func _process(delta):
 
 
 func load_next_step():
-	if get_parent().abortReady :
+	if GS.abortReady :
 		$MissionScreen/LayoutH/DetailMenu/Recall.visible = true
 	else:
 		$MissionScreen/LayoutH/DetailMenu/Recall.visible = false
@@ -67,10 +55,8 @@ func load_next_step():
 	if steps[currentStep].stepType == 0 :
 		start_encounter()
 	#add one once step is loaded
-
 		
 	pass
-
 
 
 func select_action(chara): 
@@ -155,40 +141,9 @@ func check_for_combat_end():
 	pass
 
 
-func load_crew_selection():
-	$MissionScreen.visible = false
-	$CrewSelection.visible = true
-	if get_parent().selectedPlanet == -1:
-		$CrewSelection/ConfirmationScreen/Label.text = "please first select a mission"
-		return
-	else:
-		$CrewSelection/ConfirmationScreen/Label.text = "please select 3 crewmates \n to send on this mission"
-		
-	if($CrewSelection/CrewBox/VBoxContainer.get_child_count()<2):
-		for p in CrewSingleton.crewmates.size() :
-			if CrewSingleton.crewmates[p].isOwned:
-				var newPanel = crewPanel.instance()
-				newPanel.load_crew(p)
-				newPanel.manager = self
-				$CrewSelection/CrewBox/VBoxContainer.add_child(newPanel)
-				$CrewSelection/CrewBox/VBoxContainer.move_child($CrewSelection/CrewBox/VBoxContainer.get_node("EmptySpace"),$CrewSelection/CrewBox/VBoxContainer.get_child_count())
-	pass
-
-func toggleCrew(who):
-	if who.selected == false and selectedCrew.size()<3:
-		who.select()
-		selectedCrew.push_back(who.ID)
-	elif who.selected == true :
-		who.deselect()
-		selectedCrew.erase(who.ID)
-		$CrewSelection/ConfirmationScreen/StartMission.visible = false
-	if selectedCrew.size() == 3 :
-		$CrewSelection/ConfirmationScreen/StartMission.visible = true
-	pass
-
 func start_mission():
 	$MissionScreen/EncounterTimer.start()
-	var planetID = get_parent().selectedPlanet
+	var planetID = GS.selectedPlanet
 	if planetID == -1 :
 		return
 		print("can't start since no planet selected")
@@ -198,6 +153,7 @@ func start_mission():
 	$CrewSelection.visible = false
 	$MissionScreen.visible = true
 	var order = 0
+	var selectedCrew = $CrewSelection.get_selected_crew()
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
 		c.load_character(selectedCrew[order])
 		order +=1
@@ -246,9 +202,9 @@ func mission_complete():
 	CurrencySingleton.currentCurrency+=100
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
 		c.end_action()
-	get_parent().abortReady = true
-	get_parent().missionsBeaten += 1
-	get_parent().selectedPlanet = -1
+	GS.abortReady = true
+	GS.missionsBeaten += 1
+	GS.selectedPlanet = -1
 	$MissionScreen/EncounterTimer.stop()
 	missionStarted = false
 	$WinScreen.visible = true
@@ -266,7 +222,7 @@ func abort_mission():
 	missionStarted = false
 	$AbortScreen.visible = true
 	$MissionScreen/EncounterTimer.stop()
-	get_parent().abortReady = false
+	GS.abortReady = false
 	missionStarted = false
 	pass
 
@@ -280,7 +236,7 @@ func reset_mission_scene():
 		c.end_action()
 	isInCombat = false
 	currentStep = -1
-	selectedCrew = []
+	$CrewSelection.reset_crew()
 	$CrewSelection.visible = true
 	$MissionScreen.visible = false
 	pass
@@ -301,15 +257,10 @@ func _on_Character3_action(chara):
 
 
 
-func _on_StartMission_pressed():
-	start_mission()
-	pass # Replace with function body.
-
 
 func _on_MissionController_visibility_changed():
 	if !missionStarted :
-		load_crew_selection()
-	else:
+		$CrewSelection.load_crew_selection()
 		$CrewSelection.visible = true
 		$MissionScreen.visible = false
 	pass # Replace with function body.

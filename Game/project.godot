@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 CrewSingleton="*res://Crew/CrewSingleton.tscn"
 PlanetsSingleton="*res://Planets/PlanetsSingleton.tscn"
 CurrencySingleton="*res://Currency/CurrencySingleton.tscn"
+GS="*res://GameSingelton.tscn"
 
 [display]
 

@@ -11,7 +11,7 @@ func _ready():
 	pass # Replace with function body.
 
 func load_card_data():
-	var cardID = get_parent().missionsBeaten*3
+	var cardID = GS.missionsBeaten*3
 	for z in $VBoxContainer/SelectionCards.get_children() :
 		cardID+=1
 		z.load_card(cardID)
@@ -25,7 +25,7 @@ func select_level(nr):
 
 func confirm_selection():
 	print("player selected planet "+String(selectedPlanet))
-	get_parent().selectedPlanet = selectedPlanet
+	GS.selectedPlanet = selectedPlanet
 	$VBoxContainer/TitleText/ConfirmSelection.visible = false
 	$VBoxContainer/TitleText/CancelSelection.visible = false
 	$VBoxContainer/TitleText/Label.text = "Course set! Please go to the mission screen"
@@ -90,6 +90,6 @@ func _on_LevelSelection_visibility_changed():
 
 	if visible == true :
 		load_card_data()
-		if get_parent().selectedPlanet != selectedPlanet:
+		if GS.selectedPlanet != selectedPlanet:
 			change_to_selection()
 	pass # Replace with function body.
