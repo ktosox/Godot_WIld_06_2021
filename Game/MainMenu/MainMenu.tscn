@@ -23,6 +23,7 @@ __meta__ = {
 [node name="LayoutV" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 7.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -30,100 +31,102 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="LayoutV"]
 margin_right = 1280.0
-margin_bottom = 150.0
+margin_bottom = 237.0
 rect_min_size = Vector2( 0, 150 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.658824, 0.560784, 0.560784, 1 )
-text = "GAME NAME"
+text = "Space Adventure 
+Time"
 align = 1
 valign = 1
 
 [node name="LayoutH" type="HBoxContainer" parent="LayoutV"]
-margin_top = 154.0
+margin_top = 241.0
 margin_right = 1280.0
-margin_bottom = 720.0
+margin_bottom = 713.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Control" type="Control" parent="LayoutV/LayoutH"]
 margin_right = 197.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="Buttons" type="VBoxContainer" parent="LayoutV/LayoutH"]
 margin_left = 201.0
 margin_right = 596.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 
 [node name="Control2" type="Control" parent="LayoutV/LayoutH/Buttons"]
 margin_right = 395.0
-margin_bottom = 28.0
+margin_bottom = 32.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Start" parent="LayoutV/LayoutH/Buttons" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 32.0
+margin_top = 36.0
 margin_right = 395.0
-margin_bottom = 175.0
+margin_bottom = 197.0
 custom_fonts/font = ExtResource( 5 )
 text = "START GAME"
 
 [node name="Control3" type="Control" parent="LayoutV/LayoutH/Buttons"]
-margin_top = 179.0
+margin_top = 201.0
 margin_right = 395.0
-margin_bottom = 207.0
+margin_bottom = 233.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Credits" parent="LayoutV/LayoutH/Buttons" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 211.0
+margin_top = 237.0
 margin_right = 395.0
-margin_bottom = 354.0
+margin_bottom = 399.0
 custom_fonts/font = ExtResource( 5 )
 text = "CREDITS"
 
 [node name="Control4" type="Control" parent="LayoutV/LayoutH/Buttons"]
-margin_top = 358.0
+margin_top = 403.0
 margin_right = 395.0
-margin_bottom = 386.0
+margin_bottom = 435.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Quit" parent="LayoutV/LayoutH/Buttons" instance=ExtResource( 4 )]
+visible = false
 margin_left = 0.0
-margin_top = 390.0
+margin_top = 326.0
 margin_right = 395.0
-margin_bottom = 533.0
+margin_bottom = 444.0
 custom_fonts/font = ExtResource( 5 )
 text = "QUIT"
 
 [node name="Control" type="Control" parent="LayoutV/LayoutH/Buttons"]
-margin_top = 537.0
+margin_top = 439.0
 margin_right = 395.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Control2" type="Control" parent="LayoutV/LayoutH"]
 margin_left = 600.0
 margin_right = 679.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Audio" type="VBoxContainer" parent="LayoutV/LayoutH"]
 margin_left = 683.0
 margin_right = 1078.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 
 [node name="Sound" type="VBoxContainer" parent="LayoutV/LayoutH/Audio"]
 margin_right = 395.0
-margin_bottom = 186.0
+margin_bottom = 154.0
 size_flags_vertical = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -152,9 +155,9 @@ __meta__ = {
 }
 
 [node name="Effects" type="VBoxContainer" parent="LayoutV/LayoutH/Audio"]
-margin_top = 190.0
+margin_top = 158.0
 margin_right = 395.0
-margin_bottom = 376.0
+margin_bottom = 313.0
 size_flags_vertical = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,9 +186,9 @@ __meta__ = {
 }
 
 [node name="Music" type="VBoxContainer" parent="LayoutV/LayoutH/Audio"]
-margin_top = 380.0
+margin_top = 317.0
 margin_right = 395.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_vertical = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -216,7 +219,7 @@ __meta__ = {
 [node name="Control3" type="Control" parent="LayoutV/LayoutH"]
 margin_left = 1082.0
 margin_right = 1280.0
-margin_bottom = 566.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
@@ -234,6 +237,19 @@ bus = "Effects"
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 bus = "Effects"
+
+[node name="CreditsText" type="Label" parent="."]
+margin_left = 822.858
+margin_top = 119.385
+margin_right = 1217.86
+margin_bottom = 169.385
+custom_fonts/font = ExtResource( 3 )
+text = "Made by Ktosox 
+& Ikuti"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="LayoutV/LayoutH/Buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="LayoutV/LayoutH/Buttons/Credits" to="." method="_on_Credits_pressed"]
