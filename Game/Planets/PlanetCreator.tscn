@@ -1,0 +1,167 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/PlanetCreator.gd" type="Script" id=1]
+
+[node name="PlanetCreator" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadPlanet" type="LineEdit" parent="."]
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 82.0
+margin_bottom = 64.0
+text = "dsad"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 231.0
+margin_bottom = 30.0
+text = "which planet do you wish to load?"
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 344.0
+margin_top = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ID" type="HBoxContainer" parent="Layout"]
+margin_right = 936.0
+margin_bottom = 37.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Title" type="Label" parent="Layout/ID"]
+margin_top = 11.0
+margin_right = 155.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "ID"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="TextEdit" parent="Layout/ID"]
+margin_left = 159.0
+margin_right = 936.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Name" type="HBoxContainer" parent="Layout"]
+margin_top = 41.0
+margin_right = 936.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Title" type="Label" parent="Layout/Name"]
+margin_top = 12.0
+margin_right = 155.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="TextEdit" parent="Layout/Name"]
+margin_left = 159.0
+margin_right = 936.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+
+[node name="Points" type="HBoxContainer" parent="Layout"]
+margin_top = 83.0
+margin_right = 936.0
+margin_bottom = 271.0
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/Points"]
+margin_top = 87.0
+margin_right = 155.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "Points"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="TextEdit" parent="Layout/Points"]
+margin_left = 159.0
+margin_right = 936.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+
+[node name="PlanetDescription" type="HBoxContainer" parent="Layout"]
+margin_top = 275.0
+margin_right = 936.0
+margin_bottom = 463.0
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/PlanetDescription"]
+margin_top = 87.0
+margin_right = 155.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "Planet"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="TextEdit" parent="Layout/PlanetDescription"]
+margin_left = 159.0
+margin_right = 936.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+wrap_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MissionDescription" type="HBoxContainer" parent="Layout"]
+margin_top = 467.0
+margin_right = 936.0
+margin_bottom = 656.0
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/MissionDescription"]
+margin_top = 87.0
+margin_right = 155.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "Mission"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="TextEdit" parent="Layout/MissionDescription"]
+margin_left = 159.0
+margin_right = 936.0
+margin_bottom = 189.0
+size_flags_horizontal = 3
+wrap_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="text_entered" from="LoadPlanet" to="." method="_on_LoadPlanet_text_entered"]
