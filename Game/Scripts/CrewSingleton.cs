@@ -16,7 +16,7 @@ public class CrewSingleton : Node
 
 			while(filename!=""){
 				if(!dir.CurrentIsDir()){
-					var path = charactersDirPath + "/" + filename;
+					var path = charactersDirPath  + filename;
 					var crewmate = (PackedScene)GD.Load(path);
 					crewmates.Add((Crewmate)crewmate.Instance());
 				}

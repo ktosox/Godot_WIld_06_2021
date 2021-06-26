@@ -16,7 +16,7 @@ public class PlanetsSingleton : Node
 
 			while(filename!=""){
 				if(!dir.CurrentIsDir()){
-					var path = PlanetsDirPath + "/" + filename;
+					var path = PlanetsDirPath  + filename;
 					var planet = (PackedScene)GD.Load(path);
 					planets.Add((Planet)planet.Instance());
 				}
