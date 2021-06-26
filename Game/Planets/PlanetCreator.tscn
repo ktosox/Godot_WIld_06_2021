@@ -58,6 +58,7 @@ margin_left = 159.0
 margin_right = 936.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
+readonly = true
 __meta__ = {
 "_editor_description_": ""
 }
@@ -164,4 +165,16 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Button" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 176.0
+margin_right = 107.0
+margin_bottom = 196.0
+rect_scale = Vector2( 2, 2 )
+text = "SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="text_entered" from="LoadPlanet" to="." method="_on_LoadPlanet_text_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

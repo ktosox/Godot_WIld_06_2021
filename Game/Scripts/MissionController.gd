@@ -266,10 +266,6 @@ func _on_MissionController_visibility_changed():
 	pass # Replace with function body.
 
 
-func _on_Return_pressed():
-	visible = false
-	pass # Replace with function body.
-
 
 func _on_EncounterTimer_timeout():
 	if !isInCombat:

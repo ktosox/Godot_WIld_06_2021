@@ -4,7 +4,6 @@
 [ext_resource path="res://MissionScene/CrewSelection.gd" type="Script" id=2]
 
 [node name="CrewSelection" type="HBoxContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -59,7 +58,7 @@ size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CrewBox"]
-margin_right = 629.0
+margin_right = 617.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 0, 1000 )
 size_flags_horizontal = 3
@@ -78,4 +77,5 @@ margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 15, 0 )
 
+[connection signal="pressed" from="ConfirmationScreen/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="ConfirmationScreen/StartMission" to="." method="_on_StartMission_pressed"]

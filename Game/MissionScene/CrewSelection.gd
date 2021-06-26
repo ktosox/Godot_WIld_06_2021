@@ -52,3 +52,10 @@ func _on_StartMission_pressed():
 	else:
 		print("error, cant start mission as parent scene has no 'start_mission' method")
 	pass # Replace with function body.
+
+
+
+
+func _on_Return_pressed():
+	get_parent().visible = false
+	pass # Replace with function body.
