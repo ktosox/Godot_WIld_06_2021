@@ -39,7 +39,7 @@ func _on_Quit_pressed():
 
 
 func _on_Credits_pressed():
-	$CreditsText.visible=!$CreditsText.visible
+	$Credits.visible = true
 	if $ButtonSFX.playing == false :
 		$ButtonSFX.play()
 	pass # Replace with function body.
@@ -50,4 +50,9 @@ func _on_Start_pressed():
 	visible = false
 	if $ButtonSFX.playing == false :
 		$ButtonSFX.play()
+	pass # Replace with function body.
+
+
+func _on_Return_pressed():
+	$Credits.visible = false
 	pass # Replace with function body.
