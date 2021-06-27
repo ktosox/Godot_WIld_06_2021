@@ -13,7 +13,7 @@ func load_card(ID):
 	$LayoutV/Name.text = PlanetsSingleton.GetPlanet(ID).name
 #	$LayoutV/Planet.texture = load(PlanetsSingleton.GetPlanet(ID).pathToImage)
 	var planetAnim = $LayoutV/Planet/Control/AnimatedSprite.frames.get_animation_names()
-	planetAnim = planetAnim[randi()%planetAnim.size()]
+	planetAnim = planetAnim[PlanetsSingleton.GetPlanet(ID).planetType]
 	$LayoutV/Planet/Control/AnimatedSprite.animation = planetAnim
 	$LayoutV/Control3/Minutes.text = PlanetsSingleton.GetPlanet(ID).importantPoints
 	pass

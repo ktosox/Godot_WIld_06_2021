@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MissionScene/CrewCharacter.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Animate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Action:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 2, 0.5, -0.5 ),
+"update": 0,
+"values": [ 0.0, 8.0, 10.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "action"
+} ]
+}
+
+[node name="Character" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1152.0
+margin_bottom = -592.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 6
+size_flags_vertical = 6
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="ProgressBar" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 142.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="ProgressBar" parent="."]
+modulate = Color( 0, 1, 0.552941, 1 )
+margin_top = 144.0
+margin_right = 128.0
+margin_bottom = 158.0
+max_value = 10.0
+step = 0.1
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimateAction" type="AnimationPlayer" parent="."]
+playback_speed = 0.4
+anims/Animate = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.188235, 0.188235, 0.541176 )

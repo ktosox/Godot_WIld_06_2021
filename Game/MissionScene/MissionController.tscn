@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MissionController.gd" type="Script" id=1]
 [ext_resource path="res://Resources/UI/MainPanel02.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/Fonts/stanberry/Stanberry.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://MissionScene/CrewSelection.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MissionScene/BobTheFireworksNode.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -24,6 +25,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BobTheFireworksNode" parent="." instance=ExtResource( 9 )]
 
 [node name="BubbleTextGenerator" parent="." instance=ExtResource( 4 )]
 z_index = 5

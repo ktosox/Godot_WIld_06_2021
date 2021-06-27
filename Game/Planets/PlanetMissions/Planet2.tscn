@@ -8,6 +8,7 @@ script = ExtResource( 2 )
 id = 2
 name = "Findar II"
 pathToImage = "res://Resources/Sprites/Planets/Desolate.png"
+planetType = 4
 importantPoints = "- aggresive fauna
 - no civilised population"
 planetDescription = "An ocean world with multiple island chains. Most of the land surface is covered in dense jungles filled with aggressive wildlife. Scans suggest a handful of underground structures but no visible signs of civilization. "

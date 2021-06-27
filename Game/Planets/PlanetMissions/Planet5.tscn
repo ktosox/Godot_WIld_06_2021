@@ -8,6 +8,7 @@ script = ExtResource( 2 )
 id = 5
 name = "Madriu"
 pathToImage = "res://Resources/Sprites/Planets/Jungle.png"
+planetType = 3
 importantPoints = "- thick, lively jungles
 - used to have reaserch facility, that is now completly abandoned
 - both plant and animal life will want a piece of you"

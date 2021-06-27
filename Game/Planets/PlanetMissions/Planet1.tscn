@@ -8,6 +8,7 @@ script = ExtResource( 2 )
 id = 1
 name = "Belwyn"
 pathToImage = "res://Resources/Sprites/Planets/Arid.png"
+planetType = 5
 importantPoints = "- rocky and arid
 - population is very aggresive"
 planetDescription = "An arid world covered in badlands and ruins of sprawling mega cities. A nuclear exchange over 60 years ago reduced this planet’s population to a state of techno-barbarism. The livable parts of the planets are split between roaming bands of raiders."
