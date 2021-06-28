@@ -17,7 +17,7 @@ func fire(start:Vector2,end:Vector2,color = Color(1,1,1,1),count=5):
 		newStar.curve.add_point(end-start,Vector2(),smallRand())
 		for n in 1+randi()%2 :
 			var middle = newStar.curve.interpolate_baked(0.1 + n*0.05)
-			newStar.curve.add_point(middle+(10*smallRand().normalized()),smallRand(),smallRand(),1)
+			newStar.curve.add_point(middle+Vector2(80,0).rotated(randf()*2*PI),smallRand(),smallRand(),1)
 		newStar.modulate = color
 		add_child(newStar)
 	pass

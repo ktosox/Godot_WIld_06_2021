@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MissionScene/EnemyCharacter.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Portraits/Enemies/orc_02.png" type="Texture" id=2]
+[ext_resource path="res://Resources/UI/Button02.png" type="Texture" id=3]
+[ext_resource path="res://Resources/light_bar_shader.shader" type="Shader" id=4]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Animate"
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/modulate = Color( 1, 1, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/modulate = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Action:value")
@@ -40,7 +50,9 @@ margin_bottom = -592.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 6
 size_flags_vertical = 6
+texture = ExtResource( 2 )
 expand = true
+flip_h = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,21 +60,23 @@ __meta__ = {
 
 [node name="Health" type="ProgressBar" parent="."]
 modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 1 )
 margin_top = 128.0
 margin_right = 128.0
 margin_bottom = 142.0
 value = 100.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Action" type="ProgressBar" parent="."]
 modulate = Color( 0, 1, 0.552941, 1 )
+material = SubResource( 2 )
 margin_top = 144.0
 margin_right = 128.0
 margin_bottom = 158.0
 max_value = 10.0
-step = 0.1
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,10 +84,27 @@ __meta__ = {
 
 [node name="AnimateAction" type="AnimationPlayer" parent="."]
 playback_speed = 0.4
-anims/Animate = SubResource( 1 )
+anims/Animate = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.188235, 0.188235, 0.188235, 0.541176 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 6.0
+margin_bottom = 36.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_editor_description_": ""
+}

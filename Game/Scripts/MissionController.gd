@@ -13,18 +13,23 @@ var isInCombat = false
 
 var missionStarted = false
 
+var paused = false
 
-
-var enemyStats = []
 
 func _ready():
 	#load_next_step()
 	pass # Replace with function body.
 
 func _process(delta):
+	if paused :
+		return
 	if missionStarted:
-		if !isInCombat :
-			$MissionScreen/ProgressBar.value += delta
+		if steps[currentStep].stepType == 1 and !isInCombat:
+			$MissionScreen/ProgressBar.value+=delta
+		else:
+			crew_tick(delta)
+		if isInCombat :
+			enemy_tick(delta)
 		if $MissionScreen/ProgressBar.value >= $MissionScreen/ProgressBar.max_value :
 			load_next_step()
 
@@ -39,13 +44,8 @@ func load_next_step():
 	if(currentStep+1 > steps.size()):
 		mission_complete()
 		return
-	# call #start_action() on Crew if is needed
-		
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		if steps[currentStep].stepType == 1 :
-			c.end_action()
-		else:
-			c.start_action()
+
+
 	print("starting step "+String(currentStep))
 	
 	#logic for loading mission data goes here
@@ -70,9 +70,35 @@ func select_action(chara):
 
 	pass
 
+func crew_tick(delta):
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
+		if c.isAlive :
+			c.get_node("Action").value+=delta
+			if c.get_node("Action").value == c.get_node("Action").max_value :
+				select_action(c)
+				c.get_node("Action").value = 0
+	pass
+
+func enemy_tick(delta):
+	
+	for e in $MissionScreen/LayoutH/Background/Layout/Badies.get_children():
+		if e.isAlive :
+			e.get_node("Action").value+=delta
+			if e.get_node("Action").value == e.get_node("Action").max_value :
+				enemy_combat(e)
+				e.get_node("Action").value = 0
+	pass
+
+
+func animate_attack(start,end,color):
+	paused = true
+	$FireworksTimer.start()
+	$BobTheFireworksNode.fire(start,end,color,3+randi()%2)
+	pass
+
 func mission_progress(chara):
 	var progress = 1 + randi()%2
-	var keyStat
+#	var keyStat
 	match steps[currentStep].stepType:
 		1:
 			progress = 0
@@ -110,25 +136,19 @@ func crew_combat(chara):
 	else:
 		defender = defender[randi()%defender.size()] #select one defender
 	defender.get_node("Health").value-=damage
-	if defender.get_node("Health").value <= 0 :
-		defender.queue_free()
-		call_deferred("check_for_combat_end")
+	animate_attack(chara.rect_global_position,defender.rect_global_position,ColorN("green"))
+	
 
 
 func enemy_combat(who):
-	var damage = who.enemyDmg
+
+	var damage = who.damage
+	print("processing enemy attack for node ",who," with damage ",damage)
 	var c = $MissionScreen/LayoutH/Background/Layout/Crew.get_children()
 	c = c[randi()%c.size()]
-	CrewSingleton.GetCrewmate(c.ID).currentHealth-=damage
+#	CrewSingleton.GetCrewmate(c.ID).currentHealth-=damage
 	c.get_node("Health").value-=damage
-	if c.get_node("Health").value <1 :
-		c.faint()
-	var crewAlive = 0
-	for b in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
-		if b.isAlive :
-			crewAlive+=1
-	if crewAlive <1:
-		mission_lost()
+	animate_attack(who.rect_global_position,c.rect_global_position,ColorN("red"))
 	#acceess the crew hp by the singleton
 	# updated hp on crew panel
 	# check for crew death
@@ -145,8 +165,8 @@ func start_mission():
 	$MissionScreen/EncounterTimer.start()
 	var planetID = GS.selectedPlanet
 	if planetID == -1 :
-		return
 		print("can't start since no planet selected")
+		return
 	missionStarted = true
 	steps = PlanetsSingleton.GetPlanet(planetID).get_children()
 	
@@ -156,28 +176,29 @@ func start_mission():
 	var selectedCrew = $CrewSelection.get_selected_crew()
 	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
 		c.load_character(selectedCrew[order])
+
 		order +=1
+	for e in $MissionScreen/LayoutH/Background/Layout/Badies.get_children():
+		e.visible = false
 	load_next_step()
 	
 	pass
 
 func start_encounter():
 	isInCombat = true
-	#$MissionProgressTimer.stop()
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children():
-		c.start_action()
-	#add badies
-	enemyStats = steps[currentStep].enemies
+	var enemyStats = steps[currentStep].enemies
+
+	var count = 0
 	for b in enemyStats:
-		var enemyChar = characterScene.instance()
-#		enemyChar.get_node("Action").visible = false
-		enemyChar.start_action()
-		enemyChar.get_node("AnimateAction").playback_speed = 0.35 + randf() * 0.25
+		var enemyChar = $MissionScreen/LayoutH/Background/Layout/Badies.get_child(count)
+		enemyChar.visible = true
+		enemyChar.isAlive = true
+#		enemyChar.get_node("AnimateAction").playback_speed = 0.35 + randf() * 0.25
 		enemyChar.get_node("Health").max_value = b[1]
-		enemyChar.enemyDmg = b[0]
+		enemyChar.get_node("Health").value = b[1]
+		enemyChar.damage = b[0]
 		enemyChar.texture = load(b[2])
-		enemyChar.manager = self
-		$MissionScreen/LayoutH/Background/Layout/Badies.add_child(enemyChar)
+		count+=1
 
 	# don't forget to attach the signals from enemies so that the enemy combat function is called
 	# plan B - set the controller on each character scene and replace the signals with a call to this scene
@@ -191,7 +212,8 @@ func end_encounter():
 	if steps[currentStep].stepType == 1 :
 			for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
 				c.end_action()
-		
+			for e in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
+				e.end_action()
 	$MissionScreen/EncounterTimer.start()
 	pass
 
@@ -241,19 +263,6 @@ func reset_mission_scene():
 	$MissionScreen.visible = false
 	pass
 
-func _on_Character1_action(chara):
-	select_action(chara)
-	pass # Replace with function body.
-
-
-func _on_Character2_action(chara):
-	select_action(chara)
-	pass # Replace with function body.
-
-
-func _on_Character3_action(chara):
-	select_action(chara)
-	pass # Replace with function body.
 
 
 
@@ -294,4 +303,9 @@ func _on_Recall_pressed():
 
 func _on_GameOver_pressed():
 	get_tree().change_scene("res://SpaceShip.tscn")
+	pass # Replace with function body.
+
+
+func _on_FireworksTimer_timeout():
+	paused = false
 	pass # Replace with function body.
