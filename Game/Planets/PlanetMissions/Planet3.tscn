@@ -5,9 +5,10 @@
 
 [node name="Planet" type="Node"]
 script = ExtResource( 2 )
-id = 7
+id = 3
 name = "Aumatex"
 pathToImage = "res://Resources/Sprites/Planets/Deseart.png"
+planetType = 6
 importantPoints = "- endless desert
 - homeworld for alien race, Dahakkar
 - infested with sand worms"

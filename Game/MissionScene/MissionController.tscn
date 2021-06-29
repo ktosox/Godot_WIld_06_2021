@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/MissionController.gd" type="Script" id=1]
 [ext_resource path="res://Resources/UI/MainPanel02.png" type="Texture" id=2]
-[ext_resource path="res://MissionScene/Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MissionScene/EnemyCharacter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BubbleText/BubbleTextGenerator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Fonts/LevelSelectionFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Resources/Fonts/stanberry/Stanberry.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Resources/Fonts/MenuButtonFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://MissionScene/CrewSelection.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MissionScene/BobTheFireworksNode.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MissionScene/CrewCharacter.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -119,7 +122,7 @@ margin_right = 375.0
 margin_bottom = 666.0
 size_flags_horizontal = 3
 
-[node name="Character1" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 3 )]
+[node name="Character1" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 123.0
@@ -127,7 +130,7 @@ margin_top = 45.0
 margin_right = 251.0
 margin_bottom = 173.0
 
-[node name="Character2" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 3 )]
+[node name="Character2" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 123.0
@@ -135,7 +138,7 @@ margin_top = 268.0
 margin_right = 251.0
 margin_bottom = 396.0
 
-[node name="Character3" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 3 )]
+[node name="Character3" parent="MissionScreen/LayoutH/Background/Layout/Crew" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 123.0
@@ -156,82 +159,41 @@ margin_right = 891.0
 margin_bottom = 666.0
 size_flags_horizontal = 3
 
+[node name="Character1" parent="MissionScreen/LayoutH/Background/Layout/Badies" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 124.0
+margin_top = 45.0
+margin_right = 252.0
+margin_bottom = 173.0
+isAlive = false
+
+[node name="Character2" parent="MissionScreen/LayoutH/Background/Layout/Badies" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 124.0
+margin_top = 268.0
+margin_right = 252.0
+margin_bottom = 396.0
+isAlive = false
+
+[node name="Character3" parent="MissionScreen/LayoutH/Background/Layout/Badies" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 124.0
+margin_top = 492.0
+margin_right = 252.0
+margin_bottom = 620.0
+isAlive = false
+
 [node name="EncounterTimer" type="Timer" parent="MissionScreen"]
 wait_time = 12.0
 
-[node name="CrewSelection" type="HBoxContainer" parent="."]
+[node name="BobTheFireworksNode" parent="." instance=ExtResource( 9 )]
+z_index = 4
+
+[node name="CrewSelection" parent="." instance=ExtResource( 8 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ConfirmationScreen" type="Control" parent="CrewSelection"]
-margin_right = 628.0
-margin_bottom = 720.0
-size_flags_horizontal = 3
-
-[node name="Return" type="Button" parent="CrewSelection/ConfirmationScreen"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 128.0
-margin_bottom = 80.0
-text = "return"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="CrewSelection/ConfirmationScreen"]
-margin_right = 624.0
-margin_bottom = 176.0
-custom_fonts/font = ExtResource( 5 )
-text = "please select 3 crewmates 
-to send on this mission"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StartMission" type="Button" parent="CrewSelection/ConfirmationScreen"]
-visible = false
-margin_left = 136.0
-margin_top = 288.0
-margin_right = 247.0
-margin_bottom = 308.0
-rect_scale = Vector2( 3, 3 )
-text = "START MISSION"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CrewBox" type="ScrollContainer" parent="CrewSelection"]
-margin_left = 632.0
-margin_right = 1261.0
-margin_bottom = 720.0
-size_flags_horizontal = 3
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CrewSelection/CrewBox"]
-margin_right = 629.0
-margin_bottom = 1000.0
-rect_min_size = Vector2( 0, 1000 )
-size_flags_horizontal = 3
-size_flags_vertical = 2
-alignment = 1
-
-[node name="EmptySpace" type="Control" parent="CrewSelection/CrewBox/VBoxContainer"]
-margin_right = 617.0
-margin_bottom = 1000.0
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.58
-
-[node name="Control" type="Control" parent="CrewSelection"]
-margin_left = 1265.0
-margin_right = 1280.0
-margin_bottom = 720.0
-rect_min_size = Vector2( 15, 0 )
 
 [node name="WinScreen" type="ColorRect" parent="."]
 visible = false
@@ -311,14 +273,14 @@ margin_bottom = 428.0
 rect_scale = Vector2( 3, 3 )
 text = "START NEW GAME"
 
+[node name="FireworksTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="visibility_changed" from="." to="." method="_on_MissionController_visibility_changed"]
 [connection signal="pressed" from="MissionScreen/LayoutH/DetailMenu/Recall" to="." method="_on_Recall_pressed"]
-[connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character1" to="." method="_on_Character1_action"]
-[connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character2" to="." method="_on_Character2_action"]
-[connection signal="action" from="MissionScreen/LayoutH/Background/Layout/Crew/Character3" to="." method="_on_Character3_action"]
 [connection signal="timeout" from="MissionScreen/EncounterTimer" to="." method="_on_EncounterTimer_timeout"]
-[connection signal="pressed" from="CrewSelection/ConfirmationScreen/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="CrewSelection/ConfirmationScreen/StartMission" to="." method="_on_StartMission_pressed"]
 [connection signal="pressed" from="WinScreen/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="AbortScreen/Abort" to="." method="_on_Abort_pressed"]
 [connection signal="pressed" from="LoseScreen/GameOver" to="." method="_on_GameOver_pressed"]
+[connection signal="timeout" from="FireworksTimer" to="." method="_on_FireworksTimer_timeout"]

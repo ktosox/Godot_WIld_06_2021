@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/CrewMainMenu.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/CrewMainMenuGood.cs" type="Script" id=2]
 [ext_resource path="res://Scripts/CrewList.cs" type="Script" id=3]
 [ext_resource path="res://Scripts/SelectedCrewmateDesription.cs" type="Script" id=4]
@@ -18,21 +17,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CrewMainMenu" type="Control" parent="."]
+[node name="CrewMainMenu" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SelectedCrewmateDesription" type="Panel" parent="CrewMainMenu"]
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 0.529144
-margin_top = -0.264526
-margin_right = 0.529175
-margin_bottom = -0.264526
+margin_right = 696.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -93,39 +89,43 @@ __meta__ = {
 }
 
 [node name="HPLabel" type="Label" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer"]
-margin_right = 218.0
-margin_bottom = 50.0
+margin_right = 257.0
+margin_bottom = 61.0
 custom_fonts/font = ExtResource( 7 )
 text = "HP: 20/20"
 
 [node name="CombatStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
-margin_right = 358.0
+margin_left = 261.0
+margin_right = 439.0
+margin_bottom = 61.0
 statName = "Combat:"
 
 [node name="SpeedStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
 margin_left = 0.0
-margin_top = 54.0
-margin_right = 218.0
-margin_bottom = 104.0
+margin_top = 65.0
+margin_right = 257.0
+margin_bottom = 126.0
 statName = "Speed:"
 
 [node name="AlienStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
-margin_top = 54.0
-margin_right = 358.0
-margin_bottom = 104.0
+margin_left = 261.0
+margin_top = 65.0
+margin_right = 439.0
+margin_bottom = 126.0
 statName = "Xeno:"
 
 [node name="TechStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
 margin_left = 0.0
-margin_top = 108.0
-margin_right = 218.0
-margin_bottom = 158.0
+margin_top = 130.0
+margin_right = 257.0
+margin_bottom = 191.0
 statName = "Cyber:"
 
 [node name="PeopleStat" parent="CrewMainMenu/SelectedCrewmateDesription/GridContainer" instance=ExtResource( 5 )]
-margin_top = 108.0
-margin_right = 358.0
-margin_bottom = 158.0
+margin_left = 261.0
+margin_top = 130.0
+margin_right = 439.0
+margin_bottom = 191.0
 statName = "People:"
 
 [node name="HireButton" type="Button" parent="CrewMainMenu/SelectedCrewmateDesription"]
@@ -178,59 +178,63 @@ margin_right = 223.0
 margin_bottom = 696.667
 text = "100$"
 
-[node name="CrewList" type="ItemList" parent="CrewMainMenu"]
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 66.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-hireButtonPath = NodePath("../SelectedCrewmateDesription/HireButton")
-currencyLabelPath = NodePath("../SelectedCrewmateDesription/Currency Dynamic")
-costLabelPath = NodePath("../SelectedCrewmateDesription/Cost Dynamic")
+[node name="VBoxContainer" type="VBoxContainer" parent="CrewMainMenu"]
+margin_left = 700.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
 
-[node name="ButtonOwned" type="Button" parent="CrewMainMenu"]
-anchor_left = 0.501
-anchor_top = -0.002
-anchor_right = 0.719
-anchor_bottom = 0.091
-margin_left = -1.28003
-margin_top = 1.44
-margin_right = -0.320068
-margin_bottom = 0.479996
-rect_scale = Vector2( 0.999187, 1 )
-text = "Owned"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HBoxContainer" type="HBoxContainer" parent="CrewMainMenu/VBoxContainer"]
+margin_right = 580.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
 
-[node name="ButtonToBuy" type="Button" parent="CrewMainMenu"]
-anchor_left = 0.5
-anchor_top = -0.101
-anchor_right = 1.0
-margin_left = 280.0
-margin_top = 72.72
-margin_right = -81.0
-margin_bottom = 66.0
+[node name="ButtonToBuy" type="Button" parent="CrewMainMenu/VBoxContainer/HBoxContainer"]
+margin_right = 190.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
 text = "To buy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HideButton" type="Button" parent="CrewMainMenu"]
-margin_left = 1199.0
-margin_right = 1279.0
-margin_bottom = 65.0
+[node name="ButtonOwned" type="Button" parent="CrewMainMenu/VBoxContainer/HBoxContainer"]
+margin_left = 194.0
+margin_right = 385.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+text = "Owned"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HideButton" type="Button" parent="CrewMainMenu/VBoxContainer/HBoxContainer"]
+margin_left = 389.0
+margin_right = 580.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
 text = "Return"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CrewMainMenu/SelectedCrewmateDesription/HireButton" to="CrewMainMenu/CrewList" method="_on_HireButton_pressed"]
-[connection signal="item_selected" from="CrewMainMenu/CrewList" to="CrewMainMenu/CrewList" method="_on_CrewList_item_selected"]
-[connection signal="pressed" from="CrewMainMenu/ButtonOwned" to="CrewMainMenu/CrewList" method="_on_ButtonOwned_pressed"]
-[connection signal="pressed" from="CrewMainMenu/ButtonToBuy" to="CrewMainMenu/CrewList" method="_on_ButtonToBuy_pressed"]
-[connection signal="pressed" from="CrewMainMenu/HideButton" to="CrewMainMenu" method="_on_HideButton_pressed"]
-[connection signal="pressed" from="CrewMainMenu/HideButton" to="." method="_on_HideButton_pressed"]
+[node name="CrewList" type="ItemList" parent="CrewMainMenu/VBoxContainer"]
+margin_top = 64.0
+margin_right = 580.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+hireButtonPath = NodePath("../../SelectedCrewmateDesription/HireButton")
+currencyLabelPath = NodePath("../../SelectedCrewmateDesription/Currency Dynamic")
+costLabelPath = NodePath("../../SelectedCrewmateDesription/Cost Dynamic")
+
+[connection signal="pressed" from="CrewMainMenu/SelectedCrewmateDesription/HireButton" to="CrewMainMenu/VBoxContainer/CrewList" method="_on_HireButton_pressed"]
+[connection signal="pressed" from="CrewMainMenu/VBoxContainer/HBoxContainer/ButtonToBuy" to="CrewMainMenu/VBoxContainer/CrewList" method="_on_ButtonToBuy_pressed"]
+[connection signal="pressed" from="CrewMainMenu/VBoxContainer/HBoxContainer/ButtonOwned" to="CrewMainMenu/VBoxContainer/CrewList" method="_on_ButtonOwned_pressed"]
+[connection signal="pressed" from="CrewMainMenu/VBoxContainer/HBoxContainer/HideButton" to="." method="_on_HideButton_pressed"]
+[connection signal="item_selected" from="CrewMainMenu/VBoxContainer/CrewList" to="CrewMainMenu/VBoxContainer/CrewList" method="_on_CrewList_item_selected"]

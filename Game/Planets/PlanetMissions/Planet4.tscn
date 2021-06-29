@@ -8,6 +8,7 @@ script = ExtResource( 2 )
 id = 4
 name = "Rusty Haven"
 pathToImage = "res://Resources/Sprites/Planets/Dry.png"
+planetType = 1
 importantPoints = "- haven of scummery
 - mostly city
 - a lot of smoke in the air"
