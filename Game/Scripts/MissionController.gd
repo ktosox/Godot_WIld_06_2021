@@ -1,11 +1,6 @@
 extends Control
 
-
-var characterScene = preload("res://MissionScene/Character.tscn")
-
-
-
-var steps = [1,2]
+var steps = []
 
 var currentStep = -1 #represents postion in "steps" Array
 
@@ -24,7 +19,7 @@ func _process(delta):
 	if paused :
 		return
 	if missionStarted:
-		if steps[currentStep].stepType == 1 and !isInCombat:
+		if (steps[currentStep].stepType == 1 or steps[currentStep].stepType == 0)  and !isInCombat:
 			$MissionScreen/ProgressBar.value+=delta
 		else:
 			crew_tick(delta)
@@ -121,43 +116,57 @@ func mission_progress(chara):
 
 func crew_combat(chara):
 	# calculate attack dmg - take character base dmg, calculate rand number, end up with a number
-	var damage = round( lerp(0,5,randf())) + CrewSingleton.GetCrewmate(chara.ID).combatProwess
-	#print(damage)
+	var damage = round( lerp(0,2,randf())) + CrewSingleton.GetCrewmate(chara.ID).combatProwess
+
 #	$BubbleTextGenerator.addBubble(String(damage),who.rect_global_position+(who.rect_size)/2.0)
 	# add modifiers from the attack stack (should be listed on character)
 	for i in CrewSingleton.GetCrewmate(chara.ID).GetPerks():
 		if i.perkTag == 2 :
-			print("this effect should be added to dmg ",i)
+			pass
+#			print("this effect should be added to dmg ",i)
 	# select defender (code below)
 	var defender = $MissionScreen/LayoutH/Background/Layout/Badies.get_children()
-	if defender.size() == 0 :
-		check_for_combat_end()
-		return
-	else:
-		defender = defender[randi()%defender.size()] #select one defender
-	defender.get_node("Health").value-=damage
-	animate_attack(chara.rect_global_position,defender.rect_global_position,ColorN("green"))
+	var alive = []
+	for d in defender :
+		if d.isAlive == true :
+			alive.push_back(d)
+	defender = alive[randi()%alive.size()] #select one defender
+	defender.lose_health(damage)
+	animate_attack(Vector2(0,40)+chara.rect_global_position+chara.rect_size/2,defender.rect_global_position+defender.rect_size/2,ColorN("green"))
+
+
+
+func enemy_combat(attacker):
+
+	var damage = attacker.damage
+
+	var crew = $MissionScreen/LayoutH/Background/Layout/Crew.get_children()
+	var alive = []
+	for c in crew :
+		if c.isAlive == true :
+			alive.push_back(c)
+	crew = alive[randi()%alive.size()]
+
+	crew.lose_health(damage)
 	
+	animate_attack(Vector2(0,40)+attacker.rect_global_position+attacker.rect_size/2,crew.rect_global_position+crew.rect_size/2,ColorN("red"))
 
 
-func enemy_combat(who):
-
-	var damage = who.damage
-	print("processing enemy attack for node ",who," with damage ",damage)
-	var c = $MissionScreen/LayoutH/Background/Layout/Crew.get_children()
-	c = c[randi()%c.size()]
-#	CrewSingleton.GetCrewmate(c.ID).currentHealth-=damage
-	c.get_node("Health").value-=damage
-	animate_attack(who.rect_global_position,c.rect_global_position,ColorN("red"))
-	#acceess the crew hp by the singleton
-	# updated hp on crew panel
-	# check for crew death
 	pass
 
 func check_for_combat_end():
-
-	if  $MissionScreen/LayoutH/Background/Layout/Badies.get_child_count()<2:
+	var enemiesAlive = 0
+	var crewAlive = 0
+	for e in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
+		if e.isAlive :
+			enemiesAlive += 1
+	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
+		if c.isAlive :
+			crewAlive += 1
+	if enemiesAlive == 0 :
 		end_encounter()
+	if crewAlive == 0 :
+		mission_lost()
 	pass
 
 
@@ -191,9 +200,7 @@ func start_encounter():
 	var count = 0
 	for b in enemyStats:
 		var enemyChar = $MissionScreen/LayoutH/Background/Layout/Badies.get_child(count)
-		enemyChar.visible = true
-		enemyChar.isAlive = true
-#		enemyChar.get_node("AnimateAction").playback_speed = 0.35 + randf() * 0.25
+		enemyChar.un_faint()
 		enemyChar.get_node("Health").max_value = b[1]
 		enemyChar.get_node("Health").value = b[1]
 		enemyChar.damage = b[0]
@@ -205,15 +212,10 @@ func start_encounter():
 	pass
 
 func end_encounter():
-#	for b in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
-#		b.queue_free()
+	for b in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
+		b.visible = false
 	isInCombat = false
 
-	if steps[currentStep].stepType == 1 :
-			for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-				c.end_action()
-			for e in $MissionScreen/LayoutH/Background/Layout/Badies.get_children() :
-				e.end_action()
 	$MissionScreen/EncounterTimer.start()
 	pass
 
@@ -222,8 +224,7 @@ func mission_complete():
 		if p.currentHealth < p.maxHealth :
 			p.currentHealth = min(p.maxHealth,p.currentHealth + p.maxHealth*0.4 )
 	CurrencySingleton.currentCurrency+=100
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		c.end_action()
+
 	GS.abortReady = true
 	GS.missionsBeaten += 1
 	GS.selectedPlanet = -1
@@ -239,8 +240,6 @@ func mission_lost():
 	pass
 
 func abort_mission():
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		c.end_action()
 	missionStarted = false
 	$AbortScreen.visible = true
 	$MissionScreen/EncounterTimer.stop()
@@ -250,21 +249,13 @@ func abort_mission():
 
 func reset_mission_scene():
 	$CrewSelection/ConfirmationScreen/StartMission.visible = false
-	for z in $CrewSelection/CrewBox/VBoxContainer.get_children():
-		if z.name != "EmptySpace":
-			z.queue_free()
-	
-	for c in $MissionScreen/LayoutH/Background/Layout/Crew.get_children() :
-		c.end_action()
+
 	isInCombat = false
 	currentStep = -1
 	$CrewSelection.reset_crew()
 	$CrewSelection.visible = true
 	$MissionScreen.visible = false
 	pass
-
-
-
 
 
 func _on_MissionController_visibility_changed():
@@ -308,4 +299,5 @@ func _on_GameOver_pressed():
 
 func _on_FireworksTimer_timeout():
 	paused = false
+	check_for_combat_end()
 	pass # Replace with function body.

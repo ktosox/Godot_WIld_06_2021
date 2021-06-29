@@ -76,7 +76,7 @@ material = SubResource( 2 )
 margin_top = 144.0
 margin_right = 128.0
 margin_bottom = 158.0
-max_value = 10.0
+max_value = 4.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,7 +90,18 @@ anims/Animate = SubResource( 3 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.188235, 0.188235, 0.188235, 0.541176 )
+color = Color( 0.0784314, 0.0784314, 0.0784314, 0.882353 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="ColorRect"]
+points = PoolVector2Array( 8, 8, 64, 64, 8, 120, 120, 8, 64, 64, 120, 120 )
+width = 4.0
+default_color = Color( 0.552941, 0.552941, 0.552941, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 show_behind_parent = true
@@ -106,5 +117,11 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 __meta__ = {
+"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]

@@ -15,3 +15,9 @@ func load_character(ID):
 	texture = load(crew.pathToImage)
 	$Health.max_value = crew.maxHealth
 	$Health.value = crew.currentHealth
+	$Action.max_value = crew.speed + randf()*0.5
+
+
+func _on_DamageTimer_timeout():
+	apply_damage()
+	pass # Replace with function body.

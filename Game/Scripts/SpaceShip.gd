@@ -3,21 +3,13 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	Engine.time_scale = 10.0
+	Engine.time_scale = 5.0
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_Button_pressed():
-	if $CPUParticles2D.speed_scale < 1 :
-		$CPUParticles2D.speed_scale = 1
-	else:
-		$CPUParticles2D.speed_scale = 0.06
-	pass # Replace with function body.
 
 
 func _on_Return_pressed():
